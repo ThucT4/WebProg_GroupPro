@@ -2,7 +2,7 @@ document.querySelector("#customer").addEventListener("click", clicked);
 document.querySelector("#vendor").addEventListener("click", clicked);
 document.querySelector("#shipper").addEventListener("click", clicked);
 
-infoField = document.querySelector("div#typical-info");
+document.querySelector('input#submit-btn').addEventListener("click", testFomr);
 
 function clicked(e) {
     console.log(e.target.value);
