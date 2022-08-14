@@ -5,14 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/src/assets/styles/loginPage.css">
 </head>
-<p class="text-center">This is login section</p>
+    <p class="text-center">This is login section</p>
 
-<body>
-
+<body class="d-flex flex-column text-center p-4">
+    <header>There will be a header</header> 
+    <main>
+        <div class="d-flex flex-row">
+                <div id="big-logo" class="m-4 align-middle text-center">
+                    <img src="/public/img/logo-lazada.png" class="rounded" alt="Lazada">
+                </div>
+                <div id="login-side" class=" d-flex flex-column m-4 align-middle">
+                    <div id="login-box" class="d-flex flex-column m-2 p-4 border">
+                        <div id="page-name" class="text-center">
+                            <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
+                        </div>
+                        <form class="">
+                            <label class="form-label" for="username">Username</label>
+                            <input id="username" type="text" class="form-control" placeholder="Enter username">
+    
+                            <label class="form-label" for="password">Password</label>
+                            <input id="password" type="password" class="form-control">
+                        </form>
+                    </div>
+                    <div id="register-box" class="m-2 pe-4 ps-4 pt-2 border">
+                        <p>You don't have account?
+                            <a href="../registerPage/customerRegister.html">Register now</a>
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </main>
+    <footer>
+        Footer are waiting to be completed
+    </footer>
 </body>
 <link rel="stylesheet" href="/src/assets/scripts/loginPage.js">
 
