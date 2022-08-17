@@ -9,40 +9,37 @@
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/src/assets/styles/loginPage.css">
 </head>
-<p class="text-center">This is login section</p>
 
-<body class="d-flex flex-column text-center p-4">
-    <header>There will be a header</header>
-    <main>
-        <div class="d-flex flex-row">
-            <div id="big-logo" class="m-4 align-middle text-center">
-                <img src="/public/img/logo-lazada.png" class="rounded" alt="Lazada">
+<body class="d-flex flex-column text-center">
+    <header include-one="../header/header.html"></header>
+    <main class="">
+        <div class="d-flex justify-content-evenly">
+            <div id="big-logo" class="col-12 col-md-6 p-4">
+                <img class="img-fluid rounded" src="/public/img/login_banner.png" class="rounded" alt="Lazada">
             </div>
-            <div id="login-side" class=" d-flex flex-column m-4 align-middle">
-                <div id="login-box" class="d-flex flex-column m-2 p-4 border">
-                    <div id="page-name" class="text-center">
-                        <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
-                    </div>
-                    <form class="">
-                        <label class="form-label" for="username">Username</label>
+            <div id="login-side"
+                class="col-12 col-md-6 d-flex flex-column p-4 justify-content-center align-items-center">
+                <form class="col-8">
+                    <div id="login-box" class="d-flex flex-column p-4 border">
+                        <div id="page-name" class="text-center">
+                            <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
+                        </div>
+                        <label class="form-label text-start mt-2" for="username">Username</label>
                         <input id="username" type="text" class="form-control" placeholder="Enter username">
 
-                        <label class="form-label" for="password">Password</label>
+                        <label class="form-label text-start mt-2" for="password">Password</label>
                         <input id="password" type="password" class="form-control">
-                    </form>
-                </div>
-                <div id="register-box" class="m-2 pe-4 ps-4 pt-2 border">
-                    <p>You don't have account?
-                        <a href="../registerPage/customerRegister.html">Register now</a>
-                    </p>
-                </div>
+                    </div>
+                    <div id="register-box" class="pe-4 ps-4 pt-2 border mt-2">
+                        <p>You don't have account?
+                            <a href="../registerPage/customerRegister.html">Register now</a>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
-    <footer>
-        Footer are waiting to be completed
-    </footer>
 </body>
-<link rel="stylesheet" href="/src/assets/scripts/loginPage.js">
+<script src="../../assets/scripts/includePage.js"></script>
 
 </html>
