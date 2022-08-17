@@ -117,7 +117,6 @@ fclose($file);
                             <span>702 Nguyễn Văn Linh, Tân Hưng, Quận 7, Thành phố Hồ Chí Minh</span>
                         </div>
                     </div>
-
                 </div>
                 <!-- <div class="address d-flex justify-content-between p-4">
                     <div class="card" style="width: 12rem;">
