@@ -1,0 +1,64 @@
+.row{
+    height: 100vh;
+    
+}
+
+.cart{
+    display: flexbox;
+    
+}
+
+.cart-row{
+    height: 30%;   
+}
+
+.cart-col{
+    position: relative;
+    height: 100%;  
+    border: 2px solid pink;       
+} 
+
+.cart-col p{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+} 
+
+.cart-col-btn{
+    border: 2px solid pink; 
+    top: 50%;
+    display: flexbox;   
+    
+} 
+
+.cart-col-btn form{
+    place-self: center;   
+    
+} 
+
+.item-btn{
+    width: 40px;
+}
+
+.nav-bar{
+    position: sticky;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center;
+}
+
+.nav-bar button{
+    
+    margin: 50% 0 50% 0;
+    padding: 10px 10px 10px 10px;
+    background-color: pink;
+    border-radius: 50px;
+}
+
+
+
+
+
+
