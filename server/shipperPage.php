@@ -1,36 +1,84 @@
 <?php
-// $obj = new stdClass();
-// $obj->id = "35981";
-// $obj->customerName = "Kisari";
-// $obj->productName = "Iphone 13 max pro";
-// $obj->img = "../public/img/iphone.webp";
-// $obj->productID = "SB386";
-// $obj->date = "13/08/2022";
-// $obj->from = "Tien Giang";
-// $obj->to = "Ho Chi Minh city";
 
+class Product
+{
+    public $productID;
+    public $img;
+    public $productDes;
+    public $category;
+    public $unitPrice;
+    public $amount;
+    public $status;
 
-// $objData = serialize( $obj);
-$filePath = getcwd() . DIRECTORY_SEPARATOR . "test.db";
+    public function __construct($productID, $img, $productDes, $category, $unitPrice, $amount, $status)
+    {
+        $this->productID  = $productID;
+        $this->img  = $img;
+        $this->productDes = $productDes;
+        $this->category  = $category;
+        $this->unitPrice = $unitPrice;
+        $this->amount = $amount;
+        $this->status = $status;
+    }
+}
+class Order
+// implements \JsonSerializable
+{
+    public $id;
+    public $customerName;
+    public $productName;
+    public $img;
+    public $productID;
+    public $date;
+    public $from;
+    public $to;
+    public $productList;
+
+    public function __construct($id, $customerName, $productName, $img, $productID, $date, $from, $to)
+    {
+        $product1 = new Product("SB3589", "../public/img/product1.png", "Fashion, modern and trending with real iron materials", "Knife", "2500$", "1", "In stock");
+        $product2 = new Product("UI359", "../public/img/product2.webp", "Bluetooth headphone with famous branch - experience music, watch movies all day", "Headphone", "200$", "1", "In stock");
+        $this->id  = $id;
+        $this->customerName = $customerName;
+        $this->productName  = $productName;
+        $this->img = $img;
+        $this->productID = $productID;
+        $this->date = $date;
+        $this->from = $from;
+        $this->to = $to;
+        $this->productList = array($product1, $product2);
+    }
+
+    // public function jsonSerialize()
+    // {
+    //     return array(
+    //         'id'  => $this->id,
+    //         'customerName' => $this->customerName,
+    //         'productName'  => $this->productName,
+    //         'img' => $this->img,
+    //         'productID' => $this->productID,
+    //         'date' => $this->date,
+    //         'from' => $this->from,
+    //         'to' => $this->to,
+    //     );
+    // }
+}
+
+$obj = new Order("35981", "Kisari", "Iphone 13 max pro", "../public/img/iphone.webp", "SB386", "13/08/2022", "Tien Giang", "Ho Chi Minh city");
+// $objData = serialize($obj);
+$filePath = getcwd() . DIRECTORY_SEPARATOR . "order.txt";
 // if (is_writable($filePath)) {
-//     $file = fopen($filePath, "a"); 
+//     $file = fopen($filePath, "a");
 //     fwrite($file, $objData);
 //     fwrite($file, "\n");
 //     fclose($file);
 // }
-
-//             if (file_exists($filePath)){
-//                 $objData = file_get_contents($filePath);
-//                 $obj = unserialize($objData);
-//                 if (!empty($obj)){
-//                     $name = $obj->name;
-//                     $birthdate = $obj->birthdate;
-//                     $position = $obj->position;
-//                     echo $name, $birthdate, $position;
-//                 }
-// }
+if (file_exists($filePath)) {
+    $objData = file_get_contents($filePath);
+    $obj = unserialize($objData);
+}
 $orderList = [];
-$currentOrder = new stdClass();
+$index = 0;
 if (file_exists($filePath)) {
     $file = fopen($filePath, "r");
     while (!feof($file)) {
@@ -135,47 +183,42 @@ fclose($file);
                         </div>
                     </div>
                 </div> -->
-                <div class="product-list">
-                    <div class="product-list-item d-flex align-items-center h-100 text-md-center">
+                <div class="product">
+                    <div class="d-flex align-items-center h-100 text-md-center">
                         <div class="col-8 col-md-9">Product</div>
                         <p class="col-2 col-md-1 p-md-2">Unit price</p>
                         <p class="col-1 p-md-2">Amount</p>
                         <p class="col-1 p-md-2">Status</p>
                     </div>
                     <?php
-                    foreach ($orderList as $cur) :
+                    foreach ($orderList[$index]->productList as $cur) :
                     ?>
-                    <div class="product-list-item d-flex align-items-center h-100">
-                        <img class="col-3 col-md-2 img-fluid rounded" src="/public/img/iphone.webp" alt="iphone">
-                        <p class="col-3 col-md-4 p-md-2">Iphone with the cheapest
-                            price,
-                            modern
-                            design, 13
-                            new
-                            inovations and
-                            associated
-                            functions</p>
-                        <div class="catogory col-2 col-md-3 d-flex flex-column p-md-2 text-md-center">
-                            <span>catogory</span>
-                            <small>iphone</small>
+                    <div class="product-list" id="product-list">
+                        <div class="product-list-item d-flex align-items-center h-100">
+                            <img class="col-3 col-md-2 img-fluid rounded" src="<?= $cur->img ?>" alt="<?= $cur->img ?>">
+                            <p class="col-3 col-md-4 p-md-2"><?= $cur->productDes ?></p>
+                            <div class="catogory col-2 col-md-3 d-flex flex-column p-md-2 text-md-center">
+                                <span>catogory</span>
+                                <small><?= $cur->category ?></small>
+                            </div>
+                            <p class="col-2 col-md-1 price p-md-2 text-md-center"><?= $cur->unitPrice ?></p>
+                            <p class="col-1 amount p-md-2 text-md-center"><?= $cur->amount ?></p>
+                            <p class="col-1 status p-md-2"><?= $cur->status ?></p>
                         </div>
-                        <p class="col-2 col-md-1 price p-md-2 text-md-center">1500$</p>
-                        <p class="col-1 amount p-md-2 text-md-center">1</p>
-                        <p class="col-1 status p-md-2">In stock</p>
                     </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="my-md-4">
-                    <div class="product-list-item d-flex align-items-center h-100">
+                    <div class="d-flex align-items-center h-100">
                         <p class="col-6 col-md-6 p-md-2 text-secondary text-end">
                             Total amount</p>
                         <p class="col-6 col-md-6 text-md-end pe-md-3">45212$</p>
                     </div>
-                    <div class="product-list-item d-flex align-items-center h-100">
+                    <div class="d-flex align-items-center h-100">
                         <p class="col-6 col-md-6 p-md-2 text-secondary text-end">Shipping fee</p>
                         <p class="col-6 col-md-6 text-md-end pe-md-3">20$</p>
                     </div>
-                    <div class="product-list-item d-flex align-items-center h-100">
+                    <div class="d-flex align-items-center h-100">
                         <p class="col-6 col-md-6 p-md-2 text-secondary text-end">Total paymment</p>
                         <p class="col-6 col-md-6 text-md-end pe-md-3 fs-4 text-danger">45232$</p>
                     </div>
@@ -189,7 +232,7 @@ fclose($file);
                         Please pay <strong class="text-warning">45232$</strong> upon receipt</small>
                 </div>
                 <div class="my-md-4">
-                    <div class="product-list-item d-flex align-items-center h-100">
+                    <div class="d-flex align-items-center h-100">
                         <p class="col-6 col-md-6 p-md-2 text-secondary text-end">
                             Payment method</p>
                         <p class="col-6 col-md-6 text-md-end pe-md-3">
@@ -213,9 +256,17 @@ function showDetails($cur) {
     var orderObjectData = '<?php echo json_encode($orderItem); ?>';
     var orderObject = JSON.parse(orderObjectData);
     if (orderObject.id == $cur.trim()) {
-        console.log(orderObject);
+        var productSection = document.getElementsByClassName("product-list");
+        for (var i = productSection.length - 1; i >= 0; i--) {
+            productSection[i].parentNode.removeChild(productSection[i]);
+        }
+
+
     }
     <?php endforeach; ?>
+
+
+
 }
 </script>
 
