@@ -4,8 +4,14 @@
 <?php require_once('./readFromFile.php') ?>
 <?php require_once('./orderDetails.php') ?>
 <?php
-$obj = new Order("35981", "123456789", "Kisari", "Iphone 13 max pro", "../public/img/iphone.webp", "SB386", "13/08/2022", "Tien Giang", "Ho Chi Minh city");
-$orderList = readFromFile("order.txt");
+$product1 = new Product("SB3589", "Butterfly Knife", "../public/img/product1.png", "Fashion, modern and trending with real iron materials", "Knife", "2500$", "1", "In stock");
+$product2 = new Product("UI359", "Wireless Headphone", "../public/img/product2.webp", "Bluetooth headphone with famous branch - experience music, watch movies all day", "Headphone", "200$", "1", "In stock");
+$product3 = new Product("BF384", "iPhone 13 256GB", "../public/img/iphone.webp", "Iphone 13 max pro with cheapest price", "phone", "1250$", "2", "In stock");
+$productList = array($product1);
+$obj = new Order("123456789", "Kisari", "../public/img/iphone.webp", "SB386", "13/08/2022", "Tien Giang", "Ho Chi Minh city", $productList, "Not delivered");
+// $orderList = readFromFile("order.txt");
+// writeToFile($obj, "order.txt", "a");
+// writeToFile($product3, "product.txt", "a");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +27,7 @@ $orderList = readFromFile("order.txt");
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
+<!-- || ($cur->status == "Not delivered") -->
 
 <body>
     <header>
@@ -40,17 +47,15 @@ $orderList = readFromFile("order.txt");
                                 <h5 class="mb-1"><?= $cur->customerName ?></h5>
                                 <small><?= $cur->date ?></small>
                             </div>
-                            <p class="mb-1"><?= $cur->productName ?></p>
+                            <p class="mb-1">Total <?= sizeof($cur->productList) ?> products need to be delivered</p>
                             <small>From: <?= $cur->from ?> To: <?= $cur->to ?></small>
-                            <!-- <img class="img-fluid rounded mx-auto d-block" src="<?= $cur->img ?>"
-                        alt="<?= $cur->productName ?>"> -->
                         </a>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </section>
         <section class="col-8 order-section">
-            <div class="p-4 order-details">
+            <div class="p-4 order-details" style="visibility: hidden;">
                 <?php showOrderDetails($orderList[0]) ?>
             </div>
         </section>
@@ -80,11 +85,10 @@ $orderList = readFromFile("order.txt");
                     showOrderDetails($orderItem)
                     ?>
                 `
-                console.log(orderSection);
                 orderSection[0].appendChild(div);
             }
         <?php endforeach; ?>
-    }
+    };
 </script>
 
 </html>

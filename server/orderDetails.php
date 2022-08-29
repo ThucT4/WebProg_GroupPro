@@ -1,4 +1,18 @@
-<?php $orderList = readFromFile("order.txt"); ?>
+<?php function filter()
+{
+    $newList = [];
+    $data = readFromFile("order.txt");
+    foreach ($data as $object) {
+        if (empty($object)) continue;
+        if ($object->status == "Not delivered") {
+            array_push($newList, $object);
+        }
+    }
+    return $newList;
+}
+$orderList = filter();
+?>
+
 <?php function showOrderDetails($obj)
 {
     echo
@@ -88,8 +102,12 @@
                 Payment on delivery</p>
             </div>
         </div>
-        <div class="d-flex justify-content-end my-md-4 pe-md-3">
-            <button type="button" class="btn btn-outline-success">Confirm</button>
-        </div>
+        <form action="changeOrderStatus.php" method="post">
+            <div class="d-flex justify-content-end my-md-4 pe-md-3">
+                <input type="submit" name="changeOrderStatus" id="changeOrderStatus" value="$obj->id">
+                <button type="submit" name="chageOrderStatus" class="btn btn-outline-successc confirm">Confirm</button>
+            </div>
+        </form>
     CODE;
 } ?>
+

@@ -1,0 +1,9 @@
+.icon-40 {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+body {
+    background-color: red;
+}

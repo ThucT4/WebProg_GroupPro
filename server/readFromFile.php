@@ -1,4 +1,5 @@
 <?php
+session_start();
 function readFromFile($path)
 {
     $filePath = getcwd() . DIRECTORY_SEPARATOR . "{$path}";
@@ -16,5 +17,6 @@ function readFromFile($path)
         }
     }
     fclose($file);
+    $_SESSION['objectList'] = $objectList;
     return $objectList;
 }

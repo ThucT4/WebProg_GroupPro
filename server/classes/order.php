@@ -1,3 +1,4 @@
+<?php require_once('../server/readFromFile.php') ?>
 <?php
 class Order
 {
@@ -11,20 +12,22 @@ class Order
     public $from;
     public $to;
     public $productList;
+    public $status;
 
-    public function __construct($id, $customerID, $customerName, $productName, $img, $productID, $date, $from, $to)
+    public function __construct($customerID, $customerName, $img, $productID, $date, $from, $to, $productList, $status)
     {
-        $product1 = new Product("SB3589", "../public/img/product1.png", "Fashion, modern and trending with real iron materials", "Knife", "2500$", "1", "In stock");
-        $product2 = new Product("UI359", "../public/img/product2.webp", "Bluetooth headphone with famous branch - experience music, watch movies all day", "Headphone", "200$", "1", "In stock");
-        $this->id  = $id;
+        //automatic increment ID objects
+        $orderList = readFromFile("order.txt");
+        $this->id  = sizeof($orderList) + 1;
+        //assign the value 
         $this->customerID = $customerID;
         $this->customerName = $customerName;
-        $this->productName  = $productName;
         $this->img = $img;
         $this->productID = $productID;
         $this->date = $date;
         $this->from = $from;
         $this->to = $to;
-        $this->productList = array($product1, $product2);
+        $this->productList = $productList;
+        $this->status = $status;
     }
 }
