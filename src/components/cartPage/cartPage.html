@@ -14,79 +14,122 @@
 
 <body>
     <header>This is a header</header>
-    <div class="row m-0 p-0">
-        <div class="nav-bar col-2">
-            <a href="../mainPage/mainPage.html">
-                <button>Home</button> </a>\
-            <a href="../customerPage/customerPage.html">
-                <button>My Account</button>
-            </a>
-            <a href="../loginPage/loginPage.html">
-                <button>Log Out</button>
-            </a>
-        </div>
-        <div class="col cart text-center">
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col-btn">
-                    <h1>Quantity</h1>
-                </div>
-            </div>
+    
+    <div class="page">        
 
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic img-responsive"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Quantity</h1>
-                </div>
-            </div>
+        <aside class="sidebar">
+            <nav class="menu vertical-center ">
+                <a href="../mainPage/mainPage.php" class="menu-item">Home</a>
+                <a href="../customerPage/customerPage.html" class="menu-item">My Account</a>
+                <a href="../loginPage/loginPage.html" class="menu-item">Log Out</a>
+            </nav>           
+        </aside>
 
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic img-responsive"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Quantity</h1>
-                </div>
+        <main class="content">
+            <div class="cart-container">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/i/p/ip13-pro_2.jpg" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is an iphone</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1000
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://www.nguyenkim.com/images/detailed/757/10050188-laptop-hp-240-g8-i5-1135g7-518w3pa.jpg" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a laptop</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1200
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgGupBfa_jjJZX8-LPo6SkKfz_P1BQ-WAcRg&usqp=CAU" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a shirt</p>
+                        </td>
+
+                        <td class="price-col">
+                            $30
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://cdn.tgdd.vn/Files/2020/10/02/1295545/samsung-galaxy-tab-s7-_800x533.jpg" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a tablet</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1000
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            
+                        </td>
+
+                    </tr>
+                    
+                </table>
             </div>
-        </div>
-    </div>
+        </main>
+    </div>    
+    
+
     <footer>This is a footer</footer>
 </body>
 
