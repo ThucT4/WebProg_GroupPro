@@ -1,4 +1,1 @@
-O:7:"Account":8:{s:8:"username";s:13:"normercyhades";s:8:"password";s:60:"$2y$10$HuZvnDAwRJ2Br2lLarHJIOy3gN7T3oI3V7gUjFj3S3y.B6KQMPg7u";s:4:"type";s:8:"customer";s:3:"avt";s:0:"";s:7:"address";s:9:"123fwsera";s:8:"bussName";s:0:"";s:11:"bussAddress";s:0:"";s:3:"hub";s:4:"hub1";}
-O:7:"Account":8:{s:8:"username";s:8:"anything";s:8:"password";s:60:"$2y$10$X3Ccn6OQgJApTcSrDJVVeO4VPnXvxbeYReZvRRY.THxzAhnSqh1Aq";s:4:"type";s:7:"shipper";s:3:"avt";s:0:"";s:7:"address";s:0:"";s:8:"bussName";s:0:"";s:11:"bussAddress";s:0:"";s:3:"hub";s:4:"hub2";}
-O:7:"Account":8:{s:8:"username";s:15:"ioioioioaisoida";s:8:"password";s:60:"$2y$10$/fqMH9MVIOfxDOwfa.DaYORPY8RWb5VcUUaQWjxH1SYJE0TZTdlkq";s:4:"type";s:6:"vendor";s:3:"avt";s:0:"";s:7:"address";s:0:"";s:8:"bussName";s:7:"Laxzawd";s:11:"bussAddress";s:10:"123213 NVL";s:3:"hub";s:4:"hub1";}
-O:7:"Account":8:{s:8:"username";s:11:"s3870730333";s:8:"password";s:60:"$2y$10$.HCPM5N494jZnGN2HJfA3OBB7Ml7aRQq4tRjTy/DTO0jdJFLfGMgC";s:4:"type";s:8:"customer";s:3:"avt";s:0:"";s:7:"address";s:10:"123 street";s:8:"bussName";s:0:"";s:11:"bussAddress";s:0:"";s:3:"hub";s:4:"hub1";}
+
