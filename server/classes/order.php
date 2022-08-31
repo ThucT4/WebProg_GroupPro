@@ -14,7 +14,7 @@ class Order
     public $productList;
     public $status;
 
-    public function __construct($customerID, $customerName, $img, $productID, $date, $from, $to, $productList, $status)
+    public function __construct($customerID, $customerName, $img, $productID, $date, $from, $to, $productList)
     {
         //automatic increment ID objects
         $orderList = readFromFile("order.txt");
@@ -28,6 +28,6 @@ class Order
         $this->from = $from;
         $this->to = $to;
         $this->productList = $productList;
-        $this->status = $status;
+        $this->status = "active";
     }
 }
