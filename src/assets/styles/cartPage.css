@@ -1,64 +1,114 @@
-.row{
-    height: 100vh;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.page{
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar{
+    flex: 1 1 0;
+    max-width: 300px;
+    padding: 2rem, 1rem;
+    background-color: #02292f9c; 
+    justify-content: center;
     
 }
 
-.cart{
-    display: flexbox;
-    
+.sidebar .menu{
+    margin: 0;
+
 }
 
-.cart-row{
-    height: 30%;   
+.sidebar .menu .menu-item{
+    display: block;
+    padding: 1em;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s linear;
+    text-align: center; 
+    align-items: center; 
 }
 
-.cart-col{
-    position: relative;
-    height: 100%;  
-    border: 2px solid pink;       
-} 
+.sidebar .menu .menu-item:hover{
+    color: #f98181;
+    border-right: 5px solid #f98181;
+}
 
-.cart-col p{
-    position: absolute;
-    top: 50%;
+.content{
+    flex: 1 1 0;
+    padding: 2rem;
+}
+
+@media (max-width: 1024px){
+    .sidebar{
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px){
+    .sidebar{
+        max-width: 100px;
+    }
+}
+
+.cart-containter{
+    margin: 80px auto;
+}
+
+table{
     width: 100%;
-    transform: translateY(-50%);
-} 
-
-.cart-col-btn{
-    border: 2px solid pink; 
-    top: 50%;
-    display: flexbox;   
-    
-} 
-
-.cart-col-btn form{
-    place-self: center;   
-    
-} 
-
-.item-btn{
-    width: 40px;
+    border-collapse: collapse;
+    border-spacing: 10px; 
 }
 
-.nav-bar{
-    position: sticky;
-    display: flex;    
-    flex-direction: column;
-    justify-content: center;    
-    align-items: center;
+td{
+    border: 3px solid pink;
+    border-style: solid none;
+    height: 30vh;
+    margin-bottom: 10vh;    
 }
 
-.nav-bar button{
-    
-    margin: 50% 0 50% 0;
-    padding: 10px 10px 10px 10px;
-    background-color: pink;
-    border-radius: 50px;
+img{
+    aspect-ratio: 1;
+    height: 100%;
+    object-fit: cover;
+    padding: 20px;
 }
 
+th, td{
+    text-align: center;
+    padding: 10px;
+}
 
+.input{
+    margin: 10px;
+    text-decoration: none;    
+    color: black;
+}
 
+.quantity{
+    margin: 20px;
+    text-decoration: none;    
+    color: black;
+}
 
+.img-col{
+    width: 30%;
+}
 
+.name-col{
+    width: 30%;
+}
 
+.price-col{
+    width: 20%;
+}
+
+.quantity-col{
+    width: 20%;
+}
