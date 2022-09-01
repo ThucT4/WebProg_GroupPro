@@ -1,0 +1,19 @@
+.product-img img {
+    height: 100%;
+    width: 100%;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .product-img img {
+        height: 60%;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .product-img img {
+        height: 75%;
+        width: 75%;
+    }
+
+}

@@ -12,6 +12,7 @@ $id = $_GET['product'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/styles/productDetails.css?v=<?php echo time(); ?>">
     <title>Document</title>
 </head>
 <header>
@@ -26,8 +27,8 @@ $id = $_GET['product'];
             <?php if (!empty($product)) : ?>
                 <?php if ($product->productID == $id) : ?>
                     <section class="d-flex flex-column flex-md-row p-4 justify-content-md-around">
-                        <div class="col-md-5 text-center p-2">
-                            <img class="img-fluid h-100 w-100 border border-2 rounded" src="../../<?= $product->img ?>" alt="<?= $product->productDes ?>">
+                        <div class="col-md-5 d-flex justify-content-center align-items-center p-2 product-img">
+                            <img class="img-fluid border border-2 rounded" src="../../<?= $product->img ?>" alt="<?= $product->productDes ?>">
                         </div>
                         <div class="col-md-6">
                             <div class="p-2">
@@ -61,7 +62,7 @@ $id = $_GET['product'];
                                 <div>
                                     <p class="m-0 text-muted"><?= $product->productDes ?> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas dolorum autem ratione obcaecati tenetur, quia delectus esse deleniti minima. Repudiandae perspiciatis velit tempora voluptatum odio ut quibusdam laboriosam, blanditiis consequuntur!</p>
                                 </div>
-                                <div class="d-flex flex-row align-items-center my-3">
+                                <div class="d-flex flex-row justify-content-center justify-content-sm-start align-items-center my-3">
                                     <span class="col-3">Move to</span>
                                     <span>
                                         <img src="../../../public/img/moving-truck.png" alt="moving truck" style="width:30px;height:30px">
@@ -70,9 +71,9 @@ $id = $_GET['product'];
                                         To : user->to
                                     </span>
                                 </div>
-                                <div class="d-flex flex-row align-items-center my-3">
+                                <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center my-3">
                                     <span class="col-3">Quantity</span>
-                                    <div class="input-group btn-parent">
+                                    <div class="input-group btn-parent d-flex justify-content-center justify-content-sm-start">
                                         <span class="input-group-btn">
                                             <button class="btn btn-minuse border border-3" type="button">-</button>
                                         </span>
@@ -82,7 +83,7 @@ $id = $_GET['product'];
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-12 d-flex my-5">
+                                <div class="col-12 d-flex justify-content-center my-5">
                                     <button class="w-50 btn btn-outline-warning rounded-3" onclick="addToCart()">
                                         <img class="me-4" src="../../../public/img/add-to-cart.png" alt="Add-to-cart icon" style="width:30px;height:30px">Add to cart
                                     </button>
