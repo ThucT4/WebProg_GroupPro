@@ -10,9 +10,10 @@ class Product
     public $amount;
     public $status;
 
-    public function __construct($productID, $productName, $img, $productDes, $category, $unitPrice, $amount, $status)
+    public function __construct($productName, $img, $productDes, $category, $unitPrice, $amount, $status)
     {
-        $this->productID  = $productID;
+        $productList = readFromLocalFile('product.txt');
+        $this->productID  = sizeof($productList) + 1;
         $this->productName = $productName;
         $this->img  = $img;
         $this->productDes = $productDes;
