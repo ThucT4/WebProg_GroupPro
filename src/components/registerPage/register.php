@@ -31,7 +31,7 @@ if (isset($_POST['create-account'])) {
         require_once("../../../src/components/header/header.html");
 
         //Main
-        require_once("../../../src/components/registerPage/customerRegister.html");
+        require_once("../../../src/components/registerPage/registerPage.html");
 
         //Footer
         //require_once("../../../src/components/footer/footer.html");
@@ -45,4 +45,3 @@ if (isset($_POST['create-account'])) {
         }
         return true;
     }
-?>

@@ -2,7 +2,7 @@
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php
-$productList = readFromFile("../../../server/product.txt");
+$productList = readFromFile("product.txt");
 $id = $_GET['product'];
 ?>
 <!DOCTYPE html>

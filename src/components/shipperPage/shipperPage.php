@@ -31,7 +31,7 @@ $obj = new Order("123456789", "Kisari", "../../../public/img/iphone.webp", "SB38
 <body>
     <header>
         <?php
-        require_once('../header/header.html');
+        require_once('../header/header.php');
         ?>
     </header>
     <?php

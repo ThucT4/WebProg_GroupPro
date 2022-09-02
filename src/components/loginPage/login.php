@@ -6,7 +6,6 @@ include_once('../../../server/classes/account.php');
 
 global $accounts, $type, $username;
 $accounts = readFromFile('accounts.txt');
-
 if (isset($_POST['login'])) {
     //print_r($_POST);
     if (!authenticate($_POST)) {
@@ -29,7 +28,7 @@ loadPage();
 function loadPage()
 {
     //Header
-    require_once("../../../src/components/header/header.html");
+    // require_once("../../../src/components/header/header.php");
 
     //Main
     require_once("../../../src/components/loginPage/loginPage.html");
