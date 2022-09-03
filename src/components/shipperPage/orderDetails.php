@@ -1,4 +1,19 @@
-<?php $orderList = readFromFile("order.txt"); ?>
+<?php function filter()
+{
+    $newList = [];
+    $data = readFromLocalFile("order.txt");
+    foreach ($data as $object) {
+        if (empty($object)) continue;
+        if ($object->status == "active") {
+            array_push($newList, $object);
+        }
+    }
+    return $newList;
+}
+$orderList = filter();
+$totalPrice = 0;
+?>
+
 <?php function showOrderDetails($obj)
 {
     echo
@@ -49,7 +64,7 @@
                     </div>
                     <p class="col-2 col-md-1 price p-md-2 text-md-center">$cur->unitPrice </p>
                     <p class="col-1 amount p-md-2 text-md-center">$cur->amount </p>
-                    <p class="col-1 status p-md-2">$cur->status</p>
+                    <p class="col-1 status p-md-2">In stock</p>
                 </div>
             </div>
         CODE;
@@ -88,8 +103,24 @@
                 Payment on delivery</p>
             </div>
         </div>
-        <div class="d-flex justify-content-end my-md-4 pe-md-3">
-            <button type="button" class="btn btn-outline-success">Confirm</button>
-        </div>
+        <form action="" method="post">
+            <div class="d-flex justify-content-end align-items-center my-md-4 pe-md-3">
+                <input class="d-none" type="text" name="changeOrderId" value="$obj->id">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="changeOrderStatus" id="changeORderStatus1" value="active" checked>
+                    <label class="form-check-label" for="changeORderStatus1">active</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="changeOrderStatus" id="changeORderStatus2" value="delivered">
+                    <label class="form-check-label" for="changeORderStatus2">delivered</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="changeOrderStatus" id="changeORderStatus3" value="canceled">
+                    <label class="form-check-label" for="changeORderStatus3">canceled</label>
+                </div>
+                <button type="submit" class="btn btn-outline-success confirm">Confirm</button>
+            </div>
+        </form>
     CODE;
 } ?>
+

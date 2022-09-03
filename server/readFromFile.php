@@ -3,6 +3,7 @@
 function readFromFile($path)
 {
     $filePath = '../../../server/' . DIRECTORY_SEPARATOR . "{$path}";
+
     $objectList = array();
     if (file_exists($filePath)) {
         //echo "readding file"."<br>";
@@ -17,6 +18,7 @@ function readFromFile($path)
         }
         fclose($file);
     }
+
     //echo count($objectList);
     //print_r($objectList);
     return $objectList;
@@ -29,6 +31,7 @@ function readFromLocalFile($path)
     $objectList = array();
     if (file_exists($filePath)) {
         $file = fopen($filePath, "r");
+
         while (!feof($file)) {
             $line = fgets($file);
             if ($line == "") {
@@ -40,6 +43,9 @@ function readFromLocalFile($path)
         }
         fclose($file);
     }
+
     return $objectList;
 }
 ?>
+?>
+

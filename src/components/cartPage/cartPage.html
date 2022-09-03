@@ -8,86 +8,155 @@
     <title>Cart Page</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/src/assets/styles/cartPage.css" />
+    
 </head>
 
 <p class="text-center">This is cart page</p>
 
 <body>
-    <header>This is a header</header>
-    <div class="row m-0 p-0">
-        <div class="nav-bar col-2">
-            <a href="../mainPage/mainPage.html">
-                <button>Home</button> </a>\
-            <a href="../customerPage/customerPage.html">
-                <button>My Account</button>
-            </a>
-            <a href="../loginPage/loginPage.html">
-                <button>Log Out</button>
-            </a>
-        </div>
-        <div class="col cart text-center">
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col-btn">
-                    <h1>Quantity</h1>
-                </div>
-            </div>
+    <header>this is a header</header>
+    
+    <div class="page">   
+        <main class="content">
+            <div class="title">My Cart</div>
+            
+            <div class="cart-container">
+                <table class="item-table">
+                    <tr class="item-row">
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>                        
+                    </tr>
 
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic img-responsive"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Quantity</h1>
-                </div>
-            </div>
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://cdn2.cellphones.com.vn/358x/media/catalog/product/i/p/ip13-pro_2.jpg" alt="product image">
+                        </td>
 
-            <div class="row cart-row">
-                <div class="col cart-col">
-                    <h1>Image</h1>
-                    <img class="product-pic img-responsive"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5hkI16Hp6ifO-sdUq6JXC2ao0FbY4nPuVs7FcY8wVkhvOWABol4yZHxOveFZVVE3mR7E&usqp=CAU"
-                        alt="product-img" />
-                </div>
-                <div class="col cart-col">
-                    <h1>Name</h1>
-                    <p>TV 32-inch</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Price</h1>
-                    <p>200$</p>
-                </div>
-                <div class="col cart-col">
-                    <h1>Quantity</h1>
-                </div>
+                        <td class="name-col text-wrap">
+                            <p >this is an iphone</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1000
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://www.nguyenkim.com/images/detailed/757/10050188-laptop-hp-240-g8-i5-1135g7-518w3pa.jpg" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a laptop</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1200
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgGupBfa_jjJZX8-LPo6SkKfz_P1BQ-WAcRg&usqp=CAU" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a shirt</p>
+                        </td>
+
+                        <td class="price-col">
+                            $30
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="img-col">
+                            <img src="https://cdn.tgdd.vn/Files/2020/10/02/1295545/samsung-galaxy-tab-s7-_800x533.jpg" alt="product image">
+                        </td>
+
+                        <td class="name-col text-wrap">
+                            <p >this is a tablet</p>
+                        </td>
+
+                        <td class="price-col">
+                            $1000
+                        </td>
+
+                        <td class="quantity-col">
+                            <a class="input" href="#">-</a>                            
+                            <a href="#" class="quantity">1</a>
+                            <a class="input" href="#">+</a>
+                            <div>
+                                <button class="remove">Remove</button>
+                            </div>
+                            
+                        </td>
+
+                    </tr>
+                    
+                </table>
             </div>
-        </div>
-    </div>
-    <footer>This is a footer</footer>
+        </main>
+
+        <aside class="sidebar ">            
+                <h1 class="text-center" style="font-size: 25px;">Order Details</h1>
+
+                <table class="details-table" style="height:100px">
+                    <tr>
+                        <th>Price</th>
+                        <td>10$</td>
+                    </tr>
+
+                    <tr>
+                        <th>Delivery</th>
+                        <td>10$</td>
+                    </tr>
+
+                    <tr>
+                        <th>Total payable</th>
+                        <td>20$</td>
+                    </tr>
+                </table>               
+                       
+        </aside>
+    </div>    
+    
+
+    <footer>
+        this is a footer
+    </footer>
 </body>
 
 <script src="/src/assets/scripts/cartPage.js"></script>

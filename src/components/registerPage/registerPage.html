@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/src/assets/styles/signupPage.css">
 </head>
-<p class="text-center">This is sign up section</p>
 
-<body class="d-flex flex-column m-4">
+<body class="d-flex flex-column">
     <header>
 
     </header>
@@ -20,13 +19,14 @@
             <div id="page-name" class="text-center">
                 <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
             </div>
-            <form name="submit" class="d-flex flex-column" id="register-form" method="post" action="test_form.php">
+            <form name="register-form" class="d-flex flex-column" id="register-form" method="POST">
                 <div class="d-flex flex-row p-2">
                     <div class="col-2">
                         <label class="form-label" for="username">Username</label>
                     </div>
                     <div class="col-8">
-                        <input id="username" type="text" class="form-control" placeholder="Enter username" required>
+                        <input name="username" id="username" type="text" class="form-control"
+                            placeholder="Enter username" required>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                         <label class="form-label me-4" for="password">Password</label>
                     </div>
                     <div class="col-8">
-                        <input id="password" type="password" class="form-control" required>
+                        <input name="password" id="password" type="password" class="form-control" required>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                         <label class="form-label me-4" for="re-password">Retype password</label>
                     </div>
                     <div class="col-8">
-                        <input id="re-password" type="re-password" class="form-control" required>
+                        <input name="re-password" id="re-password" type="password" class="form-control" required>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                         <label class="form-label me-4" for="avt">Profile picture</label>
                     </div>
                     <div class="col-8">
-                        <input id="avt" type="file" class="form-control" onchange="loadFile(event)">
+                        <input name="avt" id="avt" type="file" class="form-control" onchange="loadFile(event)">
                     </div>
                 </div>
                 <div class="d-flex p-2 justify-content-center">
@@ -99,7 +99,7 @@
                             <label class="form-label me-4" for="address">Address</label>
                         </div>
                         <div class="col-8">
-                            <input id="address" type="text" class="form-control">
+                            <input name="address" id="address" type="text" class="form-control" minlength="5" required>
                         </div>
                     </div>
                     <div id="buss-name-div" class="d-flex flex-row p-2 d-none">
@@ -107,7 +107,7 @@
                             <label class="form-label me-4" for="buss-name">Bussiness name</label>
                         </div>
                         <div class="col-8">
-                            <input id="buss-name" type="text" class="form-control">
+                            <input name="buss-name" id="buss-name" type="text" class="form-control" minlength="5">
                         </div>
                     </div>
                     <div id="buss-address-div" class="d-flex flex-row p-2 d-none">
@@ -115,7 +115,7 @@
                             <label class="form-label me-4" for="buss-address">Bussiness address</label>
                         </div>
                         <div class="col-8">
-                            <input id="buss-address" type="text" class="form-control">
+                            <input name="buss-address" id="buss-address" type="text" class="form-control" minlength="5">
                         </div>
                     </div>
                     <div id="hub-div" class="d-flex flex-row p-2 d-none">
@@ -137,10 +137,7 @@
                     </div>
                 </div>
                 <div class="p-2">
-                    <input type="submit" value="Create new account" id="submit-btn">
-                </div>
-                <div id="test">
-
+                    <input type="submit" name="create-account" value="Create new account" id="create-btn">
                 </div>
             </form>
         </div>
