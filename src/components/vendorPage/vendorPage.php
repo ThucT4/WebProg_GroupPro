@@ -1,6 +1,5 @@
 <?php
-  require_once('../../../server/readFromFile.php');
-?>
+  require_once('../../../server/readFromFile.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
     <!-- <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/src/assets/styles/vendorPage.css" /> -->
     <style>
-      <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>'
+      <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
       <?php include '../../../src/assets/styles/vendorPage.css'; ?>
     </style>
 </head>
@@ -20,7 +19,7 @@
 <body>
     <header>
       <?php 
-        require_once("../../../src/components/header/header.html");
+        require_once("../../../src/components/header/header.php");
       ?>
     </header>
 
@@ -33,59 +32,40 @@
         else{
           echo "Not found!";
       }
-      // $fp = fopen("../../../server/product.txt", "r");
-
-      // if (!$fp) {
-      //     echo "File cannot be opened";
-      //     exit;
-      // }
-      
-      $row = 1;
-
-      if (($handle = fopen("../../../server/product.txt", "r")) !== FALSE) {
-        echo '<table class="table" id="product-table">'; // open table
-        // render headers
-        echo '<thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Product Image</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Description</th>
-              </tr>
-              </thead>
-              <tbody>';
-        while (($data = fgetcsv($handle, 1000, ":")) !== FALSE) {
-          $num = count($data);
-          $row++;
-          if ($num > 2) {
-            echo '<tr>';
-            for ($c=0; $c < $num; $c++) {
-                if ($c == 0){
-                  echo '<th scope="row">'.$data[$c].'</th>';
-                }
-                elseif ($c == 1) {
-                  // echo '<td>'.$data[$c].'-img</td>';
-                  echo '<td>';
-                  $img_path = '../../../public/img/'.$data[$c].'';
-                  $img_data = base64_encode(file_get_contents($img_path));
-                  ?>
-                  <img id="p-img" src='data:image;base64,<?php echo $img_data ?>'>
-                  <?php
-                  echo '</td>';
-                }
-                else echo '<td>'.$data[$c].'</td>';
+      $productList = readFromFile("product.txt");
+      //print_r($productList);
+        // start table
+        $html = '<table>';
+        // header row
+        $html .= '<tr>';
+        foreach($productList[0] as $key=>$value){
+                $html .= '<th>' . htmlspecialchars($key) . '</th>';
             }
-            echo '</tr>';
-          }
+        $html .= '</tr>';
+    
+        // data rows
+        foreach( $productList as $key=>$value){
+            $html .= '<tr>';
+            foreach($value as $key2=>$value2){
+                
+                if (strpos($value2, "../../../") !== FALSE) {
+                  echo $value2.'<br>';
+                  $logo = "data:image/jpg;base64,".base64_encode($value2);
+                  echo"<img src=\"$logo\">"; 
+                  $html .= '<td><img id="p-img" src=\'' . $logo . ')\'></td>';
+              }
+              else {
+                $html .= '<td>' . htmlspecialchars($value2) . '</td>';
+              }
+            }
+            $html .= '</tr>';
         }
-      }
-
-    echo '</tbody></table>';
-    fclose($handle);
-      ?>
-
+    
+        // finish table and return it
+    
+        $html .= '</table>';
+        print_r($html);
+    ?>
         <!-- <a href="vendorPage-addproduct.php" class="d-flex flex-row-reverse p-2 " role="button" id="add-product-btn">
             <button class="btn btn-primary" type="button">Add Product</button>
         </a> -->
@@ -93,10 +73,6 @@
           Add Product
         </a>
       </div>
-      <?php $productList = readFromFile("product.txt");
-        print_r($productList);
-      ?>
-
     </main>
     
 </body>
