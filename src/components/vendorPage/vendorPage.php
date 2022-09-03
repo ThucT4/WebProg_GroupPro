@@ -1,3 +1,6 @@
+<?php
+  require_once('../../../server/readFromFile.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +93,10 @@
           Add Product
         </a>
       </div>
+      <?php $productList = readFromFile("product.txt");
+        print_r($productList);
+      ?>
+
     </main>
     
 </body>
