@@ -1,78 +1,79 @@
-*{
+/* .page * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-}
+} */
 
-.page{
+.page {
     display: flex;
     min-height: 100vh;
 }
 
-.content{
+.content {
     flex: 1 1 0;
     padding: 2rem;
 }
 
-.title{
+.title {
     margin: 80px auto;
     border-bottom: 5px solid red;
-    font-size: 20px;    
+    font-size: 20px;
 }
 
-.cart-container{
+.cart-container {
     margin: 80px auto;
     /* border: 1px solid rgb(183, 159, 163); */
 }
 
-.cart-container table tr{
+.cart-container table tr {
     /* margin: 80px auto; */
     border: 1px solid rgb(183, 159, 163);
 }
 
-.item-table{
+.item-table {
     width: 90%;
     border-collapse: separate;
-    border-spacing: 0 2em; 
-    border:1px solid black; 
+    border-spacing: 0 2em;
+    border: 1px solid black;
 }
 
-td{
+td {
     height: 20vh;
-    margin-bottom: 10vh;      
+    margin-bottom: 10vh;
 }
 
-.item-row{
-    border:1px solid black;
+.item-row {
+    border: 1px solid black;
 }
 
-img{
+main img {
     aspect-ratio: 1;
     height: 100%;
     object-fit: cover;
     padding: 20px;
 }
 
-th, td{
+th,
+td {
     text-align: center;
-    padding: 10px;    
+    padding: 10px;
 }
 
-.input{
+.input {
     margin: 10px;
-    text-decoration: none;    
+    text-decoration: none;
     color: black;
 }
 
-.quantity{
+.quantity {
     margin: 20px;
-    text-decoration: none;    
+    text-decoration: none;
     color: black;
 }
 
-.remove{
-    margin-top: 20px; 
+.remove {
+    margin-top: 20px;
     background-color: crimson;
     width: 80px;
     color: white;
@@ -81,35 +82,35 @@ th, td{
     border-radius: 5px;
 }
 
-.sidebar{
+.sidebar {
     flex: 1 1 0;
     max-width: 500px;
     height: 30vh;
     padding: 2rem, 1rem;
-    background-color: #dce3e49c; 
-    justify-content: center;  
+    background-color: #dce3e49c;
+    justify-content: center;
     margin-top: 25vh;
-    overflow:auto;
-    border: 1px solid pink;      
+    overflow: auto;
+    border: 1px solid pink;
 }
 
-.cart-details{
+.cart-details {
     max-height: 2vh;
 }
 
 
-.details-table{
+.details-table {
     height: auto;
 }
 
-@media (max-width: 1024px){
-    .sidebar{
+@media (max-width: 1024px) {
+    .sidebar {
         max-width: 200px;
     }
 }
 
-@media (max-width: 768px){
-    .sidebar{
+@media (max-width: 768px) {
+    .sidebar {
         max-width: 100px;
     }
 }
