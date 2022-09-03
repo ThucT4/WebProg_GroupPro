@@ -19,7 +19,7 @@ $productList = readFromFile("product.txt");
 </head>
 <header>
     <?php
-    include_once('../header/header.html');
+    include_once('../header/header.php');
     ?>
 </header>
 
