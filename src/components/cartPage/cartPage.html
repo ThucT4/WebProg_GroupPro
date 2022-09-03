@@ -8,32 +8,25 @@
     <title>Cart Page</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/src/assets/styles/cartPage.css" />
+    
 </head>
 
 <p class="text-center">This is cart page</p>
 
 <body>
-    <header>This is a header</header>
+    <header>this is a header</header>
     
-    <div class="page">        
-
-        <aside class="sidebar">
-            <nav class="menu vertical-center ">
-                <a href="../mainPage/mainPage.php" class="menu-item">Home</a>
-                <a href="../customerPage/customerPage.html" class="menu-item">My Account</a>
-                <a href="../loginPage/loginPage.html" class="menu-item">Log Out</a>
-            </nav>           
-        </aside>
-
+    <div class="page">   
         <main class="content">
+            <div class="title">My Cart</div>
+            
             <div class="cart-container">
-                <table>
-                    <tr>
+                <table class="item-table">
+                    <tr class="item-row">
                         <th>Product</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Quantity</th>
-                        
+                        <th>Quantity</th>                        
                     </tr>
 
                     <tr>
@@ -53,7 +46,9 @@
                             <a class="input" href="#">-</a>                            
                             <a href="#" class="quantity">1</a>
                             <a class="input" href="#">+</a>
-                            
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
                         </td>
 
                     </tr>
@@ -75,7 +70,9 @@
                             <a class="input" href="#">-</a>                            
                             <a href="#" class="quantity">1</a>
                             <a class="input" href="#">+</a>
-                            
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
                         </td>
 
                     </tr>
@@ -97,7 +94,9 @@
                             <a class="input" href="#">-</a>                            
                             <a href="#" class="quantity">1</a>
                             <a class="input" href="#">+</a>
-                            
+                            <div >
+                                <button class="remove">Remove</button>
+                            </div>
                         </td>
 
                     </tr>
@@ -119,6 +118,9 @@
                             <a class="input" href="#">-</a>                            
                             <a href="#" class="quantity">1</a>
                             <a class="input" href="#">+</a>
+                            <div>
+                                <button class="remove">Remove</button>
+                            </div>
                             
                         </td>
 
@@ -127,10 +129,34 @@
                 </table>
             </div>
         </main>
+
+        <aside class="sidebar ">            
+                <h1 class="text-center" style="font-size: 25px;">Order Details</h1>
+
+                <table class="details-table" style="height:100px">
+                    <tr>
+                        <th>Price</th>
+                        <td>10$</td>
+                    </tr>
+
+                    <tr>
+                        <th>Delivery</th>
+                        <td>10$</td>
+                    </tr>
+
+                    <tr>
+                        <th>Total payable</th>
+                        <td>20$</td>
+                    </tr>
+                </table>               
+                       
+        </aside>
     </div>    
     
 
-    <footer>This is a footer</footer>
+    <footer>
+        this is a footer
+    </footer>
 </body>
 
 <script src="/src/assets/scripts/cartPage.js"></script>
