@@ -10,67 +10,41 @@
     min-height: 100vh;
 }
 
-.sidebar{
-    flex: 1 1 0;
-    max-width: 300px;
-    padding: 2rem, 1rem;
-    background-color: #02292f9c; 
-    justify-content: center;
-    
-}
-
-.sidebar .menu{
-    margin: 0;
-
-}
-
-.sidebar .menu .menu-item{
-    display: block;
-    padding: 1em;
-    color: white;
-    text-decoration: none;
-    transition: 0.2s linear;
-    text-align: center; 
-    align-items: center; 
-}
-
-.sidebar .menu .menu-item:hover{
-    color: #f98181;
-    border-right: 5px solid #f98181;
-}
-
 .content{
     flex: 1 1 0;
     padding: 2rem;
 }
 
-@media (max-width: 1024px){
-    .sidebar{
-        max-width: 200px;
-    }
-}
-
-@media (max-width: 768px){
-    .sidebar{
-        max-width: 100px;
-    }
-}
-
-.cart-containter{
+.title{
     margin: 80px auto;
+    border-bottom: 5px solid red;
+    font-size: 20px;    
 }
 
-table{
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 10px; 
+.cart-container{
+    margin: 80px auto;
+    /* border: 1px solid rgb(183, 159, 163); */
+}
+
+.cart-container table tr{
+    /* margin: 80px auto; */
+    border: 1px solid rgb(183, 159, 163);
+}
+
+.item-table{
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 2em; 
+    border:1px solid black; 
 }
 
 td{
-    border: 3px solid pink;
-    border-style: solid none;
-    height: 30vh;
-    margin-bottom: 10vh;    
+    height: 20vh;
+    margin-bottom: 10vh;      
+}
+
+.item-row{
+    border:1px solid black;
 }
 
 img{
@@ -82,7 +56,7 @@ img{
 
 th, td{
     text-align: center;
-    padding: 10px;
+    padding: 10px;    
 }
 
 .input{
@@ -97,18 +71,45 @@ th, td{
     color: black;
 }
 
-.img-col{
-    width: 30%;
+.remove{
+    margin-top: 20px; 
+    background-color: crimson;
+    width: 80px;
+    color: white;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
 }
 
-.name-col{
-    width: 30%;
+.sidebar{
+    flex: 1 1 0;
+    max-width: 500px;
+    height: 30vh;
+    padding: 2rem, 1rem;
+    background-color: #dce3e49c; 
+    justify-content: center;  
+    margin-top: 25vh;
+    overflow:auto;
+    border: 1px solid pink;      
 }
 
-.price-col{
-    width: 20%;
+.cart-details{
+    max-height: 2vh;
 }
 
-.quantity-col{
-    width: 20%;
+
+.details-table{
+    height: auto;
+}
+
+@media (max-width: 1024px){
+    .sidebar{
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px){
+    .sidebar{
+        max-width: 100px;
+    }
 }
