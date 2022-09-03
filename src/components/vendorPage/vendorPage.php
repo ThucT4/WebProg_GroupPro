@@ -63,10 +63,15 @@
                   echo '<th scope="row">'.$data[$c].'</th>';
                 }
                 elseif ($c == 1) {
-                  echo '<td>'.$data[$c].'-img</td>';
+                  // echo '<td>'.$data[$c].'-img</td>';
+                  echo '<td>';
+                  $img_path = '../../../public/img/'.$data[$c].'';
+                  $img_data = base64_encode(file_get_contents($img_path));
+                  ?>
+                  <img id="p-img" src='data:image;base64,<?php echo $img_data ?>'>
+                  <?php
+                  echo '</td>';
                 }
-
-
                 else echo '<td>'.$data[$c].'</td>';
             }
             echo '</tr>';
@@ -78,47 +83,6 @@
     fclose($handle);
       ?>
 
-
-
-
-        <table class="table" id="product-table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Product Image</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>img</td>
-                    <td>quantity</td>
-                    <td>name</td>
-                    <td>price</td>
-                    <td>description</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>img</td>
-                    <td>quantity</td>
-                    <td>name</td>
-                    <td>price</td>
-                    <td>description</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>img</td>
-                    <td>quantity</td>
-                    <td>name</td>
-                    <td>price</td>
-                    <td>description</td>
-                </tr>
-            </tbody>
-        </table>
         <!-- <a href="vendorPage-addproduct.php" class="d-flex flex-row-reverse p-2 " role="button" id="add-product-btn">
             <button class="btn btn-primary" type="button">Add Product</button>
         </a> -->

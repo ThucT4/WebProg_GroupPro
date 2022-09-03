@@ -12,3 +12,10 @@
   width: auto;
   align-self: end;
 }
+
+#p-img{
+    object-position: center; /* Center the image within the element */
+    width: auto;
+    max-height: 250px;
+    margin-bottom: 1rem;
+}
