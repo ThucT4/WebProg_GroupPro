@@ -7,15 +7,21 @@ include_once('../../../server/classes/account.php');
 
 global $accounts;
     $accounts = readFromFile('accounts.txt');
-    
+   
 if (isset($_POST['create-account'])) {
-    //print_r($_POST);
     if (!validate($_POST)) {
         echo "<script type='text/javascript'> alert('Username has been used. PLease use another username!');</script>";
     }
     else {
+        $order = count($GLOBALS['accounts']) + 1;
+
+        $extension = explode(".", $_FILES['avt']['name'])[1];
+        
+        $new_location = "../../../server/database/userAvatar/avatar{$order}.{$extension}";
+        move_uploaded_file($_FILES['avt']['tmp_name'], $new_location);
+
         $temp = new Account($_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT)
-        , $_POST['avt'], $_POST['account-type'], $_POST['address']
+        , $new_location, $_POST['account-type'], $_POST['address']
         , $_POST['buss-name'], $_POST['buss-address'], $_POST['distribution-hub']);
 
         writeToFile($temp, "accounts.txt");
