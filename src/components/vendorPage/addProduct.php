@@ -1,4 +1,8 @@
 <?php
+require_once('../../../server/readFromFile.php');
+require_once('../../../server/write2file.php');
+session_status();
+echo "<br>";
 $target_dir = "../../../public/img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -19,60 +23,48 @@ if (isset($_POST["submit"])) {
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
+  echo "<script type='text/javascript'>alert('Sorry, image file already exists.');</script>";
   $uploadOk = 0;
 }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
+  echo "<script type='text/javascript'>alert('Sorry, your image file is too large.');</script>";
   $uploadOk = 0;
 }
 
 // Allow certain file formats
 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif") {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+&& $imageFileType != "gif" && $imageFileType != "webp") {
+  echo "<script type='text/javascript'>alert('Sorry, only JPG, JPEG, PNG, WEBP & GIF files are allowed.');</script>";
   $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
+  echo "<script type='text/javascript'>alert('Sorry, your file was not uploaded.');</script>";
+
 // if everything is ok, try to upload file
 }
 else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+    $productList = readFromFile("product.txt");
+  $getlastid = (array)end($productList);
+  $array = array(
+    'productID' => $getlastid['productID'] + 1,
+    'productName' => $_POST['p_name'],
+    'img' => '../../../public/img/' . $_FILES["fileToUpload"]["name"],
+    'productDes' => $_POST['p_description'],
+    'category' => $_POST['p_category'],
+    'unitPrice' => $_POST['p_price'] . '$',
+    'amount' => $_POST['p_stock'],
+    'status' => 'In Stock'
+  );
+  writeToFile((object)$array, '/product.txt');
+    echo "<script type='text/javascript'>alert('The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.');</script>";
+
   }
   else {
-    echo "Sorry, there was an error uploading your file.";
+    echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
   }
-}
-
-if (isset($_POST['p_name'])) {
-  $line = '';
-  $f = fopen('../../../server/product.txt', 'a+');
-  $cursor = -1;
-  fseek($f, $cursor, SEEK_END);
-  $char = fgetc($f);
-  //Trim trailing newline characters in the file
-  while ($char === "\n" || $char === "\r") {
-    fseek($f, $cursor--, SEEK_END);
-    $char = fgetc($f);
-  }
-  //Read until the next line of the file begins or the first newline char
-  while ($char !== false && $char !== "\n" && $char !== "\r") {
-    //Prepend the new character
-    $line = $char . $line;
-    fseek($f, $cursor--, SEEK_END);
-    $char = fgetc($f);
-  }
-  $line;
-  $last_id = explode(":", $line);
-  $new_id = intval($last_id[0]) + 1;
-  $data = $new_id . ':' . $_FILES["fileToUpload"]["name"] . ':' . $_POST['p_stock'] . ':' . $_POST['p_name'] . ':' . $_POST['p_price'] . ':' . $_POST['p_description'] . PHP_EOL;
-  fwrite($f, $data);
-  fclose($f);
-  header('Location: vendorPage-addproduct.php');
 }
