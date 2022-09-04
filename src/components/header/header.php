@@ -46,6 +46,9 @@
                                     </div>
                                 </div>
                             </div>            
+                    CODE;
+                    if (($_SESSION['accounttype'] == 'vendor')) {
+                        echo <<<CODE
                             <div class="col-12 col-md-4 navbar navbar-light d-flex align-items-center justify-content-center p-0">
                                 <div class="justify-content-center" id="navbarNav">
                                     <ul class="navbar-nav fs-5 d-flex flex-wrap flex-row justify-content-center">
@@ -58,7 +61,8 @@
                                     </ul>
                                 </div>
                             </div>
-                    CODE;
+                        CODE;
+                    }
                 }
             }
             ?>
