@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../../src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
 </head>
 
-<body class="d-flex flex-column m-4">
+<body class="d-flex flex-column">
   <header>
     <?php
     require_once("../../../src/components/header/header.php");
@@ -18,7 +18,7 @@
   </header>
   <style>
     <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>'
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+<?php include '../../../src/assets/styles/vendorPage.css'; ?>
   </style>
   <main>
     <div id="register-box" class="d-flex flex-column m-2 p-4 border text-center">
@@ -52,7 +52,7 @@
               <input id="product-stock" type="text" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
             </div>
           </div>
-          
+
           <div class="d-flex flex-row p-2">
             <div class="col-2">
               <label class="form-label" for="product-category">Product category</label>
