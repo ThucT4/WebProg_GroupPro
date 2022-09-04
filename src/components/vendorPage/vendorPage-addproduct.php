@@ -6,10 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="../../..//public/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../../..//src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
 </head>
-<p class="text-center">This is vendor add product page</p>
 
 <body class="d-flex flex-column m-4">
   <header>
@@ -17,6 +16,10 @@
     require_once("../../../src/components/header/header.php");
     ?>
   </header>
+  <style>
+    <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>'
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+  </style>
   <main>
     <div id="register-box" class="d-flex flex-column m-2 p-4 border text-center">
       <div id="page-name" class="text-center">

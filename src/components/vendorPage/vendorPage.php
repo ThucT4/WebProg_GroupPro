@@ -3,6 +3,7 @@
   ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,18 +75,18 @@
         <!-- <a href="vendorPage-addproduct.php" class="d-flex flex-row-reverse p-2 " role="button" id="add-product-btn">
             <button class="btn btn-primary" type="button">Add Product</button>
         </a> -->
-        <a href="vendorPage-addproduct.php" class="btn btn-primary text-center" role="button" id="add-product-btn">
-          Add Product
-        </a>
-      </div>
-    </main>
-    
+      <a href="vendorPage-addproduct.php" class="btn btn-primary text-center" role="button" id="add-product-btn">
+        Add Product
+      </a>
+    </div>
+  </main>
+
 </body>
 <footer>
-      <?php 
-        require_once("../../../src/components/footer/footer.html");
-      ?>
-    </footer>
+  <?php
+  require_once("../../../src/components/footer/footer.html");
+  ?>
+</footer>
 <link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
 
 </html>
