@@ -1,4 +1,5 @@
 <?php
+
 function readFromFile($path)
 {
     $filePath = '../../../server/' . DIRECTORY_SEPARATOR . "{$path}";
@@ -37,6 +38,7 @@ function readFromLocalFile($path)
                 break;
             }
             $obj = unserialize($line);
+
             array_push($objectList, $obj);
         }
         fclose($file);
@@ -44,5 +46,6 @@ function readFromLocalFile($path)
 
     return $objectList;
 }
+?>
 ?>
 
