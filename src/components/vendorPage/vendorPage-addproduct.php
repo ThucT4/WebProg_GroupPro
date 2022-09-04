@@ -51,6 +51,15 @@
               <input id="product-stock" type="text" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
             </div>
           </div>
+          
+          <div class="d-flex flex-row p-2">
+            <div class="col-2">
+              <label class="form-label" for="product-category">Product category</label>
+            </div>
+            <div class="col-8">
+              <input id="product-category" type="text" class="form-control" placeholder="Enter product category" name="p_category" ; required />
+            </div>
+          </div>
 
           <div class="d-flex flex-row p-2">
             <div class="col-2">

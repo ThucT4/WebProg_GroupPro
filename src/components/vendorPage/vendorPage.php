@@ -1,5 +1,6 @@
 <?php
-  require_once('../../../server/readFromFile.php');?>
+  require_once('../../../server/readFromFile.php');
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +27,16 @@
     <main>
       <div class="d-flex flex-column m-2 p-4 border text-center">
       <?php
-        if (file_exists("../../../server/product.txt")) {
-            echo "Found!";
-        }
-        else{
-          echo "Not found!";
-      }
+      //   if (file_exists("../../../server/product.txt")) {
+      //       echo "Found!";
+      //   }
+      //   else{
+      //     echo "Not found!";
+      // }
       $productList = readFromFile("product.txt");
-      //print_r($productList);
+      // print_r($productList);
+      // echo "<br>";
+      // echo count($productList);
         // start table
         $html = '<table>';
         // header row
@@ -49,9 +52,9 @@
             foreach($value as $key2=>$value2){
                 
                 if (strpos($value2, "../../../") !== FALSE) {
-                  echo $value2.'<br>';
+                  //echo $value2.'<br>';
                   $logo = "data:image/jpg;base64,".base64_encode($value2);
-                  echo"<img src=\"$logo\">"; 
+                  //echo"<img src=\"$logo\">"; 
                   $html .= '<td><img id="p-img" src=\'' . $logo . ')\'></td>';
               }
               else {
@@ -65,6 +68,7 @@
     
         $html .= '</table>';
         print_r($html);
+        
     ?>
         <!-- <a href="vendorPage-addproduct.php" class="d-flex flex-row-reverse p-2 " role="button" id="add-product-btn">
             <button class="btn btn-primary" type="button">Add Product</button>
