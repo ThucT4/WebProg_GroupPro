@@ -8,10 +8,10 @@ require_once('../../../server/readFromFile.php'); ?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <!-- <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/src/assets/styles/vendorPage.css" /> -->
+  <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/src/assets/styles/vendorPage.css" />
   <style>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?><?php include '../../../src/assets/styles/vendorPage.css'; ?>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
   </style>
 </head>
 
