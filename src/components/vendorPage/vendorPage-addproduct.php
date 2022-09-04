@@ -6,10 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <style>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css';?>'
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
-  </style>
+  <link rel="stylesheet" href="../../..//public/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../..//src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
 </head>
 <p class="text-center">This is vendor add product page</p>
 

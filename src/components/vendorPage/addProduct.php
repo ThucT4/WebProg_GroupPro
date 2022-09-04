@@ -4,7 +4,7 @@ require_once('../../../server/write2file.php');
 session_status();
 echo "<br>";
 //change location
-$target_dir = "../../../public/img/";
+$target_dir = "../../../server/database/productImages";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -49,12 +49,12 @@ if ($uploadOk == 0) {
 }
 else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    $productList = readFromFile("product.txt");
+  $productList = readFromFile("product.txt");
   $getlastid = (array)end($productList);
   $array = array(
     'productID' => $getlastid['productID'] + 1,
     'productName' => $_POST['p_name'],
-    'img' => '../../../public/img/' . $_FILES["fileToUpload"]["name"],
+    'img' => '../../../server/database/productImages' . $_FILES["fileToUpload"]["name"],
     'productDes' => $_POST['p_description'],
     'category' => $_POST['p_category'],
     'unitPrice' => $_POST['p_price'] . '$',
@@ -68,4 +68,11 @@ else {
   else {
     echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
   }
+
 }
+?>
+<script>
+  var timer = setTimeout(function() {
+    window.location='vendorPage-addproduct.php'
+    }, 0);
+</script>
