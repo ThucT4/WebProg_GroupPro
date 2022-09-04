@@ -15,9 +15,9 @@ if (isset($_SESSION['user'])) {
     if ($_SESSION['accountType'] === 'customer') {
         header('location: ../customerPage/customerPage.php');
     } else if ($_SESSION['accountType'] === "vendor") {
-        //header('location: ../vendorPage/vendor.php');
+        header('location: ../vendorPage/vendor.php');
     } else {
-        //header('location: ../shipperPage/shipper.php');
+        header('location: ../shipperPage/shipper.php');
     }
 }
 

@@ -1,7 +1,6 @@
 <?php require_once('../../../server/classes/order.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php require_once('../../../server/writeToFile.php') ?>
-<?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('./orderDetails.php') ?>
 <?php
 $product1 = new Product("Butterfly Knife", "../../../public/img/product1.png", "Fashion, modern and trending with real iron materials", "Knife", "2500$", "1", "In stock");
@@ -50,8 +49,8 @@ $obj = new Order("123456789", "Kisari", "../../../public/img/iphone.webp", "SB38
     }
 
     ?>
-    <main class="d-flex justify-content-evenly py-md-4">
-        <section class="col-3">
+    <main class="d-flex flex-lg-row flex-column justify-content-evenly py-md-4">
+        <section class="col-lg-3">
             <div class="list-group">
                 <?php
                 foreach ($orderList as $cur) :
@@ -69,7 +68,7 @@ $obj = new Order("123456789", "Kisari", "../../../public/img/iphone.webp", "SB38
                 <?php endforeach; ?>
             </div>
         </section>
-        <section class="col-8 order-section">
+        <section class="col-lg-8 order-section">
             <div class="p-4 order-details" style="visibility: hidden;">
                 <?php showOrderDetails($orderList[0]) ?>
             </div>

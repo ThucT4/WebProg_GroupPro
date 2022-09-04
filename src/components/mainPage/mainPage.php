@@ -1,8 +1,13 @@
 <?php require_once('../../../server/writeToFile.php') ?>
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
+<?php $productList = readFromFile("product.txt") ?>
 <?php
-$productList = readFromFile("product.txt");
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['accounttype'] != 'customer') {
+        header('location: ../notFoundPage/notFoundPage.html');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +22,12 @@ $productList = readFromFile("product.txt");
     <link rel="stylesheet" href="../../../src/assets/styles/mainPage.css">
     <link rel="stylesheet" href="../../assets/styles/mainPage.css?v=<?php echo time(); ?>">
 </head>
-<header>
-    <?php
-    include_once('../header/header.php');
-    ?>
-</header>
+
 
 <body>
+    <header>
+        <?php include_once('../header/header.php'); ?>
+    </header>
     <main class="py-lg-3 px-lg-5">
         <section class="p-4 banner">
             <div class="d-flex flex-column flex-md-row justify-content-evenly h-100">
@@ -66,7 +70,7 @@ $productList = readFromFile("product.txt");
             </div>
         </section>
         <div class="px-4">
-            <div class="d-flex flex-wrap justify-contents-center h-100">
+            <div class="d-flex flex-wrap justify-contents-center">
                 <div class="col-4 col-lg-2 d-flex flex-column align-items-center justify-content-center text-center h-100 py-2">
                     <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
                         <img src="../../../public/img/banner-icon1.png" class="icon-40 img-fluid" alt="Sale">
@@ -128,8 +132,7 @@ $productList = readFromFile("product.txt");
             </div>
         </section>
     </main>
-    <footer><?php include_once('../footer/footer.html');
-            ?></footer>
+    <footer><?php include_once('../footer/footer.html') ?></footer>
 </body>
 <link rel="stylesheet" href="/src/assets/scripts/mainPage.js">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
