@@ -9,9 +9,11 @@ require_once('../../../server/readFromFile.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="../../..//public/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../../..//src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
-
+  <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/src/assets/styles/vendorPage.css" />
+  <style>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+  </style>
 </head>
 
 <body>
@@ -20,14 +22,6 @@ require_once('../../../server/readFromFile.php');
     require_once("../../../src/components/header/header.php");
     ?>
   </header>
-
-  <style>
-    <?php 
-    include '../../../public/bootstrap/css/bootstrap.min.css';
-    include '../../../src/assets/styles/vendorPage.css';
-    ?>
-  </style>
-
   <main>
     <div class="d-flex flex-column m-2 p-4 border text-center">
       <?php
@@ -38,10 +32,6 @@ require_once('../../../server/readFromFile.php');
       //     echo "Not found!";
       // }
       $productList = readFromFile("product.txt");
-      // print_r($productList);
-      // echo "<br>";
-      // echo count($productList);
-      // start table
       $html = '<table id="myproduct">';
       // header row
       $html .= '<tr>';

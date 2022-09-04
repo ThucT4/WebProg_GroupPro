@@ -8,6 +8,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="../../../public/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../../src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
+  <style>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+  </style>
 </head>
 
 <body class="d-flex flex-column">
@@ -16,10 +19,6 @@
     require_once("../../../src/components/header/header.php");
     ?>
   </header>
-  <style>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>'
-<?php include '../../../src/assets/styles/vendorPage.css'; ?>
-  </style>
   <main>
     <div id="register-box" class="d-flex flex-column m-2 p-4 border text-center">
       <div id="page-name" class="text-center">
@@ -34,15 +33,7 @@
             <input id="prodict-img" type="file" class="form-control" onchange="loadFile(event)" name="fileToUpload" id="fileToUpload" />
           </div>
         </div>
-        <!-- <div class="d-flex p-2 justify-content-center">
-          <div class="col-2 border border-warning border-1 rounded p-3">
-            <img id="output"
-              src='data:image/jpg;base64,<?php echo base64_encode(file_get_contents("../../../public/img/default-avatar.jpg")); ?>'
-              class="img-fluid rounded-circle" />
-            <img>
-
-          </div>
-        </div> -->
+        
         <div id="typical-info">
           <div class="d-flex flex-row p-2">
             <div class="col-2">
