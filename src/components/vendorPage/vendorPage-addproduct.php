@@ -7,11 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <style>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css';?>'
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+    <?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>'
+<?php include '../../../src/assets/styles/vendorPage.css'; ?>
   </style>
 </head>
-<p class="text-center">This is vendor add product page</p>
 
 <body class="d-flex flex-column m-4">
   <header>

@@ -4,7 +4,7 @@ loadPage();
 
     function loadPage() {
         //Header
-        require_once("../../../src/components/header/header.html");
+        require_once("../../../src/components/header/header.php");
 
         //Main
         require_once("../../../src/components/aboutPage/about.html");
@@ -12,4 +12,3 @@ loadPage();
         //Footer
         //require_once("../../../src/components/footer/footer.html");
     }
-?>

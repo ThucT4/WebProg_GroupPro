@@ -36,7 +36,7 @@
                 echo <<<CODE
                         <div class="d-flex flex-wrap flex-row align-items-center justify-content-between p-4">
                             <div class="col-12 col-md-5 d-flex flex-row align-items-center justify-content-between">
-                                <a class="text-center" href="../mainVendorPage">
+                                <a class="text-center" href="../vendorPage/vendorPage.php">
                                     <img src="/public/img/logo.png" width="80" height="80" class="d-inline-block align-top rounded" alt="Website logo">
                                 </a>
                                 <div class="d-flex flex-row col-8 col-md-4 justify-content-center flex-grow-1">
@@ -52,10 +52,10 @@
                                 <div class="justify-content-center" id="navbarNav">
                                     <ul class="navbar-nav fs-5 d-flex flex-wrap flex-row justify-content-center">
                                         <li class="nav-item">
-                                            <a class="nav-link text-light px-3" href="../mainVendorPage"">My products</a>
+                                            <a class="nav-link text-light px-3" href="../vendorPage/vendorPage.php"">My products</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-light px-3" href="../addProductPage">Add products</a>
+                                            <a class="nav-link text-light px-3" href="../vendorPage/vendorPage-addproduct.php">Add products</a>
                                         </li>
                                     </ul>
                                 </div>
