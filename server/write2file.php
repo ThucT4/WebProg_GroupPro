@@ -13,7 +13,7 @@ function writeToFile($obj, $path)
         fclose($file);
     }
     else {
-        echo "Cant write to file"."<br>";    
+        echo "Cant write to file"."<br>";
     }
 }
 ?>

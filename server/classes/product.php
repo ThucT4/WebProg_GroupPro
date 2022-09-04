@@ -9,7 +9,7 @@ class Product
     public $unitPrice;
     public $amount;
     public $status;
-    
+
     public function __construct($productName, $img, $productDes, $category, $unitPrice, $amount, $status)
     {
         $productList = readFromLocalFile('product.txt');

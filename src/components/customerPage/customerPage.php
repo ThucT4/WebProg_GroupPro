@@ -3,8 +3,6 @@
 <?php require_once('../../../server/classes/product.php') ?>
 <?php
 $productList = readFromFile("../../../server/product.txt");
-$productListFilter = array();
-
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +23,90 @@ $productListFilter = array();
 </header>
 
 <body>
-    <main class="py-3 px-5">      
+    <main class="py-3 px-5">
+        <section class="p-4" style="height: 400px;">
+            <div class="d-flex justify-content-evenly h-100">
+                <div class="col-8 h-100">
+                    <div id="carouselExampleCaptions" class="carousel slide carousel-fade h-100" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100">
+                                <img src="../../../public/img/banner1.webp" class="d-block w-100 img-fluid h-100" alt="banner1">
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="../../../public/img/banner2.jpg" class="d-block w-100 img-fluid h-100" alt="banner2">
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="../../../public/img/banner3.webp" class="d-block w-100 img-fluid h-100" alt="banner3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-between h-100">
+                    <div class="col-12" style="height: 45%;">
+                        <img src="../../../public/img/banner4.webp" class="img-fluid w-100 h-100" alt="banner4">
+                    </div>
+                    <div class="col-12" style="height: 45%;">
+                        <img src="../../../public/img/banner5.webp" class="img-fluid w-100 h-100" alt="banner4">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="px-4" style="height: 100px">
+            <div class="d-flex justify-contents-center h-100">
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon1.png" class="icon-40 img-fluid" alt="Sale">
+                    </div>
+                    <p class="mt-2 w-100">Hot Time for sale</p>
+                </div>
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-lg-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon2.png" class="icon-40 img-fluid" alt="Cheap">
+                    </div>
+                    <p class="mt-2 w-100">Cheapest price</p>
+                </div>
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-lg-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon3.png" class="icon-40 img-fluid" alt="Sale">
+                    </div>
+                    <p class="mt-2 w-100">Free ship</p>
+                </div>
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-lg-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon4.png" class="icon-40 img-fluid" alt="Sale">
+                    </div>
+                    <p class="mt-2 w-100">Best quality goods</p>
+                </div>
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-lg-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon5.png" class="icon-40 img-fluid" alt="Sale">
+                    </div>
+                    <p class="mt-2 w-100">Reasonable price- Hot deal</p>
+                </div>
+                <div class="col-2 d-flex flex-column align-items-center justify-content-center text-lg-center h-100 py-2">
+                    <div class="border border-1 rounded-circle p-2" style="width: 50px; height: 50px;">
+                        <img src="../../../public/img/banner-icon6.png" class="icon-40 img-fluid" alt="Sale">
+                    </div>
+                    <p class="mt-2 w-100">International supplier</p>
+                </div>
+            </div>
+        </div>
+        <section class="p-4">
             <div class="d-flex flex-wrap justify-content-around px-2 py-4">
-                <?php foreach ($productListFilter as $cur) : ?>
+                <?php foreach ($productList as $cur) : ?>
                     <?php if (!empty($cur)) : ?>
                         <div class="card mx-2 my-4" style="width: 25%;">
                             <img src="../../<?= $cur->img ?>" class="card-img-top" alt="<?= $cur->productDes ?>">
@@ -40,12 +119,14 @@ $productListFilter = array();
                                 <p class="card-text text-start" style="min-height: 50px;"><?= $cur->productDes ?></p>
                             </div>
                             <div class="card-body">
-                                <a href="#" class="stretched-link btn btn-primary w-100">View the product</a>                                
+                                <a href="#" class="stretched-link btn btn-primary w-100">View the product</a>
+                                <!-- <a href="#" class="btn btn-primary">Another link</a> -->
                             </div>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
-            </div>        
+            </div>
+        </section>
     </main>
     <footer><?php include_once('../footer/footer.html');
             ?></footer>
@@ -54,24 +135,3 @@ $productListFilter = array();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 </html>
-
-<script>
-    function filter_price($max, $min){ //fucntion to filter by max/min price        
-    foreach ($productList as $prod){
-        if ($min <= $prod->price && $prod->price >= $max){
-            array_push($productListFilter, $prod);
-        }
-    }        
-}
-function filter_name($search_name){ //fucntion to filter by name
-    foreach ($productList as $prod){
-        if (strcmp($prod->productName, $search_name)){
-            array_push($productListFilter, $prod);
-        }
-    }        
-}
-
-//filter
-filter_name($_SESSION['search_name']);
-filter_price($_SESSION['max_price'], $_SESSION['min_price']);
-</script>

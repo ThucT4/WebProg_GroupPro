@@ -2,7 +2,6 @@
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php
-session_start();
 $productList = readFromFile("product.txt");
 $id = $_GET['product'];
 ?>
@@ -18,7 +17,7 @@ $id = $_GET['product'];
 </head>
 <header>
     <?php
-    include_once('../header/header.html');
+    include_once('../header/header.php');
     ?>
 </header>
 
@@ -133,21 +132,16 @@ $id = $_GET['product'];
                         if (isExist == 0) {
                             currentStorage.push([id, amount])
                             localStorage.setItem("cart", JSON.stringify(currentStorage));
-                            
-                            $_SESSION['cart'][id] = $_POST[id];
-                            $_SESSION['cart'][id][amount] = $_POST[amount];                           
+                            location.reload();
                         }
-                        
                     } else {
-                        var listOfProduct = [];                        
+                        var listOfProduct = [];
                         listOfProduct.push([id, amount])
-                        localStorage.setItem("cart", JSON.stringify(listOfProduct))                        
-                        $_SESSION['cart'][id] = $_POST[id];                       
-                        $_SESSION['cart'][id][amount] = $_POST[amount];                        
+                        localStorage.setItem("cart", JSON.stringify(listOfProduct))
+                        location.reload();
                     }
                 <?php endif ?>
             <?php endif ?>
-
         <?php endforeach; ?>
     }
 </script>

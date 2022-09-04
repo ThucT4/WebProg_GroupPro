@@ -11,13 +11,13 @@ $accounts = readFromFile('accounts.txt');
 //unset($_SESSION['accountType']);
 if (isset($_SESSION['user'])) {
     echo $type;
-    // header('location: ../customerPage/customerPage.php');
+    header('location: ../customerPage/customerPage.php');
     if ($_SESSION['accountType'] === 'customer') {
         header('location: ../customerPage/customerPage.php');
     } else if ($_SESSION['accountType'] === "vendor") {
-        //header('location: ../vendorPage/vendor.php');
+        header('location: ../vendorPage/vendor.php');
     } else {
-        //header('location: ../shipperPage/shipper.php');
+        header('location: ../shipperPage/shipper.php');
     }
 }
 
@@ -30,6 +30,7 @@ if (isset($_POST['login'])) {
         $_SESSION['user'] = $GLOBALS['username'];
         $_SESSION['accounttype'] = $GLOBALS['type'];
         $_SESSION['expire'] = $_SESSION['start'] + (120 * 60); //Expire after 30m
+
 
         if ($_SESSION['accountType'] == 'customer') {
             header('location: ../mainPage/mainPage.php');
