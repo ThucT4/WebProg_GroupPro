@@ -2,6 +2,7 @@
   overflow: auto;
 }
 
+/* Styling profile pic section */
 .profile-pic-div{    
     margin: 50px 0 0 50px;
     display: flex;
@@ -49,13 +50,14 @@
     height:0
 }
 
+/* Styling information section */
 .info{
     margin-top: 50px;
-    padding-left: 10%;
-    /* line-height: 10px; */
+    padding-left: 10%;    
     color: #f98181; 
     flex-direction: column;  
     justify-content: center;
+    position: relative;
 }
 
 .info p{  
@@ -66,9 +68,10 @@
     padding: 20px 0 40px 10px;       
 }
 
+/* Styling edit info button section */
 #edit-btn{    
-    height: 100px;
-    width: 100px; 
+    height: 80px;
+    width: 80px; 
     background-color: white;
     border: none;
   }
@@ -79,84 +82,66 @@
 }
 
 .button-container{
+    display: flex;
     font-size:larger;
     color: #f98181; 
+    width: 70%;
+    justify-content: left;
 }
 
-/* Button used to open the contact form - fixed at the bottom of the page */
-/* .open-button {
-    background-color: #555;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8; */
-    /* position: fixed;
-    bottom: 23px;
-    right: 28px;
-    width: 280px; */
-  /* } */
+/* Styling popup form  */
+.form-popup {
+  display: none;
+  position: fixed; 
   
-  /* The popup form - hidden by default */
-  .form-popup {
-    display: none;
-    position: fixed;
-    top: 30vh;
-    right: 18vw;  
-    z-index: 9;
-  }
-  
-  /* Add styles to the form container */
-  .form-container {
-    max-width: 30vw;
-    padding: 10px;
-    background-color: white;
-    
-  }
-  
-  /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-    
-  }
-  
-  /* Set a style for the submit/login button */
-  .form-container {
-    background-color: #0c3251;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-  }
-  
-  /* Add a red background color to the cancel button */
-  .form-container .confirm {
-    background-color: #f98181;
-  }
+}  
+ 
+.form-container {
+  max-width: 30vw;
+  padding: 10px;
+  background-color: white; 
+     
+}
 
-  .form-container .cancel {
-    background-color: white;
-  }
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
   
-  /* Add some hover effects to buttons */
-  .form-container .cancel:hover{
-    color: #FF4040;
-  }
+}
 
-  .form-container .confirm:hover {
-    color: white;
-  }
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  
+}
+
+.form-container {
+  background-color: #0c3251;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .confirm {
+  background-color: #f98181;
+}
+
+.form-container .cancel {
+  background-color: white;
+}
+
+.form-container .cancel:hover{
+  color: #FF4040;
+}
+
+.form-container .confirm:hover {
+  color: white;
+}
