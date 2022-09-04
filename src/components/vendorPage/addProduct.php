@@ -3,6 +3,7 @@ require_once('../../../server/readFromFile.php');
 require_once('../../../server/write2file.php');
 session_status();
 echo "<br>";
+//change location
 $target_dir = "../../../public/img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
