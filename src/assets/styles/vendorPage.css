@@ -8,14 +8,15 @@ body {
   color: white;
 }
 
-#add-product-btn{
+#add-product-btn {
   width: auto;
   align-self: end;
 }
 
-#p-img{
-    object-position: center; /* Center the image within the element */
-    width: auto;
-    max-height: 250px;
-    margin-bottom: 1rem;
+#p-img {
+  object-position: center;
+  /* Center the image within the element */
+  width: auto;
+  max-height: 250px;
+  margin-bottom: 1rem;
 }

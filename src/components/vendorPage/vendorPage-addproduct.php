@@ -33,7 +33,7 @@
             <input id="prodict-img" type="file" class="form-control" onchange="loadFile(event)" name="fileToUpload" id="fileToUpload" />
           </div>
         </div>
-        
+
         <div id="typical-info">
           <div class="d-flex flex-row p-2">
             <div class="col-2">
