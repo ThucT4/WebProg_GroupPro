@@ -14,6 +14,12 @@
     height: 45%;
 }
 
+.card-img-top {
+    width: 100% !important;
+    height: 400px;
+    object-fit: fill;
+}
+
 @media only screen and (max-width: 991.98px) {
     .banner {
         height: 300px;
@@ -37,6 +43,10 @@
         width: 48%;
         height: 100%;
     }
+
+    .card-img-top {
+        height: 500px;
+    }
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -55,5 +65,9 @@
     .sub-banner div {
         width: 48%;
         height: 100%;
+    }
+
+    .card-img-top {
+        height: 400px;
     }
 }
