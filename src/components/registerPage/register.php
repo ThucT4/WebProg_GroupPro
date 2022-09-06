@@ -144,4 +144,3 @@ if (isset($_POST['create-account'])) {
         return true;
     }
 ?>
->>>>>>> cd856a08cdf8ccca1c8cf8c53086872c9e441c19
