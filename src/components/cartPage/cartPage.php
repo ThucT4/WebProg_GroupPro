@@ -1,15 +1,15 @@
 <?php require_once('../../../server/classes/order.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php require_once('../../../server/readFromFile.php') ?>
+<?php require_once('../../../server/writeToFile.php') ?>
+<?php require_once('../../../server/classes/distributionHub.php') ?>
+<?php require_once('../../../server/classes/account.php') ?>
 <?php
 $productList = readFromFile("product.txt");
+$hub = readFromFile('distributionHubs.txt');
+$userList = readFromFile("accounts.txt");
 ?>
 
-<?php
-if (isset($_POST)) {
-    // date("Y/m/d")
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +39,46 @@ if (isset($_POST)) {
         }
     }
     ?>
+
+    <?php
+    if (isset($_POST['productList'])) {
+        if (json_decode($_POST['productList'][0]) != null) {
+            $productData = [];
+            $address = "";
+            $start;
+            $obj = json_decode($_POST['productList'][0]);
+            foreach ($obj as $product) {
+                for ($i = 0; $i < sizeof($productList); $i++) {
+                    if ($product[0] == $productList[$i]->productID) {
+                        $productList[$i]->amount = $product[1];
+                        array_push($productData, $productList[$i]);
+                        break;
+                    }
+                }
+            }
+            foreach ($userList as $user) {
+                if ($user->username == $_SESSION['user']) {
+                    $address = $user->address;
+                    break;
+                }
+            }
+            foreach ($hub as $item) {
+                if ($item->name == $_POST['distribution-hub']) {
+                    $start = $item->address;
+                }
+            }
+            $newOrder = new Order($_SESSION['user'], $productData[0]->img, date("Y/m/d"), $start, $address, $productData, $_POST['distribution-hub']);
+            writeToFile($newOrder, "order.txt", "a");
+            echo <<<CODE
+            <script type="text/javascript">
+                localStorage.clear();
+                window.location.href="../mainPage/mainPage.php";
+                alert('Your order has been updated! Wait for delivering');
+            </script>
+            CODE;
+        }
+    }
+    ?>
     <main class="p-3 d-flex flex-wrap flex-column flex-md-row justify-content-between">
         <section class="col-12 col-md-3 d-flex flex-column">
             <div class="p-4 border border-2">
@@ -58,22 +98,18 @@ if (isset($_POST)) {
                     <span class="total-payment">None</span>
                 </div>
             </div>
-            <form action="" method="post" class=" p-4 border border-2 border-top-0 d-flex flex-wrap justify-content-center justify-content-md-between align-items-center">
+            <form action="" method="post" class="data-form p-4 border border-2 border-top-0 d-flex flex-wrap justify-content-center justify-content-md-between align-items-center">
                 <div>
-                    <select name="distribution-hub" id="distribution-hub">
-                        <optgroup label="Ha Noi">
-                            <option value="hub1">Hub 1</option>
-                            <option value="hub2">Hub 2</option>
-                        </optgroup>>
-                        <optgroup label="Ho Chi Minh city">
-                            <option value="hub1">Hub 1</option>
-                            <option value="hub2">Hub P</option>
-                        </optgroup>>
+                    <select class="form-select text-truncate" name="distribution-hub" id="distribution-hub" style="max-width: 200px">
+                        <?php foreach ($hub as $item) : ?>
+                            <optgroup label="<?= $item->name ?>">
+                                <option value="<?= $item->name ?>"><?= $item->address ?></option>
+                            </optgroup>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div>
-                    <input class="d-none" type="text" name="productList" value="none">
-                    <input class="d-none" type="text" name="" value="none">
+                    <input class="d-none hidden-data" type="text" name="productList[]">
                     <button class="btn btn-success">Confirm</button>
                 </div>
             </form>
@@ -82,7 +118,7 @@ if (isset($_POST)) {
             <div>
                 <h2 class="w-100 border-1 border-bottom pb-4 fs-5">My Cart</h2>
                 <div class="cart-list">
-                    <!-- <div class="cart d-flex flex-row flex-wrap mt-3 mb-4 justify-content-center">
+                    <div class="cart d-flex flex-row flex-wrap mt-3 mb-4 justify-content-center">
                         <div class="col-8 col-md-2 border border-secondary">
                             <img class="img-fluid" src="../../../public/img/iphone.webp" alt="">
                         </div>
@@ -108,7 +144,7 @@ if (isset($_POST)) {
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -175,13 +211,13 @@ if (isset($_POST)) {
         var cartSection = document.getElementsByClassName("cart-list")
         var cartDetails = document.getElementsByClassName("cart");
         var totalPayment = 0;
+        var currentStorage = JSON.parse(localStorage.getItem("cart"));
         for (var j = cartDetails.length - 1; j >= 0; j--) {
             cartDetails[j].parentNode.removeChild(cartDetails[j]);
         }
         <?php foreach ($productList as $product) : ?>
             <?php if (!empty($product)) : ?>
-                var currentStorage = JSON.parse(localStorage.getItem("cart"));
-                if (currentStorage.length == 0) {
+                if (currentStorage == null) {
                     return;
                 } else {
                     for (let i = 0; i < currentStorage.length; i++) {
@@ -235,6 +271,7 @@ if (isset($_POST)) {
         <?php endforeach; ?>
         document.getElementsByClassName("price-value")[0].textContent = String(totalPayment) + "$";
         document.getElementsByClassName("total-payment")[0].textContent = String(totalPayment + 20) + "$";
+        document.getElementsByClassName("hidden-data")[0].value = JSON.stringify(currentStorage);
     }
     getProductFromCart();
     addAndremoveQty();
