@@ -34,7 +34,7 @@
             <img id="blah" src="http://placehold.it/180" alt="your image" />
           </div>
         </div>
-        
+
         <div id="typical-info">
           <div class="d-flex flex-row p-2">
             <div class="col-2">

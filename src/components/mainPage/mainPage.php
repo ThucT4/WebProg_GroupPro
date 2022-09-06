@@ -2,13 +2,6 @@
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php $productList = readFromFile("product.txt") ?>
-<?php
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['accounttype'] != 'customer') {
-        header('location: ../notFoundPage/notFoundPage.html');
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +21,13 @@ if (isset($_SESSION['user'])) {
     <header>
         <?php include_once('../header/header.php'); ?>
     </header>
+    <?php
+    if (isset($_SESSION['user'])) {
+        if ($_SESSION['accounttype'] != 'customer') {
+            header("Refresh:0; url=../noPermission/noPermission.html");
+        }
+    }
+    ?>
     <main class="py-lg-3 px-lg-5">
         <section class="p-4 banner">
             <div class="d-flex flex-column flex-md-row justify-content-evenly h-100">
@@ -113,12 +113,12 @@ if (isset($_SESSION['user'])) {
             <div class="d-flex flex-wrap justify-content-around px-2 py-4">
                 <?php foreach ($productList as $cur) : ?>
                     <?php if (!empty($cur)) : ?>
-                        <div class="card mx-2 my-4 col-md-5 col-lg-3">
+                        <div class="card mx-2 my-4 col-10 col-sm-8 col-md-5 col-lg-3">
                             <img src="../../<?= $cur->img ?>" class="card-img-top" alt="<?= $cur->productDes ?>">
                             <div class="card-body">
                                 <h5 class="card-title text-center"><?= $cur->productName ?></h5>
                                 <div class="card-subtitle my-2 text-muted w-100 d-flex justify-content-between ">
-                                    <span class="text-decoration-line-through d-flex align-items-center"><?= $cur->unitPrice ?></span>
+                                    <!-- <span class="text-decoration-line-through d-flex align-items-center"><?= $cur->unitPrice ?></span> -->
                                     <span class="fs-3"><strong><?= $cur->unitPrice ?></strong></span>
                                 </div>
                                 <p class="card-text text-start"><?= $cur->productDes ?></p>

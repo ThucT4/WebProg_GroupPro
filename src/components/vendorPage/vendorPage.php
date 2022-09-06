@@ -74,7 +74,7 @@ require_once('../../../server/readFromFile.php');
       </a>
     </div>
   </main>
-  
+
   <script>
     headerRow = document.querySelector('table.myproduct tbody tr');
     headerRow.style.backgroundColor = "red";

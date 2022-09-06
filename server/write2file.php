@@ -16,4 +16,3 @@ function writeToFile($obj, $path)
         echo "Cant write to file"."<br>";
     }
 }
-?>

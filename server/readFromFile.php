@@ -2,7 +2,7 @@
 
 function readFromFile($path)
 {
-    $filePath = '../../../server/' . DIRECTORY_SEPARATOR . "{$path}";
+    $filePath = '../../../server/database/db' . DIRECTORY_SEPARATOR . "{$path}";
 
     $objectList = array();
     if (file_exists($filePath)) {
@@ -27,7 +27,7 @@ function readFromFile($path)
 <?php
 function readFromLocalFile($path)
 {
-    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/{$path}";
+    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/database/db/{$path}";
     $objectList = array();
     if (file_exists($filePath)) {
         $file = fopen($filePath, "r");

@@ -12,7 +12,7 @@ function customerHeader1()
                             <a class="nav-link text-light px-3" href="../cartPage/cartPage.php">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light px-3" href="../customerAccountPage/customerAccountPage.html">My account</a>
+                            <a class="nav-link text-light px-3" href="../customerAccountPage/customerAccountPage.php">My account</a>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@ function customerHeader2()
                         <a class="nav-link text-light px-3" href="../cartPage/cartPage.php">Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light px-3" href="../customerAccountPage/customerAccountPage.html">My account</a>
+                        <a class="nav-link text-light px-3" href="../customerAccountPage/customerAccountPage.php">My account</a>
                     </li>
                 </ul>
             </div>

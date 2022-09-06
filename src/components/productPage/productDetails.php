@@ -20,6 +20,13 @@ $id = $_GET['product'];
     include_once('../header/header.php');
     ?>
 </header>
+<?php
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['accounttype'] != 'customer') {
+        header("Refresh:0; url=../noPermission/noPermission.html");
+    }
+}
+?>
 
 <body>
     <main>

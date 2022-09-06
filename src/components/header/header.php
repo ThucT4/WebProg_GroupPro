@@ -19,6 +19,11 @@
 </head>
 
 <body>
+    <?php
+    if (!isset($_SESSION['user'])) {
+        header("Refresh:0; url=../loginPage/login.php");
+    }
+    ?>
     <div class="d-flex flex-column" style="background-color: #60b466;">
         <?php
         if (isset($_SESSION['user'])) {
@@ -82,18 +87,18 @@
                 $now = time(); // Checking the time now when home page starts.
                 if ($now > $_SESSION['expire']) {
                     session_destroy();
-                    echo "Your session has expired! <a href='http://localhost/somefolder/login.php'>Login here</a>";
+                    echo "Your session has expired! <a href='loginPage/login.php'>Login here</a>";
                 } else {
                     $username = $_SESSION['user'];
                     echo <<<CODE
                                 <div class="d-grid gap-2 d-md-block d-flex flex-row justify-content-center align-items-center">
-                                    <a href="../customerAccountPage/customerAccountPage.html">
+                                    <a href="../customerAccountPage/customerAccountPage.php">
                                         <button class="btn text-white" type="button" style="background-color: #60b466;">$username</button>
                                     </a>
                                 CODE;
                     echo <<<CODE
                                     <a href='../../../server/logOut.php'>
-                                        <button class="btn text-warning" style="background-color: #60b466;" type="button">Log out</button>
+                                        <button class="btn text-warning" style="background-color: #60b466;" type="button" onclick="localStorage.clear();">Log out</button>
                                     </a>
                                 </div>
                                 CODE;

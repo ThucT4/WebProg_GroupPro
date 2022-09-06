@@ -22,4 +22,3 @@ class Account
         $this->hub = $hub;
     }
 }
-?>
