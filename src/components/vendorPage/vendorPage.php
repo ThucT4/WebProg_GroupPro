@@ -11,9 +11,6 @@ require_once('../../../server/readFromFile.php');
   <title>Document</title>
   <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/src/assets/styles/vendorPage.css" />
-  <style>
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
-  </style>
 </head>
 
 <body>
@@ -22,6 +19,10 @@ require_once('../../../server/readFromFile.php');
     require_once("../../../src/components/header/header.php");
     ?>
   </header>
+  <style>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
+    <?php include '../../../public/bootstrap/css/bootstrap.min.css';?>
+  </style>
   <main>
     <div class="d-flex flex-column m-2 p-4 border text-center">
       <?php
