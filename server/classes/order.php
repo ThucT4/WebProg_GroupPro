@@ -30,7 +30,7 @@ class Order
         //to = customer address
         $this->to = $to;
         $this->productList = $productList;
-        $distrubutionHub->distrubutionHub = $$distrubutionHub;
+        $distrubutionHub->distrubutionHub = $distrubutionHub;
         $this->status = "active";
     }
 }
