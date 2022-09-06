@@ -1,0 +1,73 @@
+.banner {
+    height: 400px;
+}
+
+.main-banner {
+    height: 100%;
+}
+
+.sub-banner {
+    height: 100%;
+}
+
+.sub-banner div {
+    height: 45%;
+}
+
+.card-img-top {
+    width: 100% !important;
+    height: 400px;
+    object-fit: fill;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .banner {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .banner {
+        height: 500px;
+    }
+
+    .main-banner {
+        height: 60%;
+    }
+
+    .sub-banner {
+        height: 150px;
+    }
+
+    .sub-banner div {
+        width: 48%;
+        height: 100%;
+    }
+
+    .card-img-top {
+        height: 500px;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .banner {
+        height: 400px;
+    }
+
+    .main-banner {
+        height: 50%;
+    }
+
+    .sub-banner {
+        height: 100px;
+    }
+
+    .sub-banner div {
+        width: 48%;
+        height: 100%;
+    }
+
+    .card-img-top {
+        height: 400px;
+    }
+}

@@ -1,0 +1,78 @@
+/* .navbar-nav>li {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+@media (min-width: 992px) {
+    .navbar li {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+} */
+.slogan {
+    font-family: 'Bitter', serif;
+}
+
+body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+}
+
+/* .search img {
+    width: 25px;
+    height: 25px;
+} */
+
+.search input {
+
+    height: 50px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+
+    box-shadow: none;
+    border: 2px solid blue;
+
+
+}
+
+.search img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 15px;
+    left: 12px;
+
+}
+
+.search button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 110px;
+    background: blue;
+
+}
+
+
+.shop-icon img,
+.shop-icon div {
+    width: 40px;
+    height: 40px;
+}
+
+.text-underline-hover {
+    text-decoration: none;
+}
+
+.text-underline-hover:hover {
+    text-decoration: underline;
+}

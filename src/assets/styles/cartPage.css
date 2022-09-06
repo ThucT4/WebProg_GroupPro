@@ -1,0 +1,33 @@
+body {
+    background-color: red;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cart-img {
+    height: 150px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .cart-img {
+        height: 120px;
+    }
+}
+
+@media only screen and (max-width: 991.98px) {
+    .cart-img {
+        height: 120px;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .cart-img {
+        height: 400px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .cart-img {
+        height: 300px;
+    }
+}
