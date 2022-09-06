@@ -4,9 +4,11 @@
 include_once('../../../server/write2file.php');
 include_once('../../../server/readFromfile.php');
 include_once('../../../server/classes/account.php');
+include_once('../../../server/classes/distributionHub.php');
 
-global $accounts;
+global $accounts, $hubs;
     $accounts = readFromFile('accounts.txt');
+    $hubs = readFromFile('distributionHubs.txt');
    
 if (isset($_POST['create-account'])) {
     if (!validate($_POST)) {
@@ -38,6 +40,22 @@ if (isset($_POST['create-account'])) {
 
         //Main
         require_once("../../../src/components/registerPage/customerRegister.html");
+
+        //echo count($GLOBALS['hubs']);
+
+        foreach ($GLOBALS['hubs'] as $hub) {
+            $name = $hub->name;
+    
+            echo "<script type=\"text/JavaScript\">
+            var node = document.querySelector(\"select#distribution-hub\");
+
+            option = document.createElement('option');
+            option.value = '{$name}';
+            option.innerHTML = '{$name}';
+
+            node.appendChild(option);
+            </script>";
+        }
 
         //Footer
         //require_once("../../../src/components/footer/footer.html");
