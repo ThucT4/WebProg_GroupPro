@@ -87,7 +87,7 @@
                 $now = time(); // Checking the time now when home page starts.
                 if ($now > $_SESSION['expire']) {
                     session_destroy();
-                    echo "Your session has expired! <a href='http://localhost/somefolder/login.php'>Login here</a>";
+                    echo "Your session has expired! <a href='loginPage/login.php'>Login here</a>";
                 } else {
                     $username = $_SESSION['user'];
                     echo <<<CODE
