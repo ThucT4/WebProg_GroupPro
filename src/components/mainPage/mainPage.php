@@ -2,13 +2,6 @@
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php $productList = readFromFile("product.txt") ?>
-<?php
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['accounttype'] != 'customer') {
-        header('location: ../notFoundPage/notFoundPage.html');
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +21,13 @@ if (isset($_SESSION['user'])) {
     <header>
         <?php include_once('../header/header.php'); ?>
     </header>
+    <?php
+    if (isset($_SESSION['user'])) {
+        if ($_SESSION['accounttype'] != 'customer') {
+            header("Refresh:0; url=../noPermission/noPermission.html");
+        }
+    }
+    ?>
     <main class="py-lg-3 px-lg-5">
         <section class="p-4 banner">
             <div class="d-flex flex-column flex-md-row justify-content-evenly h-100">

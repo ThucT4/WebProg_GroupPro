@@ -6,3 +6,8 @@ function logOut()
     header("location: ../src/components/loginPage/login.php");
 }
 logOut();
+
+?>
+<script type="text/javascript">
+    localStorage.clear();
+</script>
