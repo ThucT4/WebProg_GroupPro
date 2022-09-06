@@ -1,15 +1,16 @@
 .content{
   overflow: auto;
+  margin: 20px 20px 0 20px;
 }
 
 .profile-pic-div{    
-    margin: 50px 0 0 50px;
+    margin: 50px;
     display: flex;
     justify-content: center;
     position: relative;
     border-radius: 50%; 
     aspect-ratio: 1; 
-    border: 3px solid #FF4040;    
+    border: 10px solid #60B466;    
 }
 
 #photo {
@@ -19,29 +20,29 @@
 
 .change-ava-btn{
     position:absolute; 
-    bottom: 7.5%; 
-    right: 7.5%;
+    bottom: 3%; 
+    right: 3%;
     aspect-ratio: 1;
     width: 15%;     
     border: 2px solid #4d4d4d; 
 }
 
-.profile-pic-btn{
-  text-align: center;
-  padding-top: 40px;
-  height: 10vh;
+#profile-pic-change{
+  width: 15%;
+  background-color: #60B466;
 }
 
-.profile-pic-btn .change-ava{
-  margin-left: 50px;
-  border-radius: 10px;
-  height: 50%;
+.profile-pic-btn{
+  text-align: center;
+}
+
+/* .profile-pic-btn .change-ava{
   background-color: #f98181;  
 }
 
 .profile-pic-btn .change-ava:hover{
   color: white;
-}
+} */
 
 .image-upload > input {
     visibility:hidden;
@@ -50,12 +51,12 @@
 }
 
 .info{
-    margin-top: 50px;
     padding-left: 10%;
     /* line-height: 10px; */
-    color: #f98181; 
+    color: #60B466; 
     flex-direction: column;  
     justify-content: center;
+    height: 578px;
 }
 
 .info p{  
@@ -67,10 +68,12 @@
 }
 
 #edit-btn{    
-    height: 100px;
-    width: 100px; 
-    background-color: white;
+    height: 38px;
+    color: black;
+    background-color: #60B466;
+    display: flex;
     border: none;
+    justify-content: space-between;
   }
 
 #edit-btn img{
@@ -145,7 +148,7 @@
   
   /* Add a red background color to the cancel button */
   .form-container .confirm {
-    background-color: #f98181;
+    background-color: #60B466;
   }
 
   .form-container .cancel {
