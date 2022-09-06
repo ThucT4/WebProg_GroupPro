@@ -1,4 +1,0 @@
-O:15:"DistributionHub":2:{s:4:"name";s:13:"Hub Tân Phú";s:7:"address";s:87:"QJR3+Q62, Kênh Nước Đen, Bình Hưng Hoà, Bình Tân, Thành phố Hồ Chí Minh";}
-O:15:"DistributionHub":2:{s:4:"name";s:14:"Hub Binh Chanh";s:7:"address";s:73:"F1/17G, Ấp 6A, Vĩnh Lộc B, Bình Chánh, Thành phố Hồ Chí Minh";}
-O:15:"DistributionHub":2:{s:4:"name";s:11:"LEX HUB HTB";s:7:"address";s:74:"15 Đ. Tái Thiết, Phường 11, Tân Bình, Thành phố Hồ Chí Minh";}
-O:15:"DistributionHub":2:{s:4:"name";s:12:"Hub Quận 5";s:7:"address";s:76:"1610 Đ. Võ Văn Kiệt, Phường 7, Quận 6, Thành phố Hồ Chí Minh";}
