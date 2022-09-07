@@ -1,7 +1,8 @@
 <?php
-// include_once('../../../server/write2file.php');
-// include_once('../../../server/readFromfile.php');
-// include_once('../../../server/classes/account.php');
+include_once('../../../server/write2file.php');
+include_once('../../../server/readFromfile.php');
+include_once('../../../server/classes/account.php');
+$accountList = readFromFile("accounts.txt");
 
 // if (!isset($_SESSION['user'])) {
 //     session_destroy();
@@ -60,11 +61,27 @@
         require_once("../../../src/components/header/header.php");
         ?>
     </header>
+    <?php
+    foreach ($accountList as $account) {
+        if ($_SESSION['user']) {
+            if ($_SESSION['user'] == $account->username) {
+                $avaimg = $account->avt;
+                // $account->username = $_POST['username'];
+            }
+        }
+    }
+
+    ?>
+    <?php #if($_SESSION['user'] == $account->username) :
+    ?>
+    <!-- <div></div> -->
+    <?php #endif 
+    ?>
     <style>
         <?php include '../../../src/assets/styles/customerAccountPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
     </style>
     <div class="content">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-4 card shadow p-3 mb-5 bg-body rounded">
                     <form class="profile-pic-div" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
@@ -74,7 +91,9 @@
                             </label>
                             <input id="file-input" type="file" onchange="loadFile(event)">
                         </div>
-                        <img class="img-responsive img-fluid rounded-circle text-center" alt="profile pic" id="photo" src="https://img.freepik.com/free-vector/flat-design-lake-scenery_23-2149161405.jpg?w=2000">
+                            <?php
+                                echo '<img class="img-responsive img-fluid rounded-circle text-center" alt="profile pic" id="photo" src='.$avaimg.'>'
+                            ?>
                     </form>
                     <div class="profile-pic-btn">
                         <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button>
@@ -87,22 +106,51 @@
                     <div class="info d-flex ">
                         <div class="card shadow p-3 mb-5 bg-body rounded">
                             <h1>Name</h1>
-                            <p>Your name is
-                                <?php echo $username; ?>
-                            </p>
-                        </div>
-
-                        <div class="card shadow p-3 mb-5 bg-body rounded">
-                            <h1>Address</h1>
-                            <p>Your address is
-                                <?php #echo $address; 
+                            <p>
+                                <?php
+                                echo $_SESSION['user'];
                                 ?>
                             </p>
                         </div>
 
+                        <?php
+                        foreach ($accountList as $account) {
+                            if ($_SESSION['user']) {
+                                if ($_SESSION['user'] == $account->username) {
+                                    if ($account -> type == 'customer'){
+                                        $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
+                                        $html .= '<h1>Address</h1>';
+                                        $html .= '<p>'.htmlspecialchars($account->address).'</p>';
+                                        $html .= '</div>';
+                                        print_r($html);
+                                    }
+                                    if ($account -> type == 'vendor'){
+                                        $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
+                                        $html .= '<h1>Business Name</h1>';
+                                        $html .= '<p>'.htmlspecialchars($account->bussName).'</p>';
+                                        $html .= '</div>';
+                                        $html .= '<div class="card shadow p-3 mb-5 bg-body rounded">';
+                                        $html .= '<h1>Business Address</h1>';
+                                        $html .= '<p>'.htmlspecialchars($account->bussAddress).'</p>';
+                                        $html .= '</div>';
+                                        print_r($html);
+                                    }
+                                    if ($account -> type == 'shipper'){
+                                        $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
+                                        $html .= '<h1>Business Name</h1>';
+                                        $html .= '<p>'.htmlspecialchars($account->hub).'</p>';
+                                        $html .= '</div>';
+
+                                        print_r($html);
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+
                         <div class="button-container position-relative">
                             <button type="submit" id="edit-btn" onclick="openForm()" class="btn btn-primary position-absolute top-0 start-50 translate-middle">
-                                <img src="https://www.flaticon.com/svg/vstatic/svg/3917/3917361.svg?token=exp=1662458982~hmac=6cc1a0c422fbaf224e9a620d77da49d7" alt="edit-info">
+                                <img src="../../../public/img/edit.png" alt="edit-info">
                                 <div>&nbsp;&nbsp;Edit my profile</div>
                             </button>
 

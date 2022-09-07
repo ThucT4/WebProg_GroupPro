@@ -12,8 +12,9 @@
 #p-img {
   object-position: center;
   /* Center the image within the element */
-  width: auto;
-  max-height: 250px;
+  width: 250px;
+  max-height: auto;
+  object-fit: scale-down;
   margin-bottom: 1rem;
 }
 
