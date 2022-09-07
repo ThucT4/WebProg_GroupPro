@@ -5,24 +5,22 @@ class Order
 {
     public $id;
     public $customerName;
-    public $img;
-    public $productID;
+    public $firstimg;
     public $date;
     public $from;
     public $to;
     public $productList;
-    public $distrubutionHub;
+    public $distributionHub;
     public $status;
 
-    public function __construct($customerName, $img, $productID, $date, $from, $to, $productList, $distrubutionHub)
+    public function __construct($customerName, $firstimg, $date, $from, $to, $productList, $distributionHub)
     {
         //automatic increment ID objects
         $orderList = readFromLocalFile("order.txt");
         $this->id  = sizeof($orderList) + 1;
         //assign the value 
         $this->customerName = $customerName;
-        $this->img = $img;
-        $this->productID = $productID;
+        $this->firstimg = $firstimg;
         //auto generate current date
         $this->date = $date;
         //from = distribution hub
@@ -30,7 +28,7 @@ class Order
         //to = customer address
         $this->to = $to;
         $this->productList = $productList;
-        $distrubutionHub->distrubutionHub = $distrubutionHub;
+        $this->distributionHub = $distributionHub;
         $this->status = "active";
     }
 }

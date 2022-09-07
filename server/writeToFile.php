@@ -3,7 +3,7 @@
 function writeToFile($obj, $path, $permission)
 {
     $objData = serialize($obj);
-    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/{$path}";
+    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/database/db/{$path}";
     if (is_writable($filePath)) {
         $file = fopen($filePath, $permission);
         fwrite($file, $objData);
@@ -14,7 +14,7 @@ function writeToFile($obj, $path, $permission)
 
 function changeConfirmStatus($orderList)
 {
-    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/order.txt";
+    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/database/db/order.txt";
     $fp = fopen($filePath, "w");
     fclose($fp);
     echo sizeof($orderList);
