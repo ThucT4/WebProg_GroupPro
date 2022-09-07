@@ -8,9 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="../../../public/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../../src/assets/styles/vendorPage.css?v=<?php echo time(); ?>">
-  <style>
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
-  </style>
+
 </head>
 
 <body class="d-flex flex-column">
@@ -19,6 +17,9 @@
     require_once("../../../src/components/header/header.php");
     ?>
   </header>
+  <style>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
+  </style>
   <main>
     <div id="register-box" class="d-flex flex-column m-2 p-4 border text-center">
       <div id="page-name" class="text-center">
@@ -83,7 +84,7 @@
         </div>
         <div class="p-2">
 
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="button">
             <button class="btn btn-primary" type="button">
               <input type="submit" value="Add" id="submit-btn" />
             </button>
@@ -103,9 +104,9 @@
   </footer>
 </body>
 
-<script type="text/javascript">
-  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
-</script>
+<!-- <script type="text/javascript">
+    <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
+</script> -->
 <link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
 
 </html>
