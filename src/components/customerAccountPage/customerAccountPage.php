@@ -137,7 +137,7 @@ $accountList = readFromFile("accounts.txt");
                                     }
                                     if ($account -> type == 'shipper'){
                                         $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
-                                        $html .= '<h1>Business Name</h1>';
+                                        $html .= '<h1>Hub</h1>';
                                         $html .= '<p>'.htmlspecialchars($account->hub).'</p>';
                                         $html .= '</div>';
 
