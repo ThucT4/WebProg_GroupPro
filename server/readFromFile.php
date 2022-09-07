@@ -6,7 +6,6 @@ function readFromFile($path)
 
     $objectList = array();
     if (file_exists($filePath)) {
-        //echo "readding file"."<br>";
         $file = fopen($filePath, "r");
         while (!feof($file)) {
             $line = fgets($file);
@@ -18,9 +17,6 @@ function readFromFile($path)
         }
         fclose($file);
     }
-
-    //echo count($objectList);
-    //print_r($objectList);
     return $objectList;
 }
 ?>
