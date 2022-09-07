@@ -34,7 +34,7 @@ if (isset($_POST['create-account'])) {
 
         writeToFile($temp, "accounts.txt");
 
-        header('location: ../loginPage/login.php');
+        // header('location: ../loginPage/login.php');
     }
 }
 
@@ -43,16 +43,15 @@ loadPage();
 function loadPage()
 {
     //Header
-    require_once("../../../src/components/header/header.html");
+    // require_once("../../../src/components/header/header.php");
 
     //Main
-    require_once("../../../src/components/registerPage/customerRegister.html");
+    require_once("../../../src/components/registerPage/registerPage.html");
 
     //echo count($GLOBALS['hubs']);
 
     foreach ($GLOBALS['hubs'] as $hub) {
         $name = $hub->name;
-
         echo "<script type=\"text/JavaScript\">
             var node = document.querySelector(\"select#distribution-hub\");
 
