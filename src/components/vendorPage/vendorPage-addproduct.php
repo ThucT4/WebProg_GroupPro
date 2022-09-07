@@ -18,8 +18,7 @@
     ?>
   </header>
   <style>
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css';?>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
   </style>
   <main>
     <div id="register-box" class="d-flex flex-column m-2 p-4 border text-center">
@@ -32,7 +31,7 @@
             <label class="form-label me-4" for="prodict-img">Products picture</label>
           </div>
           <div class="col-8">
-            <input id="prodict-img" type="file" class="form-control"  onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
+            <input id="prodict-img" type="file" class="form-control" onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
             <img id="blah" src="http://placehold.it/180" alt="your image" />
           </div>
         </div>

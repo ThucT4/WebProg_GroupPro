@@ -86,17 +86,18 @@
 
                     <div class="info d-flex ">
                         <div class="card shadow p-3 mb-5 bg-body rounded">
-                        <h1 >Name</h1>
-                        <p>Your name is
-                            <?php echo $_SESSION['user']; ?>
-                        </p>
+                            <h1>Name</h1>
+                            <p>Your name is
+                                <?php echo $username; ?>
+                            </p>
                         </div>
-                        
+
                         <div class="card shadow p-3 mb-5 bg-body rounded">
-                        <h1>Address</h1>
-                        <p>Your address is
-                            <?php #echo $address; ?>
-                        </p>
+                            <h1>Address</h1>
+                            <p>Your address is
+                                <?php #echo $address; 
+                                ?>
+                            </p>
                         </div>
 
                         <div class="button-container position-relative">
