@@ -88,7 +88,7 @@
                         <div class="card shadow p-3 mb-5 bg-body rounded">
                         <h1 >Name</h1>
                         <p>Your name is
-                            <?php echo $username; ?>
+                            <?php echo $_SESSION['user']; ?>
                         </p>
                         </div>
                         
