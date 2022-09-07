@@ -39,7 +39,7 @@ if (isset($_POST['create-account'])) {
         require_once("../../../src/components/header/header.html");
 
         //Main
-        require_once("../../../src/components/registerPage/customerRegister.html");
+        require_once("../../../src/components/registerPage/registerPage.html");
 
         //echo count($GLOBALS['hubs']);
 
