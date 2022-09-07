@@ -30,7 +30,7 @@
             <label class="form-label me-4" for="prodict-img">Products picture</label>
           </div>
           <div class="col-8">
-            <input id="prodict-img" type="file" class="form-control"  onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
+            <input id="prodict-img" type="file" class="form-control" onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
             <img id="blah" src="http://placehold.it/180" alt="your image" />
           </div>
         </div>
@@ -104,7 +104,7 @@
 </body>
 
 <script type="text/javascript">
-    <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
+  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
 </script>
 <link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
 

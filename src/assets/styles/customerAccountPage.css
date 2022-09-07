@@ -1,86 +1,86 @@
-.content{
+.content {
   overflow: auto;
 }
 
-.profile-pic-div{    
-    margin: 50px 0 0 50px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-radius: 50%; 
-    aspect-ratio: 1; 
-    border: 3px solid #FF4040;    
+.profile-pic-div {
+  margin: 50px 0 0 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  border: 3px solid #FF4040;
 }
 
 #photo {
-    width: 100%;
-    flex-shrink: 0;
+  width: 100%;
+  flex-shrink: 0;
 }
 
-.change-ava-btn{
-    position:absolute; 
-    bottom: 7.5%; 
-    right: 7.5%;
-    aspect-ratio: 1;
-    width: 15%;     
-    border: 2px solid #4d4d4d; 
+.change-ava-btn {
+  position: absolute;
+  bottom: 7.5%;
+  right: 7.5%;
+  aspect-ratio: 1;
+  width: 15%;
+  border: 2px solid #4d4d4d;
 }
 
-.profile-pic-btn{
+.profile-pic-btn {
   text-align: center;
   padding-top: 40px;
   height: 10vh;
 }
 
-.profile-pic-btn .change-ava{
+.profile-pic-btn .change-ava {
   margin-left: 50px;
   border-radius: 10px;
   height: 50%;
-  background-color: #f98181;  
+  background-color: #f98181;
 }
 
-.profile-pic-btn .change-ava:hover{
+.profile-pic-btn .change-ava:hover {
   color: white;
 }
 
-.image-upload > input {
-    visibility:hidden;
-    width:0;
-    height:0
+.image-upload>input {
+  visibility: hidden;
+  width: 0;
+  height: 0
 }
 
-.info{
-    margin-top: 50px;
-    padding-left: 10%;
-    /* line-height: 10px; */
-    color: #f98181; 
-    flex-direction: column;  
-    justify-content: center;
+.info {
+  margin-top: 50px;
+  padding-left: 10%;
+  /* line-height: 10px; */
+  color: #f98181;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.info p{  
-    background-color: #ededed; 
-    width: 70%;
-    border-radius: 10px; 
-    color:black;
-    padding: 20px 0 40px 10px;       
+.info p {
+  background-color: #ededed;
+  width: 70%;
+  border-radius: 10px;
+  color: black;
+  padding: 20px 0 40px 10px;
 }
 
-#edit-btn{    
-    height: 100px;
-    width: 100px; 
-    background-color: white;
-    border: none;
-  }
+#edit-btn {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border: none;
+}
 
-#edit-btn img{
+#edit-btn img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.button-container{
-    font-size:larger;
-    color: #f98181; 
+.button-container {
+  font-size: larger;
+  color: #f98181;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
@@ -91,72 +91,74 @@
     border: none;
     cursor: pointer;
     opacity: 0.8; */
-    /* position: fixed;
+/* position: fixed;
     bottom: 23px;
     right: 28px;
     width: 280px; */
-  /* } */
-  
-  /* The popup form - hidden by default */
-  .form-popup {
-    display: none;
-    position: fixed;
-    top: 30vh;
-    right: 18vw;  
-    z-index: 9;
-  }
-  
-  /* Add styles to the form container */
-  .form-container {
-    max-width: 30vw;
-    padding: 10px;
-    background-color: white;
-    
-  }
-  
-  /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-    
-  }
-  
-  /* Set a style for the submit/login button */
-  .form-container {
-    background-color: #0c3251;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-  }
-  
-  /* Add a red background color to the cancel button */
-  .form-container .confirm {
-    background-color: #f98181;
-  }
+/* } */
 
-  .form-container .cancel {
-    background-color: white;
-  }
-  
-  /* Add some hover effects to buttons */
-  .form-container .cancel:hover{
-    color: #FF4040;
-  }
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 30vh;
+  right: 18vw;
+  z-index: 9;
+}
 
-  .form-container .confirm:hover {
-    color: white;
-  }
+/* Add styles to the form container */
+.form-container {
+  max-width: 30vw;
+  padding: 10px;
+  background-color: white;
+
+}
+
+/* Full-width input fields */
+.form-container input[type=text],
+.form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+
+}
+
+/* Set a style for the submit/login button */
+.form-container {
+  background-color: #0c3251;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .confirm {
+  background-color: #f98181;
+}
+
+.form-container .cancel {
+  background-color: white;
+}
+
+/* Add some hover effects to buttons */
+.form-container .cancel:hover {
+  color: #FF4040;
+}
+
+.form-container .confirm:hover {
+  color: white;
+}
