@@ -1,62 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
+<<<<<<< HEAD <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/src/assets/styles/loginPage.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/src/assets/styles/loginPage.css">
+    </head>
 
-<body class="d-flex flex-column text-center" style="height: 100vh;">
-    <!-- <header include-one="../header/header.html"></header> -->
-    <main class="h-100">
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center h-100">
-            <div id="big-logo" class="col-12 col-lg-6 p-4 h-100 d-flex align-items-center justify-content-center">
-                <img class="img-fluid rounded h-75" src="/public/img/login_banner.png" class="rounded" alt="Lazada">
+    <body class="d-flex flex-column text-center" style="height: 100vh;">
+        <!-- <header include-one="../header/header.html"></header> -->
+        <main class="h-100">
+            <div class="d-flex flex-wrap justify-content-evenly align-items-center h-100">
+                <div id="big-logo" class="col-12 col-lg-6 p-4 h-100 d-flex align-items-center justify-content-center">
+                    <img class="img-fluid rounded h-75" src="/public/img/login_banner.png" class="rounded" alt="Lazada">
+                </div>
+                <div id="login-side"
+                    class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                    <form class="col-8" id="register-form" method="POST">
+                        <div id="login-box" class="d-flex flex-column p-4 border">
+                            <div id="page-name" class="text-center">
+                                <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
+                            </div>
+                            <div class="d-flex flex-column mt-2">
+                                <div class="text-start">
+                                    <label class="form-label" for="username">Username</label>
+                                </div>
+                                <div class="">
+                                    <input name="username" id="username" type="text" class="form-control"
+                                        placeholder="Enter username" class="d-flex flex-column text-center" required>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column mt-2">
+                                <div class="text-start">
+                                    <label class="form-label" for="password">Password</label>
+                                </div>
+                                <div class="">
+                                    <input name="password" id="password" type="password" class="form-control"
+                                        placeholder="Enter password" class="d-flex flex-column text-center" required>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <input type="submit" name="login" value="Login" id="login-btn">
+                            </div>
+                        </div>
+                        <div id="register-box" class="pe-4 ps-4 pt-2 border mt-2">
+                            <p>You don't have account?
+                                <a href="../registerPage/register.php">Register now</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div id="login-side" class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-                <form class="col-8" id="register-form" method="POST">
-                    <div id="login-box" class="d-flex flex-column p-4 border">
-                        <div id="page-name" class="text-center">
-                            <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
-                        </div>
-                        <div class="d-flex flex-column mt-2">
-                            <div class="text-start">
-                                <label class="form-label" for="username">Username</label>
-                            </div>
-                            <div class="">
-                                <input name="username" id="username" type="text" class="form-control"
-                                    placeholder="Enter username" class="d-flex flex-column text-center" required>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column mt-2">
-                            <div class="text-start">
-                                <label class="form-label" for="password">Password</label>
-                            </div>
-                            <div class="">
-                                <input name="password" id="password" type="password" class="form-control"
-                                    placeholder="Enter password" class="d-flex flex-column text-center" required>
-                            </div>
-                        </div>
+        </main>
+    </body>
+    <script src="../../assets/scripts/includePage.js"></script>
 
-                        <div class="mt-4">
-                            <input type="submit" name="login" value="Login" id="login-btn">
+
+    </html>
+    =======
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/src/assets/styles/loginPage.css">
+    </head>
+
+    <body class="d-flex flex-column text-center" style="height: 100vh;">
+        <!-- <header include-one="../header/header.html"></header> -->
+        <main class="h-100">
+            <div class="d-flex flex-wrap justify-content-evenly align-items-center h-100">
+                <div id="big-logo" class="col-12 col-lg-6 p-4 h-100 d-flex align-items-center justify-content-center">
+                    <img class="img-fluid rounded h-75" src="/public/img/login_banner.png" class="rounded" alt="Lazada">
+                </div>
+                <div id="login-side"
+                    class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                    <form class="col-8" id="register-form" method="POST">
+                        <div id="login-box" class="d-flex flex-column p-4 border">
+                            <div id="page-name" class="text-center">
+                                <p class="fs-2 fw-bold fst-italic">Shop 3.14</p>
+                            </div>
+                            <div class="d-flex flex-column mt-2">
+                                <div class="text-start">
+                                    <label class="form-label" for="username">Username</label>
+                                </div>
+                                <div class="">
+                                    <input name="username" id="username" type="text" class="form-control"
+                                        placeholder="Enter username" class="d-flex flex-column text-center" required>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column mt-2">
+                                <div class="text-start">
+                                    <label class="form-label" for="password">Password</label>
+                                </div>
+                                <div class="">
+                                    <input name="password" id="password" type="password" class="form-control"
+                                        placeholder="Enter password" class="d-flex flex-column text-center" required>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <input type="submit" name="login" value="Login" id="login-btn">
+                            </div>
                         </div>
-                    </div>
-                    <div id="register-box" class="pe-4 ps-4 pt-2 border mt-2">
-                        <p>You don't have account?
-                            <a href="../registerPage/register.php">Register now</a>
-                        </p>
-                    </div>
-                </form>
+                        <div id="register-box" class="pe-4 ps-4 pt-2 border mt-2">
+                            <p>You don't have account?
+                                <a href="../registerPage/register.php">Register now</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </main>
+    </body>
+    <script src="../../assets/scripts/includePage.js"></script>
+
+
+    </html>
+    >>>>>>> acb56e2567888b2f8afc1e36130b45b6db7dd076
+
+    <div class="mt-4">
+        <input type="submit" name="login" value="Login" id="login-btn">
+    </div>
+    </div>
+    <div id="register-box" class="pe-4 ps-4 pt-2 border mt-2">
+        <p>You don't have account?
+            <a href="../registerPage/register.php">Register now</a>
+        </p>
+    </div>
+    </form>
+    </div>
+    </div>
     </main>
-</body>
-<script src="../../assets/scripts/includePage.js"></script>
+    </body>
+    <script src="../../assets/scripts/includePage.js"></script>
 
 
-</html>
+    </html>
