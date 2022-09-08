@@ -130,7 +130,7 @@
                                     </form>
                                 </div>
                             </div>
-                        <button type="button" class="btn btn-lg btn-danger ms-md-3" data-bs-toggle="popover" title="How to search ?" data-bs-content="Give the product name in the search <br/> Or price range in format 'value:value' to find appropriate products <br/> Other invalid context will be ignored" data-bs-html="true">
+                        <button type="button" class="btn btn-lg btn-danger ms-md-3" data-bs-toggle="popover" title="How to search ?" data-bs-content="Give the product name in the search <br/> Or price range in format 'from:to' to find appropriate products <br/> Other invalid context will be ignored" data-bs-html="true">
                             <div class="rounded-circle p-1 d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;"> 
                                 <img class="img-fluid w-100 h-100" src="../../../public/img/question.png" alt="Search icon">
                             </div>

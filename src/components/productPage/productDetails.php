@@ -1,9 +1,12 @@
 <?php require_once('../../../server/writeToFile.php') ?>
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
+<?php require_once('../../../server/classes/account.php') ?>
 <?php
 $productList = readFromFile("product.txt");
+$userList = readFromFile("accounts.txt");
 $id = $_GET['product'];
+$userAddress;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +27,12 @@ $id = $_GET['product'];
 if (isset($_SESSION['user'])) {
     if ($_SESSION['accounttype'] != 'customer') {
         header("Refresh:0; url=../noPermission/noPermission.html");
+    } else {
+        foreach ($userList as $user) {
+            if ($user->username == ($_SESSION['user'])) {
+                $userAddress = $user->address;
+            }
+        }
     }
 }
 ?>
@@ -75,7 +84,7 @@ if (isset($_SESSION['user'])) {
                                         <img src="../../../public/img/moving-truck.png" alt="moving truck" style="width:30px;height:30px">
                                     </span>
                                     <span class="ms-3">
-                                        To : user->to
+                                        <?= $userAddress ?>
                                     </span>
                                 </div>
                                 <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center my-3">
