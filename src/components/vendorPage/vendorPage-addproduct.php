@@ -28,14 +28,13 @@
       <form name="submit" class="d-flex flex-column" id="" method="post" enctype="multipart/form-data" action="addProduct.php">
         <div class="d-flex flex-row p-2">
           <div class="col-2">
-            <label class="form-label me-4" for="prodict-img">Products picture</label>
+            <label class="form-label me-4" for="product-img">Products picture</label>
           </div>
           <div class="col-8">
-            <input id="prodict-img" type="file" class="form-control" onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
-            <img id="blah" src="http://placehold.it/180" alt="your image" />
+            <input id="product-img" type="file" class="form-control" onchange="getBase64(this);" name="fileToUpload" id="fileToUpload" />
+            <img id="output" src="#" alt="your image" />
           </div>
         </div>
-
         <div id="typical-info">
           <div class="d-flex flex-row p-2">
             <div class="col-2">

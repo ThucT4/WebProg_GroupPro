@@ -83,7 +83,7 @@ $accountList = readFromFile("accounts.txt");
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 card shadow p-3 mb-5 bg-body rounded">
+                <div class="col-sm-4 card shadow p-3 mb-5 bg-body rounded avaimgdiv">
                     <form class="profile-pic-div" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
                         <div class="image-upload">
                             <label for="file-input">
