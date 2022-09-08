@@ -83,26 +83,25 @@ $accountList = readFromFile("accounts.txt");
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 card shadow p-3 mb-5 bg-body rounded">
-                    <form class="profile-pic-div" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
-                        <div class="image-upload">
-                            <label for="file-input">
-                                <img id="profile-pic-change" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917361.svg?token=exp=1662458982~hmac=6cc1a0c422fbaf224e9a620d77da49d7" alt="change ava button" class="change-ava-btn form-control ">
-                            </label>
-                            <input id="file-input" type="file" onchange="loadFile(event)">
-                        </div>
+                <div class="col-12 col-md-4 card shadow p-3 mb-5 bg-body rounded d-flex flex-column align-items-center">
+                    <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
+                        <div class="col-12 position-relative rounded-circle">
                             <?php
-                                echo '<img class="img-responsive img-fluid rounded-circle text-center" alt="profile pic" id="photo" src='.$avaimg.'>'
+                            echo '<img class="img-fluid text-center" alt="profile pic" id="photo" src=' . $avaimg . '>'
                             ?>
+                            <div class="position-absolute image-upload bottom-0 end-0" style="width:40px; height:40px;">
+                                <label for="file-input" style="width:40px; height:40px;">
+                                    <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid">
+                                </label>
+                                <input class="d-none" id="file-input" type="file" onchange="loadFile(event)">
+                            </div>
+                        </div>
                     </form>
-                    <div class="profile-pic-btn">
+                    <div class="col-12 profile-pic-btn">
                         <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button>
                     </div>
-
                 </div>
-
                 <div class="col">
-
                     <div class="info d-flex ">
                         <div class="card shadow p-3 mb-5 bg-body rounded">
                             <h1>Name</h1>
@@ -117,28 +116,28 @@ $accountList = readFromFile("accounts.txt");
                         foreach ($accountList as $account) {
                             if ($_SESSION['user']) {
                                 if ($_SESSION['user'] == $account->username) {
-                                    if ($account -> type == 'customer'){
+                                    if ($account->type == 'customer') {
                                         $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
                                         $html .= '<h1>Address</h1>';
-                                        $html .= '<p>'.htmlspecialchars($account->address).'</p>';
+                                        $html .= '<p>' . htmlspecialchars($account->address) . '</p>';
                                         $html .= '</div>';
                                         print_r($html);
                                     }
-                                    if ($account -> type == 'vendor'){
+                                    if ($account->type == 'vendor') {
                                         $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
                                         $html .= '<h1>Business Name</h1>';
-                                        $html .= '<p>'.htmlspecialchars($account->bussName).'</p>';
+                                        $html .= '<p>' . htmlspecialchars($account->bussName) . '</p>';
                                         $html .= '</div>';
                                         $html .= '<div class="card shadow p-3 mb-5 bg-body rounded">';
                                         $html .= '<h1>Business Address</h1>';
-                                        $html .= '<p>'.htmlspecialchars($account->bussAddress).'</p>';
+                                        $html .= '<p>' . htmlspecialchars($account->bussAddress) . '</p>';
                                         $html .= '</div>';
                                         print_r($html);
                                     }
-                                    if ($account -> type == 'shipper'){
+                                    if ($account->type == 'shipper') {
                                         $html = '<div class="card shadow p-3 mb-5 bg-body rounded">';
                                         $html .= '<h1>Hub</h1>';
-                                        $html .= '<p>'.htmlspecialchars($account->hub).'</p>';
+                                        $html .= '<p>' . htmlspecialchars($account->hub) . '</p>';
                                         $html .= '</div>';
 
                                         print_r($html);
@@ -149,12 +148,12 @@ $accountList = readFromFile("accounts.txt");
                         ?>
 
                         <div class="button-container position-relative">
-                            <button type="submit" id="edit-btn" onclick="openForm()" class="btn btn-primary position-absolute top-0 start-50 translate-middle">
+                            <button id="edit-btn" class="btn btn-primary position-absolute top-0 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#ChangeInfoModal">
                                 <img src="../../../public/img/edit.png" alt="edit-info">
                                 <div>&nbsp;&nbsp;Edit my profile</div>
                             </button>
 
-                            <div class="form-popup" id="myForm">
+                            <!-- <div class="form-popup" id="myForm">
                                 <form action="/action_page.php" class="form-container">
                                     <h1 style="color: #f98181;">Change profile information</h1>
 
@@ -167,7 +166,33 @@ $accountList = readFromFile("accounts.txt");
                                     <button type="submit" class="btn confirm" onclick="changeInfo()">Confirm</button>
                                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                                 </form>
-                            </div>
+                            </div> -->
+                            <form>
+                                <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">Name</label>
+                                                    <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="address" class="form-label">Address</label>
+                                                    <input name="userAddress" type="text" class="form-control" id="address">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -183,5 +208,6 @@ $accountList = readFromFile("accounts.txt");
     </footer>
 </body>
 <script src="/src/assets/scripts/customerAccountPage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 </html>
