@@ -53,10 +53,7 @@ require_once('../../../server/readFromFile.php');
           $html .= '<tr>';
           foreach ($value as $key2 => $value2) {
             if (strpos($value2, "../../../") !== FALSE) {
-              //echo $value2.'<br>';
-              $logo = "data:image/jpg;base64," . base64_encode($value2);
-              //echo $value2;
-              $html .= '<td><img id="p-img" src=\'' . $value2 . ')\'></td>';
+              $html .= '<td><img id="p-img" src=\'' . $value2 . '\'></td>';
             } else {
               $html .= '<td>' . htmlspecialchars($value2) . '</td>';
             }
