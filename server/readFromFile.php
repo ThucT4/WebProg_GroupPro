@@ -43,4 +43,3 @@ function readFromLocalFile($path)
     return $objectList;
 }
 ?>
-
