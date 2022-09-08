@@ -2,9 +2,7 @@
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php
-$productList = readFromFile("../../../server/product.txt");
-$productListFilter = array();
-
+$productList = readFromFile("product.txt");
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +21,20 @@ $productListFilter = array();
     include_once('../header/header.php');
     ?>
 </header>
+<?php
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['accounttype'] != 'customer') {
+        header("Refresh:0; url=../noPermission/noPermission.html");
+    }
+} else {
+    header("url=../loginPage/login.php");
+}
+?>
 
 <body>
     <main class="py-3 px-5">
         <div class="d-flex flex-wrap justify-content-around px-2 py-4">
-            <?php foreach ($productListFilter as $cur) : ?>
+            <?php foreach ($productList as $cur) : ?>
                 <?php if (!empty($cur)) : ?>
                     <div class="card mx-2 my-4" style="width: 25%;">
                         <img src="../../<?= $cur->img ?>" class="card-img-top" alt="<?= $cur->productDes ?>">
@@ -40,7 +47,7 @@ $productListFilter = array();
                             <p class="card-text text-start" style="min-height: 50px;"><?= $cur->productDes ?></p>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="stretched-link btn btn-primary w-100">View the product</a>
+                            <a href="../productPage/productDetails.php?product=<?php echo $cur->productID ?>" class="stretched-link btn btn-primary w-100">View the product</a>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -50,29 +57,8 @@ $productListFilter = array();
     <footer><?php include_once('../footer/footer.html'); ?></footer>
 </body>
 <link rel="stylesheet" href="/src/assets/scripts/mainPage.js">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 </html>
 
 <script>
-    //     function filter_price($max, $min) { //fucntion to filter by max/min price        
-    //         foreach($productList as $prod) {
-    //             if ($min <= $prod - > price && $prod - > price >= $max) {
-    //                 array_push($productListFilter, $prod);
-    //             }
-    //         }
-    //     }
-
-    //     function filter_name($search_name) { //fucntion to filter by name
-    //         foreach($productList as $prod) {
-    //             if (strcmp($prod - > productName, $search_name)) {
-    //                 array_push($productListFilter, $prod);
-    //             }
-    //         }
-    //     }
-
-    //     //filter
-    //     filter_name($_SESSION['search_name']);
-    //     filter_price($_SESSION['max_price'], $_SESSION['min_price']);
-    // 
 </script>

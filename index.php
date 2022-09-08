@@ -11,7 +11,9 @@
 <p class="text-center">This is bootstrap test</p>
 
 <body>
-
+    <?php
+    header('location: /src/components/loginPage/login.php')
+    ?>
 </body>
 
 </html>

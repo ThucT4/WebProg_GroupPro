@@ -29,7 +29,7 @@ $totalPrice = 0;
         </div>
         <div class="customer-info d-flex align-items-center">
             <div class="col-4 col-md-3 avatar d-flex flex-column text-center">
-                <img class="img-fluid rounded" src="/public/img/avatar.jpg" alt="avatar">
+                <img class="img-fluid rounded w-100" src="/public/img/avatar.jpg" alt="avatar">
             </div>
             <div class="col-4 col-md-3 address d-flex flex-column text-start text-wrap">
                 <h3 class="m-0">
@@ -56,8 +56,10 @@ $totalPrice = 0;
         <<<CODE
             <div class="product-list border border-1 py-2">
                 <div class="product-list-item d-flex align-items-center">
-                    <img class="col-2 col-md-2 img-fluid rounded" src="$cur->img" alt="$cur->img">
-                    <p class="col-3 p-md-2">$cur->productDes</p>
+                    <div class="col-2 col-md-2 d-flex flex-column text-center" style="height: 15vw">
+                        <img class="img-fluid rounded w-100 h-100" src="$cur->img" alt="$cur->img">
+                    </div>
+                    <p class="col-3 p-md-2 text-center text-lg-start">$cur->productDes</p>
                     <div class="catogory col-2 col-md-2 d-flex flex-column p-md-2 text-center">
                         <span>catogory</span>
                         <small>$cur->category </small>
