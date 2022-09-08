@@ -1,15 +1,9 @@
 <?php require_once('../../../server/classes/order.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
+<?php require_once('../../../server/classes/account.php') ?>
 <?php require_once('../../../server/writeToFile.php') ?>
 <?php require_once('./orderDetails.php') ?>
 <?php
-// $product1 = new Product("Butterfly Knife", "../../../public/img/product1.png", "Fashion, modern and trending with real iron materials", "Knife", "2500$", "1", "In stock");
-// $product2 = new Product("Wireless Headphone", "../../../public/img/product2.webp", "Bluetooth headphone with famous branch - experience music, watch movies all day", "Headphone", "200$", "1", "In stock");
-// $product3 = new Product("iPhone 13 256GB", "../../../public/img/iphone.webp", "Iphone 13 max pro with cheapest price", "phone", "1250$", "2", "In stock");
-// $productList = array($product1, $product2);
-// $obj = new Order("123456789", "Kisari", "../../../public/img/iphone.webp", "SB386", "13/08/2022", "distribution hub address", "Ho Chi Minh city", $productList);
-// writeToFile($obj, "order.txt", "a");
-// writeToFile($product3, "product.txt");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="shipperPage.css"> -->
     <link rel="stylesheet" href="../../assets/styles/shipperPage.css?v=<?php echo time(); ?>">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
-<!-- || ($cur->status == "Not delivered") -->
 
 <body>
     <header>
@@ -44,10 +36,7 @@
             }
         }
         changeConfirmStatus($AllOrders);
-        Header('Location: ' . $_SERVER['PHP_SELF']);
-        exit();
     }
-
     ?>
     <main class="d-flex flex-lg-row flex-column justify-content-evenly py-md-4">
         <section class="col-lg-3">
