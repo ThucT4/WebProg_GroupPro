@@ -37,6 +37,8 @@ $userList = readFromFile("accounts.txt");
         if ($_SESSION['accounttype'] != 'customer') {
             header("Refresh:0; url=../noPermission/noPermission.html");
         }
+    } else {
+        header("url=../loginPage/login.php");
     }
     ?>
 

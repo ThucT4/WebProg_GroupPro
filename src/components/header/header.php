@@ -120,16 +120,21 @@
             renderResHeaderNav();
             echo <<<CODE
                         </div>
-                        <div class="col-10 col-md-6 my-2 my-md-0">
-                            <div class="d-flex justify-content-md-center align-items-center">
+                        <div class="d-flex flex-row col-10 col-md-6 my-2 my-md-0">
+                            <div class="d-flex justify-content-md-center align-items-center flex-grow-1">
                                 <div class="col-12">
-                                    <div class="search">
+                                    <form class="search" onsubmit="navigateToSearchPage();return false">
                                         <img src="../../../public/img/search-icon.png" alt="Search icon">
-                                        <input type="text" class="form-control" placeholder="Search desired products">
-                                        <button class="btn btn-primary">Search</button>
-                                    </div>
+                                        <input type="text" class="form-control search-input" placeholder="Search desired products">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </form>
                                 </div>
                             </div>
+                        <button type="button" class="btn btn-lg btn-danger ms-md-3" data-bs-toggle="popover" title="How to search ?" data-bs-content="Give the product name in the search <br/> Or price range in format 'from:to' to find appropriate products <br/> Other invalid context will be ignored" data-bs-html="true">
+                            <div class="rounded-circle p-1 d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;"> 
+                                <img class="img-fluid w-100 h-100" src="../../../public/img/question.png" alt="Search icon">
+                            </div>
+                        </button>
                         </div>
                         <a href="../cartPage/cartPage.php" class="col-2 col-md-2 shop-icon d-flex justify-content-center">
                             <div class="position-relative">
@@ -158,5 +163,20 @@
         }
     }
 </script>
+<script>
+    function navigateToSearchPage() {
+        var url = document.getElementsByClassName("search-input")[0].value;
+        window.location.href = `../customerPage/customerPage.php?name=${url}`;
+    }
+</script>
+<script src="../../../public/bootstrap/js/bootstrap.min.js"> </script>
+<script src="../../../public/bootstrap/js/bootstrap.bundle.min.js"> </script>
+<script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+</script>
+
 
 </html>
