@@ -87,7 +87,8 @@ $accountList = readFromFile("accounts.txt");
                     <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
                         <div class="col-12 position-relative rounded-circle">
                             <?php
-                            echo '<img class="img-fluid text-center" alt="profile pic" id="photo" src=' . $avaimg . '>'
+                            //echo $avaimg;
+                            echo '<img class="img-fluid text-center" name = "fileToUpload" alt="profile pic" id="photo" src=' . $avaimg . '>';
                             ?>
                             <div class="position-absolute image-upload bottom-0 end-0" style="width:40px; height:40px;">
                                 <label for="file-input" style="width:40px; height:40px;">
@@ -96,10 +97,14 @@ $accountList = readFromFile("accounts.txt");
                                 <input class="d-none" id="file-input" type="file" onchange="loadFile(event)">
                             </div>
                         </div>
+                        <div class="col-12 profile-pic-btn">
+                        <!-- <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button> -->
+                        <button class="btn btn-primary" type="button">
+                            <input type="submit" value="Confirm changes" id="submit-btn" />
+                        </button>
+                        </div>
                     </form>
-                    <div class="col-12 profile-pic-btn">
-                        <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button>
-                    </div>
+                    
                 </div>
                 <div class="col">
                     <div class="info d-flex ">
@@ -167,7 +172,7 @@ $accountList = readFromFile("accounts.txt");
                                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                                 </form>
                             </div> -->
-                            <form>
+                            <form action="edit_profile.php">
                                 <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -188,6 +193,7 @@ $accountList = readFromFile("accounts.txt");
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
