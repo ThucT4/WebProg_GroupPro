@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +35,7 @@
           </div>
           <div class="col-8">
             <input id="prodict-img" type="file" class="form-control" onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
-            <img id="blah" src="http://placehold.it/180" alt="your image" />
+            <img id="blah" src="../../../public/img/iphone.webp" alt="your image" />
           </div>
         </div>
 
@@ -105,7 +108,7 @@
 </body>
 
 <!-- <script type="text/javascript">
-    <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
+  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
 </script> -->
 <link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
 

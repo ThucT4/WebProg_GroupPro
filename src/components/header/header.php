@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <?php require_once('../header/headerNav.php') ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +18,6 @@
 </head>
 
 <body>
-    <?php
-    if (!isset($_SESSION['user'])) {
-        header("Refresh:0; url=../loginPage/login.php");
-    }
-    ?>
     <div class="d-flex flex-column" style="background-color: #60b466;">
         <?php
         if (isset($_SESSION['user'])) {

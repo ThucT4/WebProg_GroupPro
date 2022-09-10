@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once('../../../server/classes/order.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php require_once('../../../server/classes/account.php') ?>

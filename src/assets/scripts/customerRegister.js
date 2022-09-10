@@ -7,8 +7,6 @@ document.querySelector("#register-form").addEventListener("submit", validateInpu
 var regBox = document.querySelector("#register-box");
 var inputBoxs = document.querySelectorAll("div[name=\"inputbox\"");
 
-console.log(inputBoxs);
-
 var res1 = window.matchMedia("(max-width: 768px)");
 responsive1(res1);
 res1.addListener(responsive1);
@@ -18,8 +16,6 @@ responsive2(res2);
 res2.addListener(responsive2);
 
 function clicked(e) {
-  console.log(e.target.value);
-
   if (e.target.checked && e.target.id == "customer") {
     loadCustomer();
   }
@@ -125,7 +121,6 @@ function responsive1(param) {
 
       regBox.classList.remove("text-center");
 
-      console.log(childs.length);
       for (let i = 0; i < childs.length; i++) {
         childs[i].className = "row-8";
       }
@@ -140,7 +135,6 @@ function responsive1(param) {
 
       regBox.classList.add("text-center");
 
-      console.log(childs.length);
       for (let i = 0; i < childs.length; i++) {
         childs[0].className = "col-2";
         childs[1].className = "col-8";
