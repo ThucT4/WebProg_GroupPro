@@ -22,8 +22,7 @@ if (isset($_POST['create-account'])) {
 
         $new_location = "";
 
-        if (isset($_FILES['avt']) && !$_FILES['avt']) {
-            print_r($_FILES['avt']);
+        if (isset($_FILES['avt']) && $_FILES['avt']['name'] != "") {
             $extension = explode(".", $_FILES['avt']['name'])[1];
 
             $new_location = "../../../server/database/userAvatar/avatar{$order}.{$extension}";
