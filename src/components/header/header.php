@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php //session_start() ?>
 <?php require_once('../header/headerNav.php') ?>
 <!DOCTYPE html>
 <html lang="en">
