@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])) {
+  if ($_SESSION['accounttype'] != 'vendor') {
+      echo <<<CODE
+          <script type="text/javascript">
+          window.location.href="../noPermission/noPermission.html";
+      </script>
+      CODE;
+  }
+}
 require_once('../../../server/readFromFile.php');
 require_once('../../../server/write2file.php');
 //change location

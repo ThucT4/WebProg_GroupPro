@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once('../../../server/readFromFile.php');
+if (isset($_SESSION['user'])) {
+  if ($_SESSION['accounttype'] != 'vendor') {
+    echo <<<CODE
+          <script type="text/javascript">
+          window.location.href="../noPermission/noPermission.html";
+      </script>
+      CODE;
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +33,7 @@ require_once('../../../server/readFromFile.php');
     <?php include '../../../src/assets/styles/vendorPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
   </style>
   <main>
-    <div class="d-flex flex-column m-2 p-4 border text-center">
+    <div class="d-flex flex-column m-2 p-4 border text-center" id="table_wrapper">
       <?php
       //   if (file_exists("../../../server/product.txt")) {
       //       echo "Found!";
@@ -34,7 +43,7 @@ require_once('../../../server/readFromFile.php');
       // }
       $productList = readFromFile("product.txt");
       $html = '<table id="myproduct">';
-      
+
       // header row
       $html .= '<tr>';
       foreach ($productList[0] as $key => $value) {

@@ -17,20 +17,56 @@
 
 #p-img {
   object-position: center;
-  /* Center the image within the element */
   width: 250px;
   max-height: auto;
   object-fit: scale-down;
   margin-bottom: 1rem;
 }
 
-@media only screen and (max-width: 991.98px) {
+#table_wrapper{
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 
+
+@media only screen and (max-width: 991.98px) {
+  #myproduct {
+    font-size: 12px;
+  }
+  
+  #p-img {
+    max-width: 100px;
+    height: auto;
+  }
+  #addproduct{
+    font-size: 12px;
+  }
+  #output{
+    max-width: 100px;
+    height: auto;
+  }
+  #inputfield{
+    margin-left: 50px;
+  }
 }
 
 @media only screen and (max-width: 767.98px) {
+  #myproduct {
+    font-size: 12px;
+  }
   #button {
     width: 150px;
     margin: auto;
+  }
+  #addproduct{
+    font-size: 12px;
+  }
+  #output{
+    max-width: 100px;
+    height: auto;
+  }
+  #inputfield{
+    margin-left: 50px;
   }
 }
