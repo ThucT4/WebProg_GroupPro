@@ -49,14 +49,8 @@ if (isset($_POST['create-account'])) {
 loadPage();
 
 function loadPage()
-{
-    //Header
-    // require_once("../../../src/components/header/header.html");
-
-    //Main
+{   //Main
     require_once("../../../src/components/registerPage/registerPage.html");
-
-    //echo count($GLOBALS['hubs']);
 
     foreach ($GLOBALS['hubs'] as $hub) {
         $name = $hub->name;
@@ -73,7 +67,7 @@ function loadPage()
     }
 
     //Footer
-    //require_once("../../../src/components/footer/footer.html");
+    require_once("../../../src/components/footer/footer.html");
 }
 
 function validate($input)

@@ -7,11 +7,8 @@ include_once($_SERVER["DOCUMENT_ROOT"] . '/server/classes/account.php');
 global $accounts, $type, $username;
 $accounts = readFromFile('accounts.txt');
 
-//unset($_SESSION['user']);
-//unset($_SESSION['accountType']);
 if (isset($_SESSION['user'])) {
     echo $type;
-    // header('location: ../customerPage/customerPage.php');
     if ($_SESSION['accounttype'] == 'customer') {
         header('location: ../mainPage/mainPage.php');
     } else if ($_SESSION['accounttype'] == "vendor") {
@@ -22,7 +19,6 @@ if (isset($_SESSION['user'])) {
 }
 
 if (isset($_POST['login'])) {
-    //print_r($_POST);
     if (!authenticate($_POST)) {
         echo "<script type='text/javascript'> alert('Username or password is incorrect. PLease check again!');</script>";
     } else {
@@ -46,7 +42,11 @@ loadPage();
 
 function loadPage()
 {
+
     require_once($_SERVER["DOCUMENT_ROOT"] . "/src/components/loginPage/loginPage.html");
+
+    //Footer
+    require_once("../../../src/components/footer/footer.html");
 }
 
 
