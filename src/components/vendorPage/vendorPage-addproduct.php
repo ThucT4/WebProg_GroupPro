@@ -31,21 +31,20 @@ session_start();
       <form name="submit" class="d-flex flex-column" id="" method="post" enctype="multipart/form-data" action="addProduct.php">
         <div class="d-flex flex-row p-2">
           <div class="col-2">
-            <label class="form-label me-4" for="prodict-img">Products picture</label>
+            <label class="form-label me-4" for="product-img">Products picture</label>
           </div>
           <div class="col-8">
-            <input id="prodict-img" type="file" class="form-control" onchange="readURL(this);" name="fileToUpload" id="fileToUpload" />
-            <img id="blah" src="../../../public/img/iphone.webp" alt="your image" />
+            <input id="product-img" type="file" class="form-control img-file" onchange="loadFile(event)" name="fileToUpload" id="fileToUpload" />
+            <img id="output" src="#" alt="Your Product Image" />
           </div>
         </div>
-
         <div id="typical-info">
           <div class="d-flex flex-row p-2">
             <div class="col-2">
               <label class="form-label" for="product-stock">Product stock</label>
             </div>
             <div class="col-8">
-              <input id="product-stock" type="text" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
+              <input id="product-stock" type="number" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
             </div>
           </div>
 
@@ -72,7 +71,7 @@ session_start();
               <label class="form-label" for="product-price">Product price</label>
             </div>
             <div class="col-8">
-              <input id="product-price" type="text" class="form-control" placeholder="Enter product price" name="p_price" ; required />
+              <input id="product-price" type="number" class="form-control" placeholder="Enter product price" name="p_price" ; required />
             </div>
           </div>
 
@@ -81,7 +80,7 @@ session_start();
               <label class="form-label me-4" for="description">Description</label>
             </div>
             <div class="col-8">
-              <input id="description" type="text" class="form-control" name="p_description" />
+              <input id="description" type="text" class="form-control" name="p_description" ; required/>
             </div>
           </div>
         </div>
@@ -108,8 +107,9 @@ session_start();
 </body>
 
 <!-- <script type="text/javascript">
-  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
-</script> -->
-<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
+  <?php #include '../../..//src/assets/scripts/vendorPage.js'; ?>
+</script>
+<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" /> -->
+<script src="/src/assets/scripts/vendorPage.js"></script>
 
 </html>

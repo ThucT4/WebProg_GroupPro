@@ -1,46 +1,37 @@
 <?php session_start(); ?>
 <?php
-include_once('../../../server/write2file.php');
+include_once('../../../server/writeToFile.php');
 include_once('../../../server/readFromfile.php');
 include_once('../../../server/classes/account.php');
 $accountList = readFromFile("accounts.txt");
 
-// if (!isset($_SESSION['user'])) {
-//     session_destroy();
-//     echo "Please Login again";
-//     echo "<a href='http://localhost/somefolder/login.php'>Click Here to Login</a>";    
-// }
-// else {
-//     $now = time(); // Checking the time now when home page starts.
+foreach ($accountList as $account) {
+    if ($_SESSION['user']) {
+        if ($_SESSION['user'] == $account->username) {
+            $avaimg = $account->avt;
+        }
+    }
+}
 
-//     if ($now > $_SESSION['expire']) {
-//         session_destroy();
-//         echo "Your session has expired! <a href='http://localhost/somefolder/login.php'>Login here</a>";
-//     }    
-// }
-
-// global $accounts,$username, $address;    
-// $accounts = readFromFile('accounts.txt');
-// $username = $_SESSION['user'];
-
-// foreach ($GLOBALS['accounts'] as $account) {
-//     if ($_SESSION['user'] === $account->username) {
-//         $address = $account->address;               
-//     }
-// }
-
-// function changeInfo(){ //function to change user info
-//     foreach($accounts as $acc){
-//         if ($acc->username == $username){ 
-//             $temp = $acc;
-//             unset($temp); //delete old data
-//             $temp->address = $_POST['address']; //replace
-//             $temp->username = $_POST['username'];
-//             $temp_data = serialize($temp);
-//             writeToFile($temp_data, "accounts.txt");
-//         }
-//     }        
-// }
+if (isset($_FILES['avt-change-img']) && $_FILES['avt-change-img']['name'] != "") {
+    if (file_exists("$avaimg")) {
+        unlink($avaimg);
+    }
+    $newpath = explode("../../../server/database/userAvatar/", $avaimg)[1];
+    $newpath = explode(".", $newpath)[0];
+    $extension = explode(".", $_FILES['avt-change-img']['name'])[1];
+    $new_location = "../../../server/database/userAvatar/{$newpath}.{$extension}";
+    move_uploaded_file($_FILES['avt-change-img']['tmp_name'], $new_location);
+    foreach ($accountList as $account) {
+        if ($_SESSION['user']) {
+            if ($_SESSION['user'] == $account->username) {
+                $account->avt = $new_location;
+                changeAccountInfo($accountList);
+                break;
+            }
+        }
+    }
+}
 
 ?>
 
@@ -63,22 +54,37 @@ $accountList = readFromFile("accounts.txt");
         ?>
     </header>
     <?php
-    if (isset($_POST['userName']) && isset($_POST['userAddress'])) {
-        echo $_POST['userName'];
-        echo $_POST['userAddress'];
-    }
-    ?>
-    <?php
     foreach ($accountList as $account) {
         if ($_SESSION['user']) {
             if ($_SESSION['user'] == $account->username) {
                 $avaimg = $account->avt;
-                // $account->username = $_POST['username'];
             }
         }
     }
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        foreach ($accountList as $account) {
+            if ($_SESSION['user']) {
+                if ($_SESSION['user'] == $account->username) {
+                    if ($account->type == 'customer' && isset($_POST['userAddress'])) {
+                        $account->address = $_POST['userAddress'];
+                    }
+
+                    if ($account->type == 'vendor' && isset($_POST['business']) && isset($_POST['address'])) {
+                        $account->bussName = $_POST['business'];
+                        $account->bussAddress = $_POST['address'];
+                    }
+
+                    if ($account->type == 'shipper' && isset($_POST['distribution-hub'])) {
+                        $account->hub = $_POST['distribution-hub'];
+                    }
+                    changeAccountInfo($accountList);
+                }
+            }
+        }
+    }
     ?>
+
     <?php #if($_SESSION['user'] == $account->username) :
     ?>
     <!-- <div></div> -->
@@ -91,22 +97,25 @@ $accountList = readFromFile("accounts.txt");
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 card shadow p-3 mb-5 bg-body rounded d-flex flex-column align-items-center">
-                    <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
+                    <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="" enctype="multipart/form-data">
                         <div class="col-12 position-relative rounded-circle">
-                            <?php
-                            echo '<img class="img-fluid text-center" alt="profile pic" id="photo" src=' . $avaimg . '>'
-                            ?>
+
+                            <img class="img-fluid text-center" name="fileToUpload" alt="profile pic" id="photo" src=' <?= $avaimg ?>'>
                             <div class="position-absolute image-upload bottom-0 end-0" style="width:40px; height:40px;">
                                 <label for="file-input" style="width:40px; height:40px;">
-                                    <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid">
+                                    <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid" id="camera-btn">
                                 </label>
-                                <input class="d-none" id="file-input" type="file" onchange="loadFile(event)">
+                                <input name="avt-change-img" class="d-none" id="file-input" type="file" onchange="loadFile(event)">
                             </div>
                         </div>
+                        <div class="col-12 profile-pic-btn">
+                            <!-- <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button> -->
+                            <button class="btn btn-primary" type="button">
+                                <input type="submit" value="Confirm changes" id="submit-btn" />
+                            </button>
+                        </div>
                     </form>
-                    <div class="col-12 profile-pic-btn">
-                        <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button>
-                    </div>
+
                 </div>
                 <div class="col">
                     <div class="info d-flex ">
@@ -159,46 +168,99 @@ $accountList = readFromFile("accounts.txt");
                                 <img src="../../../public/img/edit.png" alt="edit-info">
                                 <div>&nbsp;&nbsp;Edit my profile</div>
                             </button>
-
-                            <!-- <div class="form-popup" id="myForm">
-                                <form action="/action_page.php" class="form-container">
-                                    <h1 style="color: #f98181;">Change profile information</h1>
-
-                                    <label for="name"><b>Name</b></label>
-                                    <input type="text" id="name" placeholder="Edit Name" name="name" required>
-
-                                    <label for="address"><b>Address</b></label>
-                                    <input type="text" id="address" placeholder="Edit Address" name="address" required>
-
-                                    <button type="submit" class="btn confirm" onclick="changeInfo()">Confirm</button>
-                                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                                </form>
-                            </div> -->
                             <form method="post">
-                                <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label">Name</label>
-                                                    <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="address" class="form-label">Address</label>
-                                                    <input name="userAddress" type="text" class="form-control" id="address">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                foreach ($accountList as $account) {
+                                    if ($_SESSION['user']) {
+                                        if ($_SESSION['user'] == $account->username) {
+                                            if ($account->type == 'customer') {
+                                                echo
+                                                <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="address" class="form-label">Address</label>
+                                                                        <input name="userAddress" type="text" class="form-control" id="address">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                            }
+                                            if ($account->type == 'vendor') {
+                                                echo
+                                                <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="b_name" class="form-label">Business Name</label>
+                                                                        <input name="business" type="text" class="form-control" id="b_name">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="b_address" class="form-label">Business Address</label>
+                                                                        <input name="address" type="text" class="form-control" id="b_address">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                            }
+                                            if ($account->type == 'shipper') {
+                                                echo
+                                                <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label me-4" for="distribution-hub">Distribution Hubs</label>
+                                                                        <select name="distribution-hub" id="distribution-hub">
+                                                                            <option value="Hub Tân Phú">Hub Tân Phú</option>
+                                                                            <option value="Hub Binh Chanh">Hub Binh Chanh</option>
+                                                                            <option value="LEX HUB HTB">LEX HUB HTB</option>
+                                                                            <option value="Hub Quận 5">Hub Quận 5</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
                             </form>
                         </div>
                     </div>

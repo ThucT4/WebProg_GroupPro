@@ -4,6 +4,12 @@
   color: white;
 }
 
+#output{
+  margin: 20px 0px;
+  width: auto;
+  max-height: 200px;
+}
+
 #add-product-btn {
   width: auto;
   align-self: end;

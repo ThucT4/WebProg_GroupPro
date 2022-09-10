@@ -34,6 +34,7 @@ require_once('../../../server/readFromFile.php');
       // }
       $productList = readFromFile("product.txt");
       $html = '<table id="myproduct">';
+      
       // header row
       $html .= '<tr>';
       foreach ($productList[0] as $key => $value) {
