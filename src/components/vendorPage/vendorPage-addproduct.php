@@ -115,10 +115,6 @@ if (isset($_SESSION['user'])) {
   </footer>
 </body>
 
-<!-- <script type="text/javascript">
-  <?php #include '../../..//src/assets/scripts/vendorPage.js'; ?>
-</script>
-<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" /> -->
 <script src="/src/assets/scripts/vendorPage.js"></script>
 
 </html>

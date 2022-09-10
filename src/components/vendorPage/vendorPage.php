@@ -44,22 +44,15 @@ if (isset($_SESSION['user'])) {
       $productList = readFromFile("product.txt");
       $html = '<table id="myproduct">';
 
-      // header row
       $html .= '<tr>';
       foreach ($productList[0] as $key => $value) {
         $html .= '<th>' . htmlspecialchars($key) . '</th>';
       }
       $html .= '</tr>';
 
-      //check user
-
-
       // data rows
       foreach ($productList as $key => $value) {
-        //var_dump($value);
-        //echo array_values((array)$value)[0];
         if (array_values((array)$value)[0] == $_SESSION['user']) {
-          //echo array_values((array)$value)[0] . " == " . $_SESSION['user'];
           $html .= '<tr>';
           foreach ($value as $key2 => $value2) {
             if (strpos($value2, "../../../") !== FALSE) {
@@ -71,9 +64,6 @@ if (isset($_SESSION['user'])) {
           $html .= '</tr>';
         }
       }
-
-      // finish table and return it
-
       $html .= '</table>';
       print_r($html);
       ?>
