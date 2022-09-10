@@ -23,3 +23,15 @@ function changeConfirmStatus($orderList)
         }
     }
 }
+
+function changeAccountInfo($accountList)
+{
+    $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/database/db/accounts.txt";
+    $fp = fopen($filePath, "w");
+    fclose($fp);
+    foreach ($accountList as $accountItem) {
+        if (!empty($accountItem)) {
+            writeToFile($accountItem, "accounts.txt", "a");
+        }
+    }
+}

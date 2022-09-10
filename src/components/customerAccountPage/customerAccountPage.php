@@ -1,46 +1,10 @@
 <?php session_start(); ?>
 <?php
-include_once('../../../server/write2file.php');
+include_once('../../../server/writeToFile.php');
 include_once('../../../server/readFromfile.php');
 include_once('../../../server/classes/account.php');
 $accountList = readFromFile("accounts.txt");
 
-// if (!isset($_SESSION['user'])) {
-//     session_destroy();
-//     echo "Please Login again";
-//     echo "<a href='http://localhost/somefolder/login.php'>Click Here to Login</a>";    
-// }
-// else {
-//     $now = time(); // Checking the time now when home page starts.
-
-//     if ($now > $_SESSION['expire']) {
-//         session_destroy();
-//         echo "Your session has expired! <a href='http://localhost/somefolder/login.php'>Login here</a>";
-//     }    
-// }
-
-// global $accounts,$username, $address;    
-// $accounts = readFromFile('accounts.txt');
-// $username = $_SESSION['user'];
-
-// foreach ($GLOBALS['accounts'] as $account) {
-//     if ($_SESSION['user'] === $account->username) {
-//         $address = $account->address;               
-//     }
-// }
-
-// function changeInfo(){ //function to change user info
-//     foreach($accounts as $acc){
-//         if ($acc->username == $username){ 
-//             $temp = $acc;
-//             unset($temp); //delete old data
-//             $temp->address = $_POST['address']; //replace
-//             $temp->username = $_POST['username'];
-//             $temp_data = serialize($temp);
-//             writeToFile($temp_data, "accounts.txt");
-//         }
-//     }        
-// }
 ?>
 
 <!DOCTYPE html>
@@ -62,65 +26,38 @@ $accountList = readFromFile("accounts.txt");
         ?>
     </header>
     <?php
-
-    // foreach ($accountList as $account) {
-    //     if ($_SESSION['user']) {
-    //         if ($_SESSION['user'] == $account->username) {
-    //             print_r($account);
-    //             echo "<br>";
-    //         }
-    //     }
-    // }
-
-
-    if (isset($_POST['userName']) && isset($_POST['userAddress'])) {
-        // echo $_POST['userName'];
-        // echo $_POST['userAddress'];
-
-        foreach ($accountList as $account) {
-            if ($_SESSION['user']) {
-                if ($_SESSION['user'] == $account->username) {
-                    if ($account->type == 'customer') {
-                        if (empty($_POST['userName'])) {
-                            $arraynew = array("address"=>$_POST['userAddress']);
-                        }
-                        elseif (empty($_POST['userAddress'])) {
-                            $arraynew = array("username" => $_POST['userName']);
-                        }
-                        else {
-                            $arraynew = array("username" => $_POST['userName'], "address"=>$_POST['userAddress']);
-                        }                  
-                        $result = array_replace((array)$account, $arraynew);
-                        print_r($result);
-                        echo "<br>";
-
-                        $newresult = array($result);
-
-                        $asd = array_replace($accountList, $newresult);
-                        print_r($asd);
-                    }
-                    if ($account->type == 'vendor') {
-
-                    }
-                    if ($account->type == 'shipper') {
-
-                    }
-                }
-            }
-        }
-    }
-    ?>
-    <?php
     foreach ($accountList as $account) {
         if ($_SESSION['user']) {
             if ($_SESSION['user'] == $account->username) {
                 $avaimg = $account->avt;
-                // $account->username = $_POST['username'];
             }
         }
     }
 
-    ?>
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        foreach ($accountList as $account) {
+            if ($_SESSION['user']) {
+                if ($_SESSION['user'] == $account->username) {
+                    if ($account->type == 'customer') {
+                        $account->address = $_POST['userAddress'];
+                    }
+
+                    if ($account->type == 'vendor') {
+                        $account->bussName = $_POST['business'];
+                        $account->bussAddress = $_POST['address'];
+                    }
+
+                    if ($account->type == 'shipper') {
+                        $account->hub = $_POST['distribution-hub'];
+                    }
+                    changeAccountInfo($accountList);
+                }
+            }
+        }
+    }
+?>
+
     <?php #if($_SESSION['user'] == $account->username) :
     ?>
     <!-- <div></div> -->
@@ -135,10 +72,8 @@ $accountList = readFromFile("accounts.txt");
                 <div class="col-12 col-md-4 card shadow p-3 mb-5 bg-body rounded d-flex flex-column align-items-center">
                     <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
                         <div class="col-12 position-relative rounded-circle">
-                            <?php
-                            //echo $avaimg;
-                            echo '<img class="img-fluid text-center" name = "fileToUpload" alt="profile pic" id="photo" src=' . $avaimg . '>';
-                            ?>
+
+                            <img class="img-fluid text-center" name="fileToUpload" alt="profile pic" id="photo" src=' <?= $avaimg ?>'>
                             <div class="position-absolute image-upload bottom-0 end-0" style="width:40px; height:40px;">
                                 <label for="file-input" style="width:40px; height:40px;">
                                     <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid">
@@ -207,13 +142,13 @@ $accountList = readFromFile("accounts.txt");
                                 <div>&nbsp;&nbsp;Edit my profile</div>
                             </button>
                             <form method="post">
-                            <?php
-                            foreach ($accountList as $account) {
-                                if ($_SESSION['user']) {
-                                    if ($_SESSION['user'] == $account->username) {
-                                        if ($account->type == 'customer') {
-                                            echo
-                                            <<<CODE
+                                <?php
+                                foreach ($accountList as $account) {
+                                    if ($_SESSION['user']) {
+                                        if ($_SESSION['user'] == $account->username) {
+                                            if ($account->type == 'customer') {
+                                                echo
+                                                <<<CODE
                                                     <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -222,10 +157,6 @@ $accountList = readFromFile("accounts.txt");
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="mb-3">
-                                                                        <label for="name" class="form-label">Name</label>
-                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                                                                    </div>
                                                                     <div class="mb-3">
                                                                         <label for="address" class="form-label">Address</label>
                                                                         <input name="userAddress" type="text" class="form-control" id="address">
@@ -239,10 +170,10 @@ $accountList = readFromFile("accounts.txt");
                                                         </div>
                                                     </div>
                                             CODE;
-                                        }
-                                        if ($account->type == 'vendor') {
-                                            echo
-                                            <<<CODE
+                                            }
+                                            if ($account->type == 'vendor') {
+                                                echo
+                                                <<<CODE
                                                     <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -251,10 +182,6 @@ $accountList = readFromFile("accounts.txt");
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="mb-3">
-                                                                        <label for="name" class="form-label">Name</label>
-                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                                                                    </div>
                                                                     <div class="mb-3">
                                                                         <label for="b_name" class="form-label">Business Name</label>
                                                                         <input name="business" type="text" class="form-control" id="b_name">
@@ -272,10 +199,10 @@ $accountList = readFromFile("accounts.txt");
                                                         </div>
                                                     </div>
                                             CODE;
-                                        }
-                                        if ($account->type == 'shipper') {
-                                            echo
-                                            <<<CODE
+                                            }
+                                            if ($account->type == 'shipper') {
+                                                echo
+                                                <<<CODE
                                                     <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -285,16 +212,12 @@ $accountList = readFromFile("accounts.txt");
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="mb-3">
-                                                                        <label for="name" class="form-label">Name</label>
-                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                                                                    </div>
-                                                                    <div class="mb-3">
                                                                         <label class="form-label me-4" for="distribution-hub">Distribution Hubs</label>
                                                                         <select name="distribution-hub" id="distribution-hub">
-                                                                            <option value="1">Hub Tân Phú</option>
-                                                                            <option value="2">Hub Binh Chanh</option>
-                                                                            <option value="3">LEX HUB HTB</option>
-                                                                            <option value="4">Hub Quận 5</option>
+                                                                            <option value="Hub Tân Phú">Hub Tân Phú</option>
+                                                                            <option value="Hub Binh Chanh">Hub Binh Chanh</option>
+                                                                            <option value="LEX HUB HTB">LEX HUB HTB</option>
+                                                                            <option value="Hub Quận 5">Hub Quận 5</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -306,11 +229,11 @@ $accountList = readFromFile("accounts.txt");
                                                         </div>
                                                     </div>
                                             CODE;
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            ?>
+                                ?>
                             </form>
                         </div>
                     </div>
