@@ -3,7 +3,7 @@
 **I. How to run the website** :
 
 1.Install xamPP with the path root to the Fullstack-eCommerce-website folder
-2.Build-in web server with index.php
+2.Navigate to the project's folder and run php -S localhost:8000
 
 **II.References (UI and contents)**:
 

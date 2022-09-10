@@ -1,12 +1,26 @@
 <?php
 function filter()
 {
+    $userList = readFromFile("accounts.txt");
+    $hubList = readFromFile('distributionHubs.txt');
+    $currentUser = new stdClass();
+    foreach ($userList as $user) {
+        if ($user->username == $_SESSION['user']) {
+            $currentUser = $user;
+            break;
+        }
+    }
     $newList = [];
     $data = readFromFile("order.txt");
     foreach ($data as $object) {
         if (empty($object)) continue;
         if ($object->status == "active") {
-            array_push($newList, $object);
+            foreach ($hubList as $hub) {
+                if ($hub->address == $object->from && $currentUser->hub == $hub->name) {
+                    array_push($newList, $object);
+                    break;
+                }
+            }
         }
     }
     return $newList;
@@ -24,6 +38,7 @@ $orderList = filter();
             break;
         }
     }
+    echo $currentUser->address;
     echo
     <<<CODE
         <h2 class="text-center text-bold">#Order$obj->id</h2>
@@ -46,7 +61,7 @@ $orderList = filter();
                 <div class="text-secondary">
                     <span>(+84) 888491388</span>
                     <br>
-                    <span>$currentUser->address</span>
+                    <span>$obj->to</span>
                 </div>
             </div>
         </div>

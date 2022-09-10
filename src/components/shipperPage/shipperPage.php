@@ -2,6 +2,7 @@
 <?php require_once('../../../server/classes/order.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php require_once('../../../server/classes/account.php') ?>
+<?php require_once('../../../server/classes/distributionHub.php') ?>
 <?php require_once('../../../server/writeToFile.php') ?>
 <?php require_once('./orderDetails.php') ?>
 <?php
@@ -37,11 +38,17 @@
             }
         }
         changeConfirmStatus($AllOrders);
+        echo ("<script>location.href = '../shipperPage/shipperPage.php';</script>");
     }
     ?>
     <main class="d-flex flex-lg-row flex-column justify-content-evenly py-md-4">
         <section class="col-lg-3">
             <div class="list-group">
+                <?php if (sizeof($orderList) == 0) : ?>
+                    <div class="text-center my-4">
+                        There are no orders in your hub distribution
+                    </div>
+                <?php endif; ?>
                 <?php
                 foreach ($orderList as $cur) :
                 ?>
