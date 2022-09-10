@@ -17,7 +17,7 @@ $productFilterList = [];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../src/assets/styles/mainPage.css">
+    <link rel="stylesheet" href="../../../src/assets/styles/customerPage.css?v=<?php echo time(); ?>">
 </head>
 <header>
     <?php
@@ -69,17 +69,17 @@ if (sizeof($query) == 2 && is_numeric($query[0]) && is_numeric($query[1])) {
                 <div class="col-12 text-center fs-2 mb-4"><?= sizeof($productFilterList) ?> products was found</div>
                 <?php foreach ($productFilterList as $cur) : ?>
                     <?php if (!empty($cur)) : ?>
-                        <div class="card mx-2 my-4" style="width: 25%;">
+                        <div class="card mx-2 my-4 col-10 col-sm-8 col-md-5 col-lg-3">
                             <img src="../../<?= $cur->img ?>" class="card-img-top" alt="<?= $cur->productDes ?>">
                             <div class="card-body">
                                 <h5 class="card-title text-center"><?= $cur->productName ?></h5>
                                 <div class="card-subtitle my-2 text-muted w-100 d-flex justify-content-between ">
-                                    <span class="text-decoration-line-through d-flex align-items-center"><?= $cur->unitPrice ?></span>
+                                    <!-- <span class="text-decoration-line-through d-flex align-items-center"><?= $cur->unitPrice ?></span> -->
                                     <span class="fs-3"><strong><?= $cur->unitPrice ?></strong></span>
                                 </div>
-                                <p class="card-text text-start" style="min-height: 50px;"><?= $cur->productDes ?></p>
+                                <p class="card-text text-start"><?= $cur->productDes ?></p>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex align-items-end">
                                 <a href="../productPage/productDetails.php?product=<?php echo $cur->productID ?>" class="stretched-link btn btn-primary w-100">View the product</a>
                             </div>
                         </div>

@@ -31,7 +31,7 @@
                                 </div>
                         CODE;
                 renderHeaderNav();
-            } else {
+            } elseif ($_SESSION['accounttype'] == 'vendor') {
                 echo <<<CODE
                         <div class="d-flex flex-wrap flex-row align-items-center justify-content-between p-4">
                             <div class="col-12 col-md-5 d-flex flex-row align-items-center justify-content-between">
@@ -45,22 +45,43 @@
                                 </div>
                             </div>            
                     CODE;
-                if (($_SESSION['accounttype'] == 'vendor')) {
-                    echo <<<CODE
-                            <div class="col-12 col-md-4 navbar navbar-light d-flex align-items-center justify-content-center p-0">
-                                <div class="justify-content-center" id="navbarNav">
-                                    <ul class="navbar-nav fs-5 d-flex flex-wrap flex-row justify-content-center">
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light px-3" href="../vendorPage/vendorPage.php"">My products</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light px-3" href="../vendorPage/vendorPage-addproduct.php">Add products</a>
-                                        </li>
-                                    </ul>
+                echo <<<CODE
+                        <div class="col-12 col-md-4 navbar navbar-light d-flex align-items-center justify-content-center p-0">
+                            <div class="justify-content-center" id="navbarNav">
+                                <ul class="navbar-nav fs-5 d-flex flex-wrap flex-row justify-content-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light px-3" href="../vendorPage/vendorPage.php"">My products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light px-3" href="../vendorPage/vendorPage-addproduct.php">Add products</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    CODE;
+            } else {
+                echo <<<CODE
+                        <div class="d-flex flex-wrap flex-row align-items-center justify-content-between p-4">
+                            <div class="col-12 col-md-5 d-flex flex-row align-items-center justify-content-between">
+                                <a class="text-center" href="../shipperPage/shipperPage.php">
+                                    <img src="/public/img/logo.png" width="80" height="80" class="d-inline-block align-top rounded" alt="Website logo">
+                                </a>
+                                <div class="d-flex flex-row col-8 col-md-4 justify-content-center flex-grow-1">
+                                    <div class="slogan navbar-text text-light text-center fs-5 w-100">
+                                        Find everything with All-in-cart online store
+                                    </div>
                                 </div>
                             </div>
-                        CODE;
-                }
+                            <div class="col-12 col-md-4 navbar navbar-light d-flex align-items-center justify-content-center p-0">
+                            <div class="justify-content-center" id="navbarNav">
+                                <ul class="navbar-nav fs-5 d-flex flex-wrap flex-row justify-content-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light px-3" href="../shipperPage/shipperPage.php"">Order</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>            
+                    CODE;
             }
         }
         ?>

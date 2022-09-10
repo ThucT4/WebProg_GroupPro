@@ -161,18 +161,21 @@ $userList = readFromFile("accounts.txt");
 <script src="/src/assets/scripts/cartPage.js"></script>
 <script>
     function removeProduct(id) {
+        console.log(id);
         var currentStorage = JSON.parse(localStorage.getItem("cart"));
+        if (currentStorage.length == 1) {
+            localStorage.removeItem("cart");
+            location.reload();
+            return;
+        }
         for (let i = 0; i < currentStorage.length; i++) {
             if (currentStorage[i][0].localeCompare(id)) {
                 currentStorage = currentStorage.splice(i, i + 1);
+                console.log(currentStorage);
                 localStorage.setItem("cart", JSON.stringify(currentStorage));
                 location.reload();
                 break;
             }
-        }
-        if (currentStorage.length == 1) {
-            localStorage.removeItem("cart");
-            location.reload();
         }
     }
 
