@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +108,7 @@
 </body>
 
 <!-- <script type="text/javascript">
-    <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
+  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
 </script> -->
 <link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include_once('../../../server/readFromfile.php');
-include_once('../../../server/classes/account.php');
+include_once($_SERVER["DOCUMENT_ROOT"] . '/server/readFromfile.php');
+include_once($_SERVER["DOCUMENT_ROOT"] . '/server/classes/account.php');
 
 global $accounts, $type, $username;
 $accounts = readFromFile('accounts.txt');
@@ -46,17 +46,9 @@ loadPage();
 
 function loadPage()
 {
-    //Header
-    // require_once("../../../src/components/header/header.php");
-
-    //Main
-    require_once("../../../src/components/loginPage/loginPage.html");
-
-    //Footer
-    // require_once("../../../src/components/footer/footer.html");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/src/components/loginPage/loginPage.html");
 }
 
-//print_r($_POST)."<br>";
 
 function authenticate($input)
 {

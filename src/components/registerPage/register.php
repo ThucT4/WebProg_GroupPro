@@ -11,15 +11,24 @@ $accounts = readFromFile('accounts.txt');
 $hubs = readFromFile('distributionHubs.txt');
 
 if (isset($_POST['create-account'])) {
-    if (!validate($_POST)) {
+    $result = validate($_POST);
+
+    if ($result == 1) {
         echo "<script type='text/javascript'> alert('Username has been used. PLease use another username!');</script>";
+    } else if ($result == 2) {
+        echo "<script type='text/javascript'> alert('Bussiness name or Bussiness address has been used. PLease use another one!');</script>";
     } else {
         $order = count($GLOBALS['accounts']) + 1;
 
-        $extension = explode(".", $_FILES['avt']['name'])[1];
+        $new_location = "";
 
-        $new_location = "../../../server/database/userAvatar/avatar{$order}.{$extension}";
-        move_uploaded_file($_FILES['avt']['tmp_name'], $new_location);
+        if (isset($_FILES['avt']) && !$_FILES['avt']) {
+            print_r($_FILES['avt']);
+            $extension = explode(".", $_FILES['avt']['name'])[1];
+
+            $new_location = "../../../server/database/userAvatar/avatar{$order}.{$extension}";
+            move_uploaded_file($_FILES['avt']['tmp_name'], $new_location);
+        }
 
         $temp = new Account(
             $_POST['username'],
@@ -72,8 +81,13 @@ function validate($input)
 {
     foreach ($GLOBALS['accounts'] as $account) {
         if ($input['username'] === $account->username) {
-            return false;
+            return 1;
+        }
+        if ($input['account-type'] === "vendor" && $account->type === "vendor") {
+            if ($input['buss-name'] === $account->bussName || $input['buss-address'] === $account->bussAddress) {
+                return 2;
+            }
         }
     }
-    return true;
+    return 0;
 }
