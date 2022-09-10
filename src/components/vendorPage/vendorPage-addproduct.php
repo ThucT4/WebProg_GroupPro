@@ -15,6 +15,7 @@
   <header>
     <?php
     require_once("../../../src/components/header/header.php");
+    echo $_SESSION['user'];
     ?>
   </header>
   <style>
