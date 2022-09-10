@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])) {
+  if ($_SESSION['accounttype'] != 'vendor') {
+      echo <<<CODE
+          <script type="text/javascript">
+          window.location.href="../noPermission/noPermission.html";
+      </script>
+      CODE;
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +37,12 @@ session_start();
       <div id="page-name" class="text-center">
         <p class="fs-2 fw-bold fst-italic">Add Product</p>
       </div>
-      <form name="submit" class="d-flex flex-column" id="" method="post" enctype="multipart/form-data" action="addProduct.php">
+      <form name="submit" class="d-flex flex-column" id="addproduct" method="post" enctype="multipart/form-data" action="addProduct.php">
         <div class="d-flex flex-row p-2">
           <div class="col-2">
             <label class="form-label me-4" for="product-img">Products picture</label>
           </div>
-          <div class="col-8">
+          <div class="col-8" id="inputfield">
             <input id="product-img" type="file" class="form-control img-file" onchange="loadFile(event)" name="fileToUpload" id="fileToUpload" />
             <img id="output" src="#" alt="Your Product Image" />
           </div>
@@ -43,7 +52,7 @@ session_start();
             <div class="col-2">
               <label class="form-label" for="product-stock">Product stock</label>
             </div>
-            <div class="col-8">
+            <div class="col-8" id="inputfield">
               <input id="product-stock" type="number" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
             </div>
           </div>
@@ -52,7 +61,7 @@ session_start();
             <div class="col-2">
               <label class="form-label" for="product-category">Product category</label>
             </div>
-            <div class="col-8">
+            <div class="col-8" id="inputfield">
               <input id="product-category" type="text" class="form-control" placeholder="Enter product category" name="p_category" ; required />
             </div>
           </div>
@@ -61,7 +70,7 @@ session_start();
             <div class="col-2">
               <label class="form-label" for="product-name">Product name</label>
             </div>
-            <div class="col-8">
+            <div class="col-8" id="inputfield">
               <input id="product-name" type="text" class="form-control" placeholder="Enter product name" name="p_name" ; required />
             </div>
           </div>
@@ -70,7 +79,7 @@ session_start();
             <div class="col-2">
               <label class="form-label" for="product-price">Product price</label>
             </div>
-            <div class="col-8">
+            <div class="col-8" id="inputfield">
               <input id="product-price" type="number" class="form-control" placeholder="Enter product price" name="p_price" ; required />
             </div>
           </div>
@@ -79,7 +88,7 @@ session_start();
             <div class="col-2">
               <label class="form-label me-4" for="description">Description</label>
             </div>
-            <div class="col-8">
+            <div class="col-8" id="inputfield">
               <input id="description" type="text" class="form-control" name="p_description" ; required/>
             </div>
           </div>
@@ -106,10 +115,6 @@ session_start();
   </footer>
 </body>
 
-<!-- <script type="text/javascript">
-  <?php #include '../../..//src/assets/scripts/vendorPage.js'; ?>
-</script>
-<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" /> -->
 <script src="/src/assets/scripts/vendorPage.js"></script>
 
 </html>
