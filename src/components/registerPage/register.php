@@ -15,11 +15,9 @@ if (isset($_POST['create-account'])) {
 
     if ($result == 1) {
         echo "<script type='text/javascript'> alert('Username has been used. PLease use another username!');</script>";
-    }
-    else if ($result == 2) {
+    } else if ($result == 2) {
         echo "<script type='text/javascript'> alert('Bussiness name or Bussiness address has been used. PLease use another one!');</script>";
-    }
-    else {
+    } else {
         $order = count($GLOBALS['accounts']) + 1;
 
         $new_location = "";
@@ -84,11 +82,10 @@ function validate($input)
         if ($input['username'] === $account->username) {
             return 1;
         }
-
         if ($input['account-type'] === "vendor" && $account->type === "vendor") {
-             if ($input['buss-name'] === $account->bussName || $input['buss-address'] === $account->bussAddress) { 
-                return 2; 
-            } 
+            if ($input['buss-name'] === $account->bussName || $input['buss-address'] === $account->bussAddress) {
+                return 2;
+            }
         }
     }
     return 0;

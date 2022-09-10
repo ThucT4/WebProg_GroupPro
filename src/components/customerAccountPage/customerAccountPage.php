@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 include_once('../../../server/write2file.php');
 include_once('../../../server/readFromfile.php');
@@ -61,6 +62,12 @@ $accountList = readFromFile("accounts.txt");
         require_once("../../../src/components/header/header.php");
         ?>
     </header>
+    <?php
+    if (isset($_POST['userName']) && isset($_POST['userAddress'])) {
+        echo $_POST['userName'];
+        echo $_POST['userAddress'];
+    }
+    ?>
     <?php
     foreach ($accountList as $account) {
         if ($_SESSION['user']) {
@@ -167,7 +174,7 @@ $accountList = readFromFile("accounts.txt");
                                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                                 </form>
                             </div> -->
-                            <form>
+                            <form method="post">
                                 <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">

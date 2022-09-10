@@ -22,7 +22,7 @@ $userAddress;
 </head>
 <header>
     <?php
-    include_once('../header/header.php');
+    require_once('../header/header.php');
     ?>
 </header>
 <?php

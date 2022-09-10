@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../../../server/readFromFile.php');
 ?>
 <!DOCTYPE html>
@@ -20,8 +21,7 @@ require_once('../../../server/readFromFile.php');
     ?>
   </header>
   <style>
-    <?php include '../../../src/assets/styles/vendorPage.css'; ?>
-    <?php include '../../../public/bootstrap/css/bootstrap.min.css';?>
+    <?php include '../../../src/assets/styles/vendorPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
   </style>
   <main>
     <div class="d-flex flex-column m-2 p-4 border text-center">

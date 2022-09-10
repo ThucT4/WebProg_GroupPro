@@ -1,6 +1,5 @@
-<?php 
-session_start();
-require_once('../../../server/writeToFile.php') ?>
+<?php session_start(); ?>
+<?php require_once('../../../server/writeToFile.php') ?>
 <?php require_once('../../../server/readFromFile.php') ?>
 <?php require_once('../../../server/classes/product.php') ?>
 <?php $productList = readFromFile("product.txt") ?>

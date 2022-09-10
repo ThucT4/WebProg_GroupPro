@@ -7,8 +7,6 @@ document.querySelector("#register-form").addEventListener("submit", validateInpu
 var regBox = document.querySelector("#register-box");
 var inputBoxs = document.querySelectorAll("div[name=\"inputbox\"");
 
-//console.log(inputBoxs);
-
 var res1 = window.matchMedia("(max-width: 768px)");
 responsive1(res1);
 res1.addListener(responsive1);
@@ -18,6 +16,8 @@ responsive2(res2);
 res2.addListener(responsive2);
 
 function clicked(e) {
+  console.log(e.target.value);
+
   if (e.target.checked && e.target.id == "customer") {
     loadCustomer();
   }

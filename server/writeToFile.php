@@ -17,7 +17,6 @@ function changeConfirmStatus($orderList)
     $filePath = $_SERVER["DOCUMENT_ROOT"] . "/server/database/db/order.txt";
     $fp = fopen($filePath, "w");
     fclose($fp);
-    echo sizeof($orderList);
     foreach ($orderList as $orderItem) {
         if (!empty($orderItem)) {
             writeToFile($orderItem, "order.txt", "a");
