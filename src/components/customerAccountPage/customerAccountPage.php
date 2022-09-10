@@ -85,11 +85,6 @@ if (isset($_FILES['avt-change-img']) && $_FILES['avt-change-img']['name'] != "")
     }
     ?>
 
-    <?php #if($_SESSION['user'] == $account->username) :
-    ?>
-    <!-- <div></div> -->
-    <?php #endif 
-    ?>
     <style>
         <?php include '../../../src/assets/styles/customerAccountPage.css'; ?><?php include '../../../public/bootstrap/css/bootstrap.min.css'; ?>
     </style>
@@ -109,7 +104,6 @@ if (isset($_FILES['avt-change-img']) && $_FILES['avt-change-img']['name'] != "")
                             </div>
                         </div>
                         <div class="col-12 profile-pic-btn">
-                            <!-- <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button> -->
                             <button class="btn btn-primary" type="button">
                                 <input type="submit" value="Confirm changes" id="submit-btn" />
                             </button>
