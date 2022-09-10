@@ -28,6 +28,17 @@
         ?>
     </header>
     <?php
+    if (isset($_SESSION['user'])) {
+        if ($_SESSION['accounttype'] != 'shipper') {
+            echo <<<CODE
+                <script type="text/javascript">
+                window.location.href="../noPermission/noPermission.html";
+            </script>
+            CODE;
+        }
+    }
+    ?>
+    <?php
     if (isset($_POST['changeOrderId']) && isset($_POST['changeOrderStatus'])) {
         $AllOrders = readFromLocalFile("order.txt");
         foreach ($AllOrders as $order) {

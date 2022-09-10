@@ -25,7 +25,11 @@
     <?php
     if (isset($_SESSION['user'])) {
         if ($_SESSION['accounttype'] != 'customer') {
-            header("Refresh:0; url=../noPermission/noPermission.html");
+            echo <<<CODE
+                <script type="text/javascript">  
+                window.location.href="../noPermission/noPermission.html";
+            </script>
+            CODE;
         }
     }
     ?>
