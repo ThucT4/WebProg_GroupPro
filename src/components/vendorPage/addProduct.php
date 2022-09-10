@@ -1,5 +1,5 @@
 <?php
-session_status();
+session_start();
 require_once('../../../server/readFromFile.php');
 require_once('../../../server/write2file.php');
 //change location
@@ -51,7 +51,7 @@ if ($uploadOk == 0) {
     $productList = readFromFile("product.txt");
     $getlastid = (array)end($productList);
     $array = array(
-      'vendorName' => $username,
+      'vendorName' => $_SESSION['user'],
       'productID' => $getlastid['productID'] + 1,
       'productName' => $_POST['p_name'],
       'img' => '../../../server/database/productImages/' . $_FILES["fileToUpload"]["name"],

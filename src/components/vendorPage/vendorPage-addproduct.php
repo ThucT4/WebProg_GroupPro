@@ -18,7 +18,6 @@ session_start();
   <header>
     <?php
     require_once("../../../src/components/header/header.php");
-    echo $_SESSION['user'];
     ?>
   </header>
   <style>
@@ -35,8 +34,8 @@ session_start();
             <label class="form-label me-4" for="product-img">Products picture</label>
           </div>
           <div class="col-8">
-            <input id="product-img" type="file" class="form-control" onchange="getBase64(this);" name="fileToUpload" id="fileToUpload" />
-            <img id="output" src="#" alt="your image" />
+            <input id="product-img" type="file" class="form-control img-file" onchange="loadFile(event)" name="fileToUpload" id="fileToUpload" />
+            <img id="output" src="#" alt="Your Product Image" />
           </div>
         </div>
         <div id="typical-info">
@@ -108,8 +107,9 @@ session_start();
 </body>
 
 <!-- <script type="text/javascript">
-  <?php include '../../..//src/assets/scripts/vendorPage.js'; ?>
-</script> -->
-<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" />
+  <?php #include '../../..//src/assets/scripts/vendorPage.js'; ?>
+</script>
+<link rel="stylesheet" href="/src/assets/scripts/vendorPage.js" /> -->
+<script src="/src/assets/scripts/vendorPage.js"></script>
 
 </html>

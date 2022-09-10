@@ -41,7 +41,6 @@ $accountList = readFromFile("accounts.txt");
 //         }
 //     }        
 // }
-
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +62,52 @@ $accountList = readFromFile("accounts.txt");
         ?>
     </header>
     <?php
+
+    // foreach ($accountList as $account) {
+    //     if ($_SESSION['user']) {
+    //         if ($_SESSION['user'] == $account->username) {
+    //             print_r($account);
+    //             echo "<br>";
+    //         }
+    //     }
+    // }
+
+
     if (isset($_POST['userName']) && isset($_POST['userAddress'])) {
-        echo $_POST['userName'];
-        echo $_POST['userAddress'];
+        // echo $_POST['userName'];
+        // echo $_POST['userAddress'];
+
+        foreach ($accountList as $account) {
+            if ($_SESSION['user']) {
+                if ($_SESSION['user'] == $account->username) {
+                    if ($account->type == 'customer') {
+                        if (empty($_POST['userName'])) {
+                            $arraynew = array("address"=>$_POST['userAddress']);
+                        }
+                        elseif (empty($_POST['userAddress'])) {
+                            $arraynew = array("username" => $_POST['userName']);
+                        }
+                        else {
+                            $arraynew = array("username" => $_POST['userName'], "address"=>$_POST['userAddress']);
+                        }                  
+                        $result = array_replace((array)$account, $arraynew);
+                        print_r($result);
+                        echo "<br>";
+
+                        $newresult = array($result);
+
+                        $asd = array_replace($accountList, $newresult);
+                        print_r($asd);
+                    }
+                    if ($account->type == 'vendor') {
+
+                    }
+                    if ($account->type == 'shipper') {
+
+                    }
+                }
+            }
+        }
     }
     ?>
     <?php
@@ -105,13 +147,13 @@ $accountList = readFromFile("accounts.txt");
                             </div>
                         </div>
                         <div class="col-12 profile-pic-btn">
-                        <!-- <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button> -->
-                        <button class="btn btn-primary" type="button">
-                            <input type="submit" value="Confirm changes" id="submit-btn" />
-                        </button>
+                            <!-- <button type="button" class="btn btn-primary change-ava" onclick="refreshPage()">Confirm changes</button> -->
+                            <button class="btn btn-primary" type="button">
+                                <input type="submit" value="Confirm changes" id="submit-btn" />
+                            </button>
                         </div>
                     </form>
-                    
+
                 </div>
                 <div class="col">
                     <div class="info d-flex ">
@@ -164,46 +206,111 @@ $accountList = readFromFile("accounts.txt");
                                 <img src="../../../public/img/edit.png" alt="edit-info">
                                 <div>&nbsp;&nbsp;Edit my profile</div>
                             </button>
-
-                            <!-- <div class="form-popup" id="myForm">
-                                <form action="/action_page.php" class="form-container">
-                                    <h1 style="color: #f98181;">Change profile information</h1>
-
-                                    <label for="name"><b>Name</b></label>
-                                    <input type="text" id="name" placeholder="Edit Name" name="name" required>
-
-                                    <label for="address"><b>Address</b></label>
-                                    <input type="text" id="address" placeholder="Edit Address" name="address" required>
-
-                                    <button type="submit" class="btn confirm" onclick="changeInfo()">Confirm</button>
-                                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                                </form>
-                            </div> -->
                             <form method="post">
-                                <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label">Name</label>
-                                                    <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="address" class="form-label">Address</label>
-                                                    <input name="userAddress" type="text" class="form-control" id="address">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <?php
+                            foreach ($accountList as $account) {
+                                if ($_SESSION['user']) {
+                                    if ($_SESSION['user'] == $account->username) {
+                                        if ($account->type == 'customer') {
+                                            echo
+                                            <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="name" class="form-label">Name</label>
+                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="address" class="form-label">Address</label>
+                                                                        <input name="userAddress" type="text" class="form-control" id="address">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                        }
+                                        if ($account->type == 'vendor') {
+                                            echo
+                                            <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="name" class="form-label">Name</label>
+                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="b_name" class="form-label">Business Name</label>
+                                                                        <input name="business" type="text" class="form-control" id="b_name">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="b_address" class="form-label">Business Address</label>
+                                                                        <input name="address" type="text" class="form-control" id="b_address">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                        }
+                                        if ($account->type == 'shipper') {
+                                            echo
+                                            <<<CODE
+                                                    <div class="modal fade" id="ChangeInfoModal" tabindex="-1" aria-labelledby="ChangeInfoModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="ChangeInfoModalLabel">Change profile information</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label for="name" class="form-label">Name</label>
+                                                                        <input name="userName" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label me-4" for="distribution-hub">Distribution Hubs</label>
+                                                                        <select name="distribution-hub" id="distribution-hub">
+                                                                            <option value="1">Hub Tân Phú</option>
+                                                                            <option value="2">Hub Binh Chanh</option>
+                                                                            <option value="3">LEX HUB HTB</option>
+                                                                            <option value="4">Hub Quận 5</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            CODE;
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
                             </form>
                         </div>
                     </div>
