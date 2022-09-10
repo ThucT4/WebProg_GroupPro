@@ -5,6 +5,34 @@ include_once('../../../server/readFromfile.php');
 include_once('../../../server/classes/account.php');
 $accountList = readFromFile("accounts.txt");
 
+foreach ($accountList as $account) {
+    if ($_SESSION['user']) {
+        if ($_SESSION['user'] == $account->username) {
+            $avaimg = $account->avt;
+        }
+    }
+}
+
+if (isset($_FILES['avt-change-img']) && $_FILES['avt-change-img']['name'] != "") {
+    if (file_exists("$avaimg")) {
+        unlink($avaimg);
+    }
+    $newpath = explode("../../../server/database/userAvatar/", $avaimg)[1];
+    $newpath = explode(".", $newpath)[0];
+    $extension = explode(".", $_FILES['avt-change-img']['name'])[1];
+    $new_location = "../../../server/database/userAvatar/{$newpath}.{$extension}";
+    move_uploaded_file($_FILES['avt-change-img']['tmp_name'], $new_location);
+    foreach ($accountList as $account) {
+        if ($_SESSION['user']) {
+            if ($_SESSION['user'] == $account->username) {
+                $account->avt = $new_location;
+                changeAccountInfo($accountList);
+                break;
+            }
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,21 +62,20 @@ $accountList = readFromFile("accounts.txt");
         }
     }
 
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($accountList as $account) {
             if ($_SESSION['user']) {
                 if ($_SESSION['user'] == $account->username) {
-                    if ($account->type == 'customer') {
+                    if ($account->type == 'customer' && isset($_POST['userAddress'])) {
                         $account->address = $_POST['userAddress'];
                     }
 
-                    if ($account->type == 'vendor') {
+                    if ($account->type == 'vendor' && isset($_POST['business']) && isset($_POST['address'])) {
                         $account->bussName = $_POST['business'];
                         $account->bussAddress = $_POST['address'];
                     }
 
-                    if ($account->type == 'shipper') {
+                    if ($account->type == 'shipper' && isset($_POST['distribution-hub'])) {
                         $account->hub = $_POST['distribution-hub'];
                     }
                     changeAccountInfo($accountList);
@@ -56,7 +83,7 @@ $accountList = readFromFile("accounts.txt");
             }
         }
     }
-?>
+    ?>
 
     <?php #if($_SESSION['user'] == $account->username) :
     ?>
@@ -70,15 +97,15 @@ $accountList = readFromFile("accounts.txt");
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 card shadow p-3 mb-5 bg-body rounded d-flex flex-column align-items-center">
-                    <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="edit_profile.php">
+                    <form class="col-12" name="profile-pic" id="profile-pic" method="post" action="" enctype="multipart/form-data">
                         <div class="col-12 position-relative rounded-circle">
 
                             <img class="img-fluid text-center" name="fileToUpload" alt="profile pic" id="photo" src=' <?= $avaimg ?>'>
                             <div class="position-absolute image-upload bottom-0 end-0" style="width:40px; height:40px;">
                                 <label for="file-input" style="width:40px; height:40px;">
-                                    <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid">
+                                    <img src="../../../public/img/camera.png" alt="change ava button" class="img-fluid" id="camera-btn">
                                 </label>
-                                <input class="d-none" id="file-input" type="file" onchange="loadFile(event)">
+                                <input name="avt-change-img" class="d-none" id="file-input" type="file" onchange="loadFile(event)">
                             </div>
                         </div>
                         <div class="col-12 profile-pic-btn">

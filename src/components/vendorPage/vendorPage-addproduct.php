@@ -44,7 +44,7 @@ session_start();
               <label class="form-label" for="product-stock">Product stock</label>
             </div>
             <div class="col-8">
-              <input id="product-stock" type="text" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
+              <input id="product-stock" type="number" class="form-control" placeholder="Enter product stock" name="p_stock" ; required />
             </div>
           </div>
 
@@ -71,7 +71,7 @@ session_start();
               <label class="form-label" for="product-price">Product price</label>
             </div>
             <div class="col-8">
-              <input id="product-price" type="text" class="form-control" placeholder="Enter product price" name="p_price" ; required />
+              <input id="product-price" type="number" class="form-control" placeholder="Enter product price" name="p_price" ; required />
             </div>
           </div>
 
@@ -80,7 +80,7 @@ session_start();
               <label class="form-label me-4" for="description">Description</label>
             </div>
             <div class="col-8">
-              <input id="description" type="text" class="form-control" name="p_description" />
+              <input id="description" type="text" class="form-control" name="p_description" ; required/>
             </div>
           </div>
         </div>
