@@ -31,14 +31,13 @@ $orderList = filter();
 <?php function showOrderDetails($obj)
 {
     $userList = readFromFile("accounts.txt");
-    $currentUser = new stdClass();
+    $customer = new stdClass();
     foreach ($userList as $user) {
-        if ($user->username == $_SESSION['user']) {
-            $currentUser = $user;
+        if ($user->username == $obj->customerName) {
+            $customer = $user;
             break;
         }
     }
-    echo $currentUser->address;
     echo
     <<<CODE
         <h2 class="text-center text-bold">#Order$obj->id</h2>
@@ -52,7 +51,7 @@ $orderList = filter();
         </div>
         <div class="customer-info d-flex align-items-center">
             <div class="col-4 col-md-3 avatar d-flex flex-column text-center">
-                <img class="img-fluid rounded w-100" src="$currentUser->avt" alt="avatar">
+                <img class="img-fluid rounded w-100" src="$customer->avt" alt="avatar">
             </div>
             <div class="col-4 col-md-3 ms-4 address d-flex flex-column text-start text-wrap">
                 <h3 class="m-0">
@@ -83,7 +82,7 @@ $orderList = filter();
                     <div class="col-2 col-md-2 d-flex flex-column text-center" style="height: 15vw">
                         <img class="img-fluid rounded w-100 h-100" src="$cur->img" alt="$cur->img">
                     </div>
-                    <p class="col-3 p-md-2 text-center text-lg-start">$cur->productDes</p>
+                    <p class="col-3 p-2 text-start">$cur->productDes</p>
                     <div class="catogory col-2 col-md-2 d-flex flex-column p-md-2 text-center">
                         <span>catogory</span>
                         <small>$cur->category </small>
